@@ -1,0 +1,91 @@
+﻿@using disec.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Iniciar sesión";
+}
+
+<style>
+    #particles-js {
+        width: 100%;
+        height: 100%;
+        background-size: inherit;
+        background-position: 100%;
+        position: fixed;
+        top: 0px;
+        z-index: 1;
+    }
+</style>
+
+<div id="particles-js">
+    <br />
+    <br />
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", autocomplete = "off" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="panel panel-body login-form">
+            <!-- Logo policia -->
+            <div class="text-center">
+                <img class="img-responsive center-block" src="@Url.Content("~/img/escudo_policia.png")" />
+                <h5 class="content-group">Ingrese sus datos</h5>
+            </div>
+            <!-- Usuario -->
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group has-feedback has-feedback-left ">
+                <div class="col-lg-12 form-group">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control col-md-12 col-lg-12", autocomplete = "off", placeholder = "Usuario empresarial", required = true, maxlength = "100" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    <div class="form-control-feedback">
+                        <i class="icon-user text-muted"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- usuario -->
+            <!-- Contraseña -->
+            <div class="form-group has-feedback has-feedback-left ">
+                <div class="col-lg-12 form-group">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control ", placeholder = "Clave", autocomplete = "off", required = true, maxlength = "50" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    <div class="form-control-feedback">
+                        <i class="icon-lock2 text-muted"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- contraseña -->
+            <!-- Sección de recordar contraseñas -->
+            @*<div class="form-group login-options">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="col-sm-12">
+                                <label class="checkbox-inline">
+                                    @Html.CheckBoxFor(m => m.RememberMe, new { @class = "styled" })
+                                    @Html.LabelFor(m => m.RememberMe)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <p>
+                                @Html.ActionLink("¿Olvido su contraseña?", "ForgotPassword")
+                            </p>
+                        </div>
+                    </div>
+                </div>*@
+            <!-- /sección de recordar contraseñas -->
+            <!-- Botón de ingreso -->
+            <div class="form-group">
+                <div class="col-lg-12 form-group">
+                    <button type="submit" class="btn bg-pink-400 btn-block">Ingresar <i class="icon-arrow-right14 position-right"></i></button>
+                </div>
+            </div>
+            <!-- /botón de ingreso -->
+            <!-- Mensaje final -->
+
+            <span class="help-block text-center no-margin text-justify">
+                Está ingresando a un sistema de información de propiedad de la Policía Nacional, su uso no autorizado incurre en el incumplimiento de las políticas de seguridad de la Institución establecidas en el Manual del Sistema de Gestión de Seguridad de la Información para la Policía Nacional y acarrea sanciones penales, disciplinarias y/o administrativas a que haya lugar; ayúdenos a prevenir la divulgación no autorizada, pérdida y/o fuga de la información institucional.
+            </span>
+
+            <!-- /mensaje final -->
+        </div>
+    }
+</div>
+<script src="~/Scripts/Particulas/particles.min.js"></script>
+<script src="~/Scripts/Particulas/Particulas.js"></script>

@@ -1,0 +1,116 @@
+﻿@using disec.Models;
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.Owin;
+@{
+    ViewBag.Title = User.Identity.GetNombres() + " " + User.Identity.GetApellidos();
+    var UserManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+    var roles = UserManager.GetRoles(User.Identity.GetUserId());
+
+    var imgSrc = Url.Content("~/img/User.png");
+    if (Session["FOTO"] != null)
+    {
+        imgSrc = String.Format("data:image/png;base64,{0}", Session["FOTO"]);
+    }
+}
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Perfil Usuario
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Preferencias</a></li>
+        <li class="active">Perfil Usuario</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-3">
+            <!-- Profile Image -->
+            <div class="box box-success">
+                <div class="box-body box-profile">
+                    <img src="@imgSrc" class="profile-user-img img-responsive img-circle" alt="Imagen usuario" />
+                    <h3 class="profile-username text-center">@User.Identity.GetGrado() @User.Identity.GetNombres()  @User.Identity.GetApellidos()</h3>
+                    <p class="text-muted text-center">@User.Identity.GetCargo()</p>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <strong> Dependencia</strong>
+                        <p class="text-muted">
+                            @User.Identity.GetDependencia()
+                        </p>
+                        <hr>
+                        <strong> Unidad</strong>
+                        <p class="text-muted">@User.Identity.GetUnidad()</p>
+                        <hr>
+                        <strong> Celular</strong>
+                        <p class="text-muted">@User.Identity.GetCelular()</p>
+                        <hr>
+                        <strong> Situación Laboral</strong>
+                        <p class="text-muted">@User.Identity.GetSituacionLaboral()</p>
+                        <hr>
+                        <strong> Identificación</strong>
+                        <p class="text-muted">@User.Identity.GetIdentificacion()</p>
+                        <hr>
+                        <strong> Usuario</strong>
+                        <p class="text-muted">@User.Identity.GetUserName()</p>
+                        <hr>
+                        <strong> Nota</strong>
+                        <p>Información de SIATH</p>
+                    </div>
+                    <!-- /.box-body -->
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->          
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">                    
+                    <li class="active"><a href="#timeline" data-toggle="tab">Roles</a></li>                  
+                </ul>
+                <div class="tab-content">                                   
+                    <!-- /.tab-pane -->
+                    <div class="active tab-pane" id="timeline">
+                        <!-- The timeline -->
+                        <ul class="timeline timeline-inverse">                          
+                            <!-- END timeline item -->
+                            <!-- timeline item -->
+                            <li>
+                                <i class="fa fa-user bg-aqua"></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fa fa-clock-o"></i></span>
+                                    <h3 class="timeline-header"><a href="#">Roles asignados</a></h3>
+                                    <div class="timeline-body">
+                                        @for (int i = 0; i <= roles.Count() - 1; i++)
+                                        {
+                                            <ul>
+                                                <li>
+                                                    @roles[i]
+                                                </li>
+                                            </ul>
+                                        } 
+                                    </div>                                   
+                                </div>                               
+                            </li> 
+                            <!-- END timeline item -->
+                            <li>
+                                <i class="fa fa-clock-o bg-gray"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.tab-pane -->    
+                </div>
+               
+                <!-- /.tab-content -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>

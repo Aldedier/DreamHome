@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1082
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.DreamHome", "Web.DreamHome\Web.DreamHome.csproj", "{492720C2-49B5-4139-9A21-82AC6BDDC141}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. UL", "1. UL", "{20983753-1065-4EDE-A813-20BF9494D1EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. BL", "2. BL", "{ABEA70FC-803D-4F7A-AC2B-B9DACF6FD9AC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. DL", "3. DL", "{9F0D13BE-5F82-4228-BE3E-10AF2AFAD11C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. CL", "4. CL", "{EE055533-2DB8-4792-82CA-5DDCFD6D1DA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio.DreamHome", "Negocio.DreamHome\Negocio.DreamHome.csproj", "{ED081211-FB72-4292-AC2A-66BD8BD9FBF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos.DreamHome", "Datos.DreamHome\Datos.DreamHome.csproj", "{D5EECA21-D319-4FAB-B010-8AA25A754164}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comun.DreamHome", "Comun.DreamHome\Comun.DreamHome.csproj", "{5245589C-D818-4DE6-BD66-5AC6F8839226}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{492720C2-49B5-4139-9A21-82AC6BDDC141}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{492720C2-49B5-4139-9A21-82AC6BDDC141}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{492720C2-49B5-4139-9A21-82AC6BDDC141}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{492720C2-49B5-4139-9A21-82AC6BDDC141}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED081211-FB72-4292-AC2A-66BD8BD9FBF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED081211-FB72-4292-AC2A-66BD8BD9FBF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED081211-FB72-4292-AC2A-66BD8BD9FBF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED081211-FB72-4292-AC2A-66BD8BD9FBF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5EECA21-D319-4FAB-B010-8AA25A754164}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5EECA21-D319-4FAB-B010-8AA25A754164}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5EECA21-D319-4FAB-B010-8AA25A754164}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5EECA21-D319-4FAB-B010-8AA25A754164}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5245589C-D818-4DE6-BD66-5AC6F8839226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5245589C-D818-4DE6-BD66-5AC6F8839226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5245589C-D818-4DE6-BD66-5AC6F8839226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5245589C-D818-4DE6-BD66-5AC6F8839226}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{492720C2-49B5-4139-9A21-82AC6BDDC141} = {20983753-1065-4EDE-A813-20BF9494D1EE}
+		{ED081211-FB72-4292-AC2A-66BD8BD9FBF0} = {ABEA70FC-803D-4F7A-AC2B-B9DACF6FD9AC}
+		{D5EECA21-D319-4FAB-B010-8AA25A754164} = {9F0D13BE-5F82-4228-BE3E-10AF2AFAD11C}
+		{5245589C-D818-4DE6-BD66-5AC6F8839226} = {EE055533-2DB8-4792-82CA-5DDCFD6D1DA2}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {708BE228-48FA-456C-AE51-C081235B85C3}
+	EndGlobalSection
+EndGlobal
