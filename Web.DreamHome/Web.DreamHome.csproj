@@ -135,6 +135,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InmuebleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -4462,6 +4463,9 @@
     <Content Include="Scripts\raphael\yarn.lock" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Perfil.cshtml" />
+    <Content Include="Views\Inmueble\Inicial.cshtml" />
+    <Content Include="Views\Inmueble\Crear.cshtml" />
+    <Content Include="Views\Inmueble\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

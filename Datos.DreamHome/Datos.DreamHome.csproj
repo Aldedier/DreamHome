@@ -46,7 +46,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,12 +57,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ConexionOracle\ConDBOracle.cs" />
+    <Compile Include="InmueblesDB.cs" />
+    <Compile Include="ConexionOracle\LogException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ConexionOracle\ResultadosOperacion.cs" />
+    <Compile Include="ConexionOracle\ContextDH.cs" />
+    <Compile Include="ConexionOracle\DreamHomeDatosBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Comun.DreamHome\Comun.DreamHome.csproj">
+      <Project>{5245589c-d818-4de6-bd66-5ac6f8839226}</Project>
+      <Name>Comun.DreamHome</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
