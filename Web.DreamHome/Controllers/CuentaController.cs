@@ -27,6 +27,7 @@ namespace Web.DreamHome.Controllers
                 return RedirectToAction("Inicial", "Inmueble");
             }
 
+            registro.Mensaje = "Credenciales incorrectas, intente nuevamente !!!";
             ViewBag.MENSAJE = registro.Mensaje;
 
             return View("Login", "_LoginBase");
