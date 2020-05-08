@@ -50,6 +50,12 @@
                     </div>
                 </div>
             </div>
+            <div>
+                @if (ViewBag.MENSAJE != null)
+                {
+                    <p class="text-center text-danger">@ViewBag.MENSAJE</p>
+                }
+            </div>
             <!-- contraseña -->
             <!-- Sección de recordar contraseñas -->
             @*<div class="form-group login-options">

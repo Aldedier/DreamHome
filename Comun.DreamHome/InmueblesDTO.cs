@@ -15,5 +15,6 @@ namespace Comun.DreamHome
         public string APARTADO_INM { get; set; }
         public int ACTIVO_INM { get; set; }
         public DateTime FECHA_INM { get; set; }
+        public int? SESSION { get; set; } = null;
     }
 }

@@ -1,19 +1,16 @@
 ﻿using Comun.DreamHome;
 using Datos.DreamHome;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Negocio.DreamHome
 {
     public class SistemaRepositorio
     {
-        public string ValidarLogin(LoginDTO loginDTO)
+        public UsuarioDTO ValidarLogin(LoginDTO loginDTO)
         {
-            List<UsuarioDTO> resultado = new SistemaDB().ValidarUsuario(loginDTO);
-
-            if (resultado == null)
-                return null;
-            else
-                return "Exito";
+            UsuarioDTO resultado = new SistemaDB().ValidarUsuario(loginDTO);
+            return resultado;
         }
 
     }

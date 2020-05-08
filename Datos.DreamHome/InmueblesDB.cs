@@ -21,7 +21,7 @@
                 objCommand.Parameters.Add(new OracleParameter("I_DireccionInm", OracleDbType.Varchar2, 200)).Value = inmueblesDTO.DIRECCION_INM;
                 objCommand.Parameters.Add(new OracleParameter("I_ApartadoInm", OracleDbType.Varchar2, 100)).Value = inmueblesDTO.APARTADO_INM;
                 objCommand.Parameters.Add(new OracleParameter("I_Activo", OracleDbType.Int32)).Value = 1;
-                objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = 1;
+                objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = inmueblesDTO.SESSION;
                 objCommand.Parameters.Add(new OracleParameter("l_mensaje", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.ReturnValue;
 
                 objCommand.Connection = cnOracle.Conexion;
@@ -61,7 +61,7 @@
                 objCommand.Parameters.Add(new OracleParameter("i_direccioninm", OracleDbType.Varchar2, 200)).Value = inmueblesDTO.DIRECCION_INM;
                 objCommand.Parameters.Add(new OracleParameter("i_apartadoinm", OracleDbType.Varchar2, 100)).Value = inmueblesDTO.APARTADO_INM;
                 objCommand.Parameters.Add(new OracleParameter("i_activo", OracleDbType.Int32)).Value = 1;
-                objCommand.Parameters.Add(new OracleParameter("i_idfsesion", OracleDbType.Decimal)).Value = 1;
+                objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = inmueblesDTO.SESSION;
                 objCommand.Parameters.Add(new OracleParameter("l_mensaje", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.ReturnValue;
 
                 objCommand.Connection = cnOracle.Conexion;
@@ -97,7 +97,7 @@
             {
                 objCommand.Parameters.Clear();
                 objCommand.Parameters.Add(new OracleParameter("I_IdInmueble", OracleDbType.Decimal)).Value = inmueblesDTO.ID_INMUEBLE;
-                objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = 1;
+                objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = inmueblesDTO.SESSION;
                 objCommand.Parameters.Add(new OracleParameter("l_mensaje", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.ReturnValue;
 
                 objCommand.Connection = cnOracle.Conexion;

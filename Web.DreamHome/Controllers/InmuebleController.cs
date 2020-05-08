@@ -34,6 +34,16 @@ namespace Web.DreamHome.Controllers
             ViewBag.IDF_TIPO_INM = new SelectList(lista, "Value", "Text");
             ViewBag.Mensaje = null;
 
+            try
+            {
+                inmueblesDTO.SESSION = (int)Session["Sesion_id"];
+            }
+            catch
+            {
+                inmueblesDTO.SESSION = null;
+                return View();
+            }
+
             string mensaje = new InmueblesRepositorio().ValidarInmueble(inmueblesDTO);
             ViewBag.Mensaje = mensaje;
 
@@ -63,6 +73,16 @@ namespace Web.DreamHome.Controllers
             ViewBag.IDF_TIPO_INM = new SelectList(lista, "Value", "Text", datos.IDF_TIPO_INM);
             ViewBag.Mensaje = null;
 
+            try
+            {
+                inmueblesDTO.SESSION = (int)Session["Sesion_id"];
+            }
+            catch
+            {
+                inmueblesDTO.SESSION = null;
+                return View();
+            }
+
             string mensaje = new InmueblesRepositorio().ActualizarInmueble(inmueblesDTO);
             ViewBag.Mensaje = mensaje;
             return View(datos);
@@ -70,7 +90,19 @@ namespace Web.DreamHome.Controllers
 
         public ActionResult Eliminar(int _id)
         {
-            new InmueblesRepositorio().EliminarInmueble(new InmueblesDTO { ID_INMUEBLE = _id });
+            int? session = null;
+
+            try
+            {
+                session = (int)Session["Sesion_id"];
+            }
+            catch
+            {
+                session = null;
+                return RedirectToAction("Inicial", "Inmueble");
+            }
+
+            new InmueblesRepositorio().EliminarInmueble(new InmueblesDTO { ID_INMUEBLE = _id, SESSION = session });
             return RedirectToAction("Inicial", "Inmueble");
         }
 

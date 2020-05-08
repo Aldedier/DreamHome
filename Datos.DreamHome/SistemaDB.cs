@@ -9,9 +9,9 @@
 
     public class SistemaDB 
     {
-        public List<UsuarioDTO> ValidarUsuario(LoginDTO loginDTO)
+        public UsuarioDTO ValidarUsuario(LoginDTO loginDTO)
         {
-            List<UsuarioDTO> retorno = new List<UsuarioDTO>();
+            UsuarioDTO registro = new UsuarioDTO();
             ConDBOracle cnOracle = new ConDBOracle("ContextoDH");
             OracleCommand objCommand = new OracleCommand();
 
@@ -20,33 +20,29 @@
                 objCommand.Parameters.Clear();
                 objCommand.Parameters.Add(new OracleParameter("I_IdfUsr", OracleDbType.Varchar2, 100)).Value = loginDTO.Email;
                 objCommand.Parameters.Add(new OracleParameter("I_Clave", OracleDbType.Varchar2, 300)).Value = loginDTO.Password;
-                objCommand.Parameters.Add(new OracleParameter("Tabla_Usuario", OracleDbType.RefCursor)).Direction = ParameterDirection.ReturnValue;
+                objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.RefCursor)).Direction = ParameterDirection.Output;
                 
                 objCommand.Connection = cnOracle.Conexion;
                 objCommand.CommandType = CommandType.StoredProcedure;
-                objCommand.CommandText = "DB_DREAM_HOME.PKG_SISTEMA.FN_ValidarUsuario";
-                objCommand.BindByName = true;
+                objCommand.CommandText = "DB_DREAM_HOME.PKG_SISTEMA.PR_ValidarUsuario";
+                //objCommand.BindByName = true;
 
                 if (cnOracle.Conectar())
                 {
                     DataTable resultado = new DataTable();
-                    OracleDataReader datos = objCommand.ExecuteReader();
-                    resultado.Load(datos);
+                    resultado.Load(objCommand.ExecuteReader());
 
-                    UsuarioDTO registro;
                     foreach (DataRow row in resultado.Rows)
                     {
                         registro = new UsuarioDTO
                         {
-                            Usuario_id = int.Parse(row["Id_Usr"].ToString()),
-                            Usuario = row["Usuario"].ToString(),
-                            Nombre_Usuario = row["Nombre_Usr"].ToString(),
-                            Rol_id = Convert.ToInt32(row["Id_Rol"].ToString()),
-                            Sesion_id = Convert.ToInt32(row["Id_Sesion"].ToString()),
-                            Mensaje = row["Mensaje"].ToString()
+                            Usuario_id = int.Parse(row[0].ToString()),
+                            Usuario = row[1].ToString(),
+                            Nombre_Usuario = row[2].ToString(),
+                            Rol_id = Convert.ToInt32(row[3].ToString()),
+                            Sesion_id = Convert.ToInt32(row[4].ToString()),
+                            Mensaje = row[5].ToString()
                         };
-
-                        retorno.Add(registro);
                     }
                 }
             }
@@ -60,7 +56,7 @@
                 if (objCommand != null) { objCommand.Dispose(); }
             }
 
-            return retorno;
+            return registro;
         }
     }
 }

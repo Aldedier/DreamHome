@@ -1,4 +1,22 @@
 ﻿@*@using Web.DreamHome.Models*@
+@{ 
+    var session = Session["Sesion_id"];
+    session = session == null ? 0 : session;
+}
+
+
+<script>
+
+    var dato = 0;
+
+    dato = @session;
+
+    if (dato == 0)
+    {
+        window.location = "@Url.Action("Login","Cuenta")";
+    }
+
+</script>
 
 <!DOCTYPE html>
 <html>
@@ -48,28 +66,28 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="~/img/User.png" class="img-circle" height="22" width="22" />
-                                <span class="hidden-xs">EST. ALDEDIER MARTINEZ</span>
+                                <span class="hidden-xs">@Session["Nombre_Usuario"]</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
                                     <img src="~/img/User.png" class="img-circle">
                                     <p>
-                                        EST. ALDEDIER MARTINEZ
-                                        <small>Universidad del Tolima</small>
+                                        @Session["Nombre_Usuario"]
+                                        <small>DreamHome</small>
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <form target="_blank" action="@Url.Action("Perfil", "Account", new { Area = "" })">
+                                        <form target="_blank" action="@Url.Action("Perfil", "Cuenta", new { Area = "" })">
                                             <button type="submit" class="btn btn-primary btn-flat">
                                                 <span></span> Perfil
                                             </button>
                                         </form>
                                     </div>
                                     <div class="pull-right">
-                                        <a class="btn btn-primary btn-flat" href="@Url.Action("LogOff", "Account", new { Area = "" })">Cerrar sesión</a>
+                                        <a class="btn btn-primary btn-flat" href="@Url.Action("LogOff", "Cuenta", new { Area = "" })">Cerrar sesión</a>
                                     </div>
                                 </li>
                             </ul>
@@ -88,8 +106,8 @@
                         <img src="~/img/User.png" class="img-circle">
                     </div>
                     <div class="pull-left info">
-                        <h6>EST. ALDEDIER</h6>
-                        <h6>MARTINEZ</h6>
+                        <h6>@Session["Nombre_Usuario"]</h6>
+                        <h6>DreamHome</h6>
                     </div>
                 </div>
                 <ul class="sidebar-menu" data-widget="tree">
@@ -124,13 +142,13 @@
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-cab"></i>
-                            <span>Inmuebles</span>
+                            <span>Formularios</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="@Url.Action("", "")"><i class="fa fa-pencil"></i> Registros</a></li>
+                            <li><a href="@Url.Action("Inicial", "Inmueble")"><i class="fa fa-home"></i> Inmuebles</a></li>
                             <li><a href="@Url.Action("", "")"><i class="fa fa-user"></i> Arrendatarios</a></li>
                             <li><a href="@Url.Action("", "")"><i class="fa fa-child"></i> Empleados</a></li>
                             <li><a href="@Url.Action("", "")"><i class="fa fa-search"></i> Consulta</a></li>
@@ -169,7 +187,7 @@
         };
 
         //Ruta para redireccionar y cerrar sesión
-        var redireccionarLogin = "@Url.Action("Login", "Account", new { area = ""})" + "?returnUrl=";
+        var redireccionarLogin = "@Url.Action("Login", "Cuenta", new { area = ""})" + "?returnUrl=";
     </script>
 
     <script src="~/Scripts/CierreProgramadoSesion.js"></script>

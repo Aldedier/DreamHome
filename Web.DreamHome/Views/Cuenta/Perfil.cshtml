@@ -1,16 +1,7 @@
-﻿@using disec.Models;
-@using Microsoft.AspNet.Identity
-@using Microsoft.AspNet.Identity.Owin;
-@{
-    ViewBag.Title = User.Identity.GetNombres() + " " + User.Identity.GetApellidos();
-    var UserManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
-    var roles = UserManager.GetRoles(User.Identity.GetUserId());
-
+﻿@{
+    ViewBag.Title = Session["Nombre_Usuario"];
     var imgSrc = Url.Content("~/img/User.png");
-    if (Session["FOTO"] != null)
-    {
-        imgSrc = String.Format("data:image/png;base64,{0}", Session["FOTO"]);
-    }
+
 }
 
 
@@ -30,35 +21,27 @@
     <div class="row">
         <div class="col-md-3">
             <!-- Profile Image -->
-            <div class="box box-success">
+            <div class="box box-primary">
                 <div class="box-body box-profile">
                     <img src="@imgSrc" class="profile-user-img img-responsive img-circle" alt="Imagen usuario" />
-                    <h3 class="profile-username text-center">@User.Identity.GetGrado() @User.Identity.GetNombres()  @User.Identity.GetApellidos()</h3>
-                    <p class="text-muted text-center">@User.Identity.GetCargo()</p>
+                    <h3 class="profile-username text-center">@Session["Nombre_Usuario"]</h3>
+                    <p class="text-muted text-center">DreamHome</p>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <strong> Dependencia</strong>
+                        <strong> Usuario id</strong>
                         <p class="text-muted">
-                            @User.Identity.GetDependencia()
+                            @Session["Usuario_id"]
                         </p>
                         <hr>
-                        <strong> Unidad</strong>
-                        <p class="text-muted">@User.Identity.GetUnidad()</p>
+                        <strong> Rol id</strong>
+                        <p class="text-muted">@Session["Rol_id"]</p>
                         <hr>
-                        <strong> Celular</strong>
-                        <p class="text-muted">@User.Identity.GetCelular()</p>
-                        <hr>
-                        <strong> Situación Laboral</strong>
-                        <p class="text-muted">@User.Identity.GetSituacionLaboral()</p>
-                        <hr>
-                        <strong> Identificación</strong>
-                        <p class="text-muted">@User.Identity.GetIdentificacion()</p>
+                        <strong> Nombre Usuario</strong>
+                        <p class="text-muted">@Session["Nombre_Usuario"]</p>
                         <hr>
                         <strong> Usuario</strong>
-                        <p class="text-muted">@User.Identity.GetUserName()</p>
+                        <p class="text-muted">@Session["Usuario"]</p>
                         <hr>
-                        <strong> Nota</strong>
-                        <p>Información de SIATH</p>
                     </div>
                     <!-- /.box-body -->
 
@@ -86,14 +69,7 @@
                                     <span class="time"><i class="fa fa-clock-o"></i></span>
                                     <h3 class="timeline-header"><a href="#">Roles asignados</a></h3>
                                     <div class="timeline-body">
-                                        @for (int i = 0; i <= roles.Count() - 1; i++)
-                                        {
-                                            <ul>
-                                                <li>
-                                                    @roles[i]
-                                                </li>
-                                            </ul>
-                                        } 
+                                        @Session["Rol_id"]
                                     </div>                                   
                                 </div>                               
                             </li> 
