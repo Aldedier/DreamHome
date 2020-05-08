@@ -1,5 +1,5 @@
-﻿@using disec.Models
-@model LoginViewModel
+﻿@model Comun.DreamHome.LoginDTO
+
 @{
     ViewBag.Title = "Iniciar sesión";
 }
@@ -19,23 +19,23 @@
 <div id="particles-js">
     <br />
     <br />
-    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", autocomplete = "off" }))
+    @using (Html.BeginForm("Login", "Cuenta", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", autocomplete = "off" }))
     {
         @Html.AntiForgeryToken()
         <div class="panel panel-body login-form">
             <!-- Logo policia -->
             <div class="text-center">
-                <img class="img-responsive center-block" src="@Url.Content("~/img/escudo_policia.png")" />
+                <img class="img-responsive center-block" src="@Url.Content("~/img/UT.png")" style="width:100px;height:120px"/>
                 <h5 class="content-group">Ingrese sus datos</h5>
             </div>
             <!-- Usuario -->
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group has-feedback has-feedback-left ">
                 <div class="col-lg-12 form-group">
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control col-md-12 col-lg-12", autocomplete = "off", placeholder = "Usuario empresarial", required = true, maxlength = "100" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control col-md-12 col-lg-12", autocomplete = "off", placeholder = "Usuario", required = true, maxlength = "100" })
                     @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                     <div class="form-control-feedback">
-                        <i class="icon-user text-muted"></i>
+                        <i class="fa fa-user text-muted"></i>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                     @Html.PasswordFor(m => m.Password, new { @class = "form-control ", placeholder = "Clave", autocomplete = "off", required = true, maxlength = "50" })
                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     <div class="form-control-feedback">
-                        <i class="icon-lock2 text-muted"></i>
+                        <i class="fa fa-paste text-muted"></i>
                     </div>
                 </div>
             </div>
@@ -73,14 +73,14 @@
             <!-- Botón de ingreso -->
             <div class="form-group">
                 <div class="col-lg-12 form-group">
-                    <button type="submit" class="btn bg-pink-400 btn-block">Ingresar <i class="icon-arrow-right14 position-right"></i></button>
+                    <button type="submit" class="btn btn-primary btn-block">Ingresar <i class="fa fa-arrow-circle-right position-right"></i></button>
                 </div>
             </div>
             <!-- /botón de ingreso -->
             <!-- Mensaje final -->
 
             <span class="help-block text-center no-margin text-justify">
-                Está ingresando a un sistema de información de propiedad de la Policía Nacional, su uso no autorizado incurre en el incumplimiento de las políticas de seguridad de la Institución establecidas en el Manual del Sistema de Gestión de Seguridad de la Información para la Policía Nacional y acarrea sanciones penales, disciplinarias y/o administrativas a que haya lugar; ayúdenos a prevenir la divulgación no autorizada, pérdida y/o fuga de la información institucional.
+                Está ingresando a un sistema de información de propiedad del grupo No.1 de Ingeniería  de Sistemas de la Universidad del Tolima, su uso no autorizado incurre en el incumplimiento de las políticas de seguridad de la Universidad y derechos de autor.
             </span>
 
             <!-- /mensaje final -->

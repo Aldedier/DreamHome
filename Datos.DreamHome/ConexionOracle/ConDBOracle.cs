@@ -32,9 +32,7 @@
             }
             catch (Exception ex)
             {
-                LogException.Nivel = LogException.TipoMensaje.M_ERROR;
-                LogException.Servicio = System.Reflection.MethodBase.GetCurrentMethod().Name;
-                LogException.err("strConexion: [" + nameCnn + "]", ex);
+                Console.WriteLine("Ha ocurrido un error !!!");
                 return _nameCnn;
             }
         }
@@ -103,8 +101,7 @@
             catch (Exception ex)
             {
                 // Asignamos error.
-                LogException.Nivel = LogException.TipoMensaje.M_ERROR;
-                LogException.err("Dispose:", ex);
+                Console.WriteLine("Ha ocurrido un error !!!");
             }
         }
 
@@ -141,9 +138,7 @@
                     // Desconectamos y liberamos memoria.
                     Desconectar();
                     // Asignamos error.
-                    LogException.Nivel = LogException.TipoMensaje.M_ERROR;
-                    LogException.Servicio = System.Reflection.MethodBase.GetCurrentMethod().Name;
-                    LogException.err("Conectar: " + info.CadenaConexion, ex);
+                    Console.WriteLine("Ha ocurrido un error !!!");
                     // Asignamos error de funci�n
                     ok = false;
                 }
@@ -175,9 +170,7 @@
                 // Desconectamos y liberamos memoria.
                 Desconectar();
                 // Asignamos error.
-                LogException.Nivel = LogException.TipoMensaje.M_ERROR;
-                LogException.Servicio = System.Reflection.MethodBase.GetCurrentMethod().Name;
-                LogException.err("Conectar: " + Conexion.ConnectionString, ex);
+                Console.WriteLine("Ha ocurrido un error !!!");
                 // Asignamos error de funci�n
                 ok = false;
             }
@@ -205,9 +198,7 @@
             }
             catch (Exception ex)
             {
-                LogException.Nivel = LogException.TipoMensaje.M_ERROR;
-                LogException.Servicio = System.Reflection.MethodBase.GetCurrentMethod().Name;
-                LogException.err(LogException.Servicio, ex);
+                Console.WriteLine("Ha ocurrido un error !!!");
                 return false;
             }
         }
@@ -246,9 +237,7 @@
             }
             catch (Exception ex)
             {
-                LogException.Nivel = LogException.TipoMensaje.M_ERROR;
-                LogException.Servicio = System.Reflection.MethodBase.GetCurrentMethod().Name;
-                LogException.err(LogException.Servicio, ex);
+                Console.WriteLine("Ha ocurrido un error !!!");
                 ok = false;
             }
             return ok;
@@ -282,9 +271,7 @@
             catch (Exception ex)
             {
                 Desconectar();
-                LogException.Nivel = LogException.TipoMensaje.M_ERROR;
-                LogException.Servicio = System.Reflection.MethodBase.GetCurrentMethod().Name;
-                LogException.err("EjecutarSP(): " + OraCommand.CommandText, ex);
+                Console.WriteLine("Ha ocurrido un error !!!");
                 ok = false;
             }
             
@@ -328,9 +315,7 @@
             catch (Exception ex)
             {
                 Desconectar();
-                LogException.Nivel = LogException.TipoMensaje.M_ERROR;
-                LogException.Servicio = System.Reflection.MethodBase.GetCurrentMethod().Name;
-                LogException.err(LogException.Servicio, ex);
+                Console.WriteLine("Ha ocurrido un error !!!");
                 ok = false;
             }
             finally
@@ -399,9 +384,7 @@
                 Desconectar();
                 if (RegistrarLog)
                 {
-                    LogException.Nivel = LogException.TipoMensaje.M_ERROR;
-                    LogException.Servicio = System.Reflection.MethodBase.GetCurrentMethod().Name;
-                    LogException.err(LogException.Servicio, ex);
+                    Console.WriteLine("Ha ocurrido un error !!!");
                 }
 
                 ok = false;

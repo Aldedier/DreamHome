@@ -134,6 +134,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InmuebleController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2596,7 +2597,9 @@
     <Content Include="img\favicon.ico" />
     <Content Include="img\icons.png" />
     <Content Include="img\pdf.png" />
+    <Content Include="img\portada.jpg" />
     <Content Include="img\User.png" />
+    <Content Include="img\UT.png" />
     <Content Include="Scripts\bootstrap-datetimepicker\bootstrap-datetimepicker-local.js" />
     <Content Include="Scripts\bootstrap-datetimepicker\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -4461,11 +4464,12 @@
     <Content Include="Scripts\raphael\.bower.json" />
     <Content Include="Scripts\raphael\bower.json" />
     <Content Include="Scripts\raphael\yarn.lock" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Perfil.cshtml" />
+    <Content Include="Views\Cuenta\Login.cshtml" />
+    <Content Include="Views\Cuenta\Perfil.cshtml" />
     <Content Include="Views\Inmueble\Inicial.cshtml" />
     <Content Include="Views\Inmueble\Crear.cshtml" />
     <Content Include="Views\Inmueble\Editar.cshtml" />
+    <Content Include="Views\Shared\_LoginBase.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

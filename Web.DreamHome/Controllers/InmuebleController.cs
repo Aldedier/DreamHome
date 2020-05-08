@@ -21,6 +21,7 @@ namespace Web.DreamHome.Controllers
             lista.Add(new SelectListItem { Value = "1", Text = "Apartamento" });
             lista.Add(new SelectListItem { Value = "2", Text = "Casa" });
             ViewBag.IDF_TIPO_INM = new SelectList(lista, "Value", "Text");
+            ViewBag.Mensaje = null;
             return View();
         }
 
@@ -31,12 +32,10 @@ namespace Web.DreamHome.Controllers
             lista.Add(new SelectListItem { Value = "1", Text = "Apartamento" });
             lista.Add(new SelectListItem { Value = "2", Text = "Casa" });
             ViewBag.IDF_TIPO_INM = new SelectList(lista, "Value", "Text");
+            ViewBag.Mensaje = null;
 
-            if (ModelState.IsValid)
-            {
-                new InmueblesRepositorio().ValidarInmueble(inmueblesDTO);
-                return RedirectToAction("Inicial", "Inmueble");
-            }
+            string mensaje = new InmueblesRepositorio().ValidarInmueble(inmueblesDTO);
+            ViewBag.Mensaje = mensaje;
 
             return View();
         }
@@ -49,7 +48,7 @@ namespace Web.DreamHome.Controllers
 
             InmueblesDTO datos = new InmueblesRepositorio().ConsultaInmuebles().Where(x => x.ID_INMUEBLE == _id).FirstOrDefault();
             ViewBag.IDF_TIPO_INM = new SelectList(lista, "Value", "Text", datos.IDF_TIPO_INM);
-
+            ViewBag.Mensaje = null;
             return View(datos);
         }
 
@@ -62,19 +61,16 @@ namespace Web.DreamHome.Controllers
 
             InmueblesDTO datos = new InmueblesRepositorio().ConsultaInmuebles().Where(x => x.ID_INMUEBLE == inmueblesDTO.ID_INMUEBLE).FirstOrDefault();
             ViewBag.IDF_TIPO_INM = new SelectList(lista, "Value", "Text", datos.IDF_TIPO_INM);
+            ViewBag.Mensaje = null;
 
-            if (ModelState.IsValid)
-            {
-                new InmueblesRepositorio().ActualizarInmueble(inmueblesDTO);
-                return RedirectToAction("Inicial", "Inmueble");
-            }
-
+            string mensaje = new InmueblesRepositorio().ActualizarInmueble(inmueblesDTO);
+            ViewBag.Mensaje = mensaje;
             return View(datos);
         }
 
         public ActionResult Eliminar(int _id)
         {
-            new InmueblesRepositorio().EliminarInmueble(new InmueblesDTO {ID_INMUEBLE = _id});
+            new InmueblesRepositorio().EliminarInmueble(new InmueblesDTO { ID_INMUEBLE = _id });
             return RedirectToAction("Inicial", "Inmueble");
         }
 

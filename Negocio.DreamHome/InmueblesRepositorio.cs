@@ -9,37 +9,34 @@
 
     public class InmueblesRepositorio
     {
-        public bool ValidarInmueble(InmueblesDTO inmueblesDTO)
+        public string ValidarInmueble(InmueblesDTO inmueblesDTO)
         {
-            if (inmueblesDTO.DIRECCION_INM == null)
-                return false;
+            string resultado = new InmueblesDB().CrearInmueble(inmueblesDTO);
 
-            int resultado = new InmueblesDB().CrearInmueble(inmueblesDTO);
-
-            if (resultado == 1)
-                return true;
+            if (resultado == null)
+                return null;
             else
-                return false;
+                return resultado;
         }
 
-        public bool ActualizarInmueble(InmueblesDTO inmueblesDTO)
+        public string ActualizarInmueble(InmueblesDTO inmueblesDTO)
         {
-            int resultado = new InmueblesDB().EditarInmueble(inmueblesDTO);
+            string resultado = new InmueblesDB().EditarInmueble(inmueblesDTO);
 
-            if (resultado == 1)
-                return true;
+            if (resultado == null)
+                return null;
             else
-                return false;
+                return resultado;
         }
 
-        public bool EliminarInmueble(InmueblesDTO inmueblesDTO)
+        public string EliminarInmueble(InmueblesDTO inmueblesDTO)
         {
-            int resultado = new InmueblesDB().EliminarInmueble(inmueblesDTO);
+            string resultado = new InmueblesDB().EliminarInmueble(inmueblesDTO);
 
-            if (resultado == 1)
-                return true;
+            if (resultado == null)
+                return null;
             else
-                return false;
+                return resultado;
         }
 
         public List<InmueblesDTO> ConsultaInmuebles()

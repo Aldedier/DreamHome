@@ -58,12 +58,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionOracle\ConDBOracle.cs" />
+    <Compile Include="SistemaDB.cs" />
     <Compile Include="InmueblesDB.cs" />
-    <Compile Include="ConexionOracle\LogException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ConexionOracle\ResultadosOperacion.cs" />
-    <Compile Include="ConexionOracle\ContextDH.cs" />
-    <Compile Include="ConexionOracle\DreamHomeDatosBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

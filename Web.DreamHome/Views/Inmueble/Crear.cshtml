@@ -45,13 +45,19 @@
 
                     <!-- /.box-body -->
                     <div class="box-body">
+                        @if (ViewBag.Mensaje != null)
+                        {
+                            <div class="callout callout-info">@ViewBag.Mensaje</div>
+                            <br />
+                        }
+
                         <div class="form-group-sm">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         @Html.Label("Tipo de inmueble", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.DropDownList("IDF_TIPO_INM", null, String.Format("Seleccione el tipo de inmueble"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;", @Required = true })
+                                            @Html.DropDownList("IDF_TIPO_INM", null, String.Format("Seleccione el tipo de inmueble"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
                                         </div>
                                     </div>
                                 </div>
@@ -59,7 +65,7 @@
                                     <div class="form-group">
                                         @Html.Label("Dirección", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.EditorFor(model => model.DIRECCION_INM, new { htmlAttributes = new { @class = "form-control", type = "text", @Required = true, @placeholder = "Digite una dirección" } })
+                                            @Html.EditorFor(model => model.DIRECCION_INM, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite una dirección" } })
                                         </div>
                                     </div>
                                 </div>
@@ -67,7 +73,7 @@
                                     <div class="form-group">
                                         @Html.Label("Apartado", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.EditorFor(model => model.APARTADO_INM, new { htmlAttributes = new { @class = "form-control", type = "text", @Required = true, @placeholder = "Digite un apartado" } })
+                                            @Html.EditorFor(model => model.APARTADO_INM, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite un apartado" } })
                                         </div>
                                     </div>
                                 </div>
