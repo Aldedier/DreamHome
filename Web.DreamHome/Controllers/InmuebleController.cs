@@ -12,7 +12,20 @@ namespace Web.DreamHome.Controllers
     {
         public ActionResult Inicial()
         {
-            return View(new InmueblesRepositorio().ConsultaInmuebles());
+            InmueblesDTO inmueblesDTO = new InmueblesDTO();
+
+            try
+            {
+                inmueblesDTO.SESSION = (int)Session["Sesion_id"];
+            }
+            catch
+            {
+                inmueblesDTO.SESSION = null;
+                return View();
+            }
+
+          
+            return View(new InmueblesRepositorio().ConsultaInmuebles((int)inmueblesDTO.SESSION));
         }
 
         public ActionResult Crear()
@@ -20,6 +33,7 @@ namespace Web.DreamHome.Controllers
             List<SelectListItem> lista = new List<SelectListItem>();
             lista.Add(new SelectListItem { Value = "1", Text = "Apartamento" });
             lista.Add(new SelectListItem { Value = "2", Text = "Casa" });
+
             ViewBag.IDF_TIPO_INM = new SelectList(lista, "Value", "Text");
             ViewBag.Mensaje = null;
             return View();
@@ -31,6 +45,7 @@ namespace Web.DreamHome.Controllers
             List<SelectListItem> lista = new List<SelectListItem>();
             lista.Add(new SelectListItem { Value = "1", Text = "Apartamento" });
             lista.Add(new SelectListItem { Value = "2", Text = "Casa" });
+
             ViewBag.IDF_TIPO_INM = new SelectList(lista, "Value", "Text");
             ViewBag.Mensaje = null;
 
@@ -56,7 +71,18 @@ namespace Web.DreamHome.Controllers
             lista.Add(new SelectListItem { Value = "1", Text = "Apartamento" });
             lista.Add(new SelectListItem { Value = "2", Text = "Casa" });
 
-            InmueblesDTO datos = new InmueblesRepositorio().ConsultaInmuebles().Where(x => x.ID_INMUEBLE == _id).FirstOrDefault();
+            int? session;
+
+            try
+            {
+                session = (int)Session["Sesion_id"];
+            }
+            catch
+            {
+                session = null;
+            }
+
+            InmueblesDTO datos = new InmueblesRepositorio().ConsultaInmuebles((int)session).Where(x => x.ID_INMUEBLE == _id).FirstOrDefault();
             ViewBag.IDF_TIPO_INM = new SelectList(lista, "Value", "Text", datos.IDF_TIPO_INM);
             ViewBag.Mensaje = null;
             return View(datos);
@@ -69,7 +95,18 @@ namespace Web.DreamHome.Controllers
             lista.Add(new SelectListItem { Value = "1", Text = "Apartamento" });
             lista.Add(new SelectListItem { Value = "2", Text = "Casa" });
 
-            InmueblesDTO datos = new InmueblesRepositorio().ConsultaInmuebles().Where(x => x.ID_INMUEBLE == inmueblesDTO.ID_INMUEBLE).FirstOrDefault();
+            int? session;
+
+            try
+            {
+                session = (int)Session["Sesion_id"];
+            }
+            catch
+            {
+                session = null;
+            }
+
+            InmueblesDTO datos = new InmueblesRepositorio().ConsultaInmuebles((int)session).Where(x => x.ID_INMUEBLE == inmueblesDTO.ID_INMUEBLE).FirstOrDefault();
             ViewBag.IDF_TIPO_INM = new SelectList(lista, "Value", "Text", datos.IDF_TIPO_INM);
             ViewBag.Mensaje = null;
 

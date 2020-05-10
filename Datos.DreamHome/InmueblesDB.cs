@@ -22,17 +22,16 @@
                 objCommand.Parameters.Add(new OracleParameter("I_ApartadoInm", OracleDbType.Varchar2, 100)).Value = inmueblesDTO.APARTADO_INM;
                 objCommand.Parameters.Add(new OracleParameter("I_Activo", OracleDbType.Int32)).Value = 1;
                 objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = inmueblesDTO.SESSION;
-                objCommand.Parameters.Add(new OracleParameter("l_mensaje", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.ReturnValue;
+                objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
 
                 objCommand.Connection = cnOracle.Conexion;
                 objCommand.CommandType = CommandType.StoredProcedure;
-                objCommand.CommandText = "DB_DREAM_HOME.PKG_INMUEBLES.FN_AgregarInmueble";
-                objCommand.BindByName = true;
+                objCommand.CommandText = "DB_DREAM_HOME.PKG_INMUEBLES.PR_AgregarInmueble";
 
                 if (cnOracle.Conectar())
                 {
                     objCommand.ExecuteNonQuery();
-                    resultado = objCommand.Parameters["l_mensaje"].Value.ToString();
+                    resultado = objCommand.Parameters["O_Salida"].Value.ToString();
                 }
             }
             catch (Exception ex)
@@ -62,17 +61,16 @@
                 objCommand.Parameters.Add(new OracleParameter("i_apartadoinm", OracleDbType.Varchar2, 100)).Value = inmueblesDTO.APARTADO_INM;
                 objCommand.Parameters.Add(new OracleParameter("i_activo", OracleDbType.Int32)).Value = 1;
                 objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = inmueblesDTO.SESSION;
-                objCommand.Parameters.Add(new OracleParameter("l_mensaje", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.ReturnValue;
+                objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
 
                 objCommand.Connection = cnOracle.Conexion;
                 objCommand.CommandType = CommandType.StoredProcedure;
-                objCommand.CommandText = "DB_DREAM_HOME.PKG_INMUEBLES.FN_ModificarInmueble";
-                objCommand.BindByName = true;
+                objCommand.CommandText = "DB_DREAM_HOME.PKG_INMUEBLES.PR_ModificarInmueble";
 
                 if (cnOracle.Conectar())
                 {
                     objCommand.ExecuteNonQuery();
-                    resultado = objCommand.Parameters["l_mensaje"].Value.ToString();
+                    resultado = objCommand.Parameters["O_Salida"].Value.ToString();
                 }
             }
             catch (Exception ex)
@@ -98,17 +96,16 @@
                 objCommand.Parameters.Clear();
                 objCommand.Parameters.Add(new OracleParameter("I_IdInmueble", OracleDbType.Decimal)).Value = inmueblesDTO.ID_INMUEBLE;
                 objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = inmueblesDTO.SESSION;
-                objCommand.Parameters.Add(new OracleParameter("l_mensaje", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.ReturnValue;
+                objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
 
                 objCommand.Connection = cnOracle.Conexion;
                 objCommand.CommandType = CommandType.StoredProcedure;
-                objCommand.CommandText = "DB_DREAM_HOME.PKG_INMUEBLES.FN_BorrarInmueble";
-                objCommand.BindByName = true;
+                objCommand.CommandText = "DB_DREAM_HOME.PKG_INMUEBLES.PR_BorrarInmueble";
 
                 if (cnOracle.Conectar())
                 {
                     objCommand.ExecuteNonQuery();
-                    resultado = objCommand.Parameters["l_mensaje"].Value.ToString();
+                    resultado = objCommand.Parameters["O_Salida"].Value.ToString();
                 }
             }
             catch (Exception ex)
@@ -124,7 +121,7 @@
             return (resultado);
         }
 
-        public List<InmueblesDTO> ListaInmuebles()
+        public List<InmueblesDTO> ListaInmuebles(int _session)
         {
             List<InmueblesDTO> retorno = new List<InmueblesDTO>();
             ConDBOracle cnOracle = new ConDBOracle("ContextoDH");
@@ -133,7 +130,8 @@
             try
             {
                 objCommand.Parameters.Clear();
-                objCommand.Parameters.Add(new OracleParameter("RETURN_VALUE", OracleDbType.RefCursor)).Direction = ParameterDirection.Output;
+                objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = _session;
+                objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.RefCursor)).Direction = ParameterDirection.Output;
 
                 objCommand.Connection = cnOracle.Conexion;
                 objCommand.CommandType = CommandType.StoredProcedure;

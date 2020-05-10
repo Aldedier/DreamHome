@@ -39,9 +39,9 @@
                 return resultado;
         }
 
-        public List<InmueblesDTO> ConsultaInmuebles()
+        public List<InmueblesDTO> ConsultaInmuebles(int _session)
         {
-            return new InmueblesDB().ListaInmuebles();
+            return new InmueblesDB().ListaInmuebles(_session);
         }
     }
 }
