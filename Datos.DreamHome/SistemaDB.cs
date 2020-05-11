@@ -1,34 +1,33 @@
 ﻿namespace Datos.DreamHome
 {
     using Comun.DreamHome;
+    using Datos.DreamHome.ConexionOracle;
     using Oracle.ManagedDataAccess.Client;
     using System;
     using System.Data;
-    using Datos.DreamHome.ConexionOracle;
-    using System.Collections.Generic;
 
-    public class SistemaDB 
+    public class SistemaDB
     {
         public UsuarioDTO ValidarUsuario(LoginDTO loginDTO)
         {
             UsuarioDTO registro = new UsuarioDTO();
-            ConDBOracle cnOracle = new ConDBOracle("ContextoDH");
-            OracleCommand objCommand = new OracleCommand();
+            string connectionString = new Utilidades().GetConnectionStringByName("ContextoDH");
 
-            try
+            using (OracleConnection connection = new OracleConnection(connectionString))
+            using (OracleCommand objCommand = connection.CreateCommand())
             {
-                objCommand.Parameters.Clear();
-                objCommand.Parameters.Add(new OracleParameter("I_IdfUsr", OracleDbType.Varchar2, 100)).Value = loginDTO.Email;
-                objCommand.Parameters.Add(new OracleParameter("I_Clave", OracleDbType.Varchar2, 300)).Value = loginDTO.Password;
-                objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.RefCursor)).Direction = ParameterDirection.Output;
-                
-                objCommand.Connection = cnOracle.Conexion;
-                objCommand.CommandType = CommandType.StoredProcedure;
-                objCommand.CommandText = "DB_DREAM_HOME.PKG_SISTEMA.PR_ValidarUsuario";
-                //objCommand.BindByName = true;
-
-                if (cnOracle.Conectar())
+                try
                 {
+                    objCommand.Parameters.Clear();
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfUsr", OracleDbType.Varchar2, 100)).Value = loginDTO.Email;
+                    objCommand.Parameters.Add(new OracleParameter("I_Clave", OracleDbType.Varchar2, 300)).Value = loginDTO.Password;
+                    objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.RefCursor)).Direction = ParameterDirection.Output;
+
+                    connection.Open();
+
+                    objCommand.CommandType = CommandType.StoredProcedure;
+                    objCommand.CommandText = "DB_DREAM_HOME.PKG_SISTEMA.PR_ValidarUsuario";
+
                     DataTable resultado = new DataTable();
                     resultado.Load(objCommand.ExecuteReader());
 
@@ -44,18 +43,21 @@
                             Mensaje = row[5].ToString()
                         };
                     }
+
+                }
+                catch (Exception ex)
+                {
+                    throw new ArgumentException($"{ex.Message} {ex.InnerException}");
+                }
+                finally
+                {
+                    if (connection.State == ConnectionState.Open)
+                        connection.Close();
+
+                    if (objCommand != null)
+                        objCommand.Dispose();
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Ha ocurrido un error !!!");
-            }
-            finally
-            {
-                cnOracle.Desconectar();
-                if (objCommand != null) { objCommand.Dispose(); }
-            }
-
             return registro;
         }
     }
