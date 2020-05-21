@@ -57,7 +57,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConexionOracle\Utilidades.cs" />
     <Compile Include="SistemaDB.cs" />
     <Compile Include="InmueblesDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

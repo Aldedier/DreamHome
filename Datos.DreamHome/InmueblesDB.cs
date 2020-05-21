@@ -6,15 +6,15 @@
     using System;
     using System.Collections.Generic;
     using System.Data;
+    using System.Web.Configuration;
 
     public class InmueblesDB
     {
         public string CrearInmueble(InmueblesDTO inmueblesDTO)
         {
             string resultado = string.Empty;
-            string connectionString = new Utilidades().GetConnectionStringByName("ContextoDH");
 
-            using (OracleConnection connection = new OracleConnection(connectionString))
+            using (OracleConnection connection = new OracleConnection(WebConfigurationManager.ConnectionStrings["ContextoDH"].ConnectionString))
             using (OracleCommand objCommand = connection.CreateCommand())
             {
                 try
@@ -30,7 +30,7 @@
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "DB_DREAM_HOME.PKG_INMUEBLES.PR_AgregarInmueble";
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_INMUEBLES.PR_AgregarInmueble";
                     objCommand.ExecuteNonQuery();
 
                     resultado = objCommand.Parameters["O_Salida"].Value.ToString();
@@ -55,9 +55,8 @@
         public string EditarInmueble(InmueblesDTO inmueblesDTO)
         {
             string resultado = string.Empty;
-            string connectionString = new Utilidades().GetConnectionStringByName("ContextoDH");
 
-            using (OracleConnection connection = new OracleConnection(connectionString))
+            using (OracleConnection connection = new OracleConnection(WebConfigurationManager.ConnectionStrings["ContextoDH"].ConnectionString))
             using (OracleCommand objCommand = connection.CreateCommand())
             {
                 try
@@ -74,7 +73,7 @@
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "DB_DREAM_HOME.PKG_INMUEBLES.PR_ModificarInmueble";
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_INMUEBLES.PR_ModificarInmueble";
 
                     objCommand.ExecuteNonQuery();
                     resultado = objCommand.Parameters["O_Salida"].Value.ToString();
@@ -99,9 +98,8 @@
         public string EliminarInmueble(InmueblesDTO inmueblesDTO)
         {
             string resultado = string.Empty;
-            string connectionString = new Utilidades().GetConnectionStringByName("ContextoDH");
 
-            using (OracleConnection connection = new OracleConnection(connectionString))
+            using (OracleConnection connection = new OracleConnection(WebConfigurationManager.ConnectionStrings["ContextoDH"].ConnectionString))
             using (OracleCommand objCommand = connection.CreateCommand())
             {
                 try
@@ -114,7 +112,7 @@
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "DB_DREAM_HOME.PKG_INMUEBLES.PR_BorrarInmueble";
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_INMUEBLES.PR_BorrarInmueble";
 
                     objCommand.ExecuteNonQuery();
                     resultado = objCommand.Parameters["O_Salida"].Value.ToString();
@@ -139,9 +137,8 @@
         public List<InmueblesDTO> ListaInmuebles(int _session)
         {
             List<InmueblesDTO> retorno = new List<InmueblesDTO>();
-            string connectionString = new Utilidades().GetConnectionStringByName("ContextoDH");
 
-            using (OracleConnection connection = new OracleConnection(connectionString))
+            using (OracleConnection connection = new OracleConnection(WebConfigurationManager.ConnectionStrings["ContextoDH"].ConnectionString))
             using (OracleCommand objCommand = connection.CreateCommand())
             {
                 try
@@ -153,7 +150,7 @@
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "DB_DREAM_HOME.PKG_INMUEBLES.PR_consultarinmuebles";
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_INMUEBLES.PR_consultarinmuebles";
 
                     DataTable resultado = new DataTable();
                     resultado.Load(objCommand.ExecuteReader());

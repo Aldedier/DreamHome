@@ -5,15 +5,15 @@
     using Oracle.ManagedDataAccess.Client;
     using System;
     using System.Data;
+    using System.Web.Configuration;
 
     public class SistemaDB
     {
         public UsuarioDTO ValidarUsuario(LoginDTO loginDTO)
         {
             UsuarioDTO registro = new UsuarioDTO();
-            string connectionString = new Utilidades().GetConnectionStringByName("ContextoDH");
 
-            using (OracleConnection connection = new OracleConnection(connectionString))
+            using (OracleConnection connection = new OracleConnection(WebConfigurationManager.ConnectionStrings["ContextoDH"].ConnectionString))
             using (OracleCommand objCommand = connection.CreateCommand())
             {
                 try
@@ -26,7 +26,7 @@
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "DB_DREAM_HOME.PKG_SISTEMA.PR_ValidarUsuario";
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_SISTEMA.PR_ValidarUsuario";
 
                     DataTable resultado = new DataTable();
                     resultado.Load(objCommand.ExecuteReader());
