@@ -1,7 +1,6 @@
-﻿namespace Datos.DreamHome
+﻿namespace Datos.DreamHome.LogicaBaseDatos
 {
     using Comun.DreamHome;
-    using Datos.DreamHome.ConexionOracle;
     using Oracle.ManagedDataAccess.Client;
     using System;
     using System.Collections.Generic;
@@ -23,7 +22,6 @@
                     objCommand.Parameters.Add(new OracleParameter("I_IdTipoInm", OracleDbType.Decimal)).Value = inmueblesDTO.IDF_TIPO_INM;
                     objCommand.Parameters.Add(new OracleParameter("I_DireccionInm", OracleDbType.Varchar2, 200)).Value = inmueblesDTO.DIRECCION_INM;
                     objCommand.Parameters.Add(new OracleParameter("I_ApartadoInm", OracleDbType.Varchar2, 100)).Value = inmueblesDTO.APARTADO_INM;
-                    objCommand.Parameters.Add(new OracleParameter("I_Activo", OracleDbType.Int32)).Value = 1;
                     objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = inmueblesDTO.SESSION;
                     objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
 
@@ -62,11 +60,10 @@
                 try
                 {
                     objCommand.Parameters.Clear();
-                    objCommand.Parameters.Add(new OracleParameter("i_idinmueble", OracleDbType.Decimal)).Value = inmueblesDTO.ID_INMUEBLE;
-                    objCommand.Parameters.Add(new OracleParameter("i_idtipoinm", OracleDbType.Decimal)).Value = inmueblesDTO.IDF_TIPO_INM;
-                    objCommand.Parameters.Add(new OracleParameter("i_direccioninm", OracleDbType.Varchar2, 200)).Value = inmueblesDTO.DIRECCION_INM;
-                    objCommand.Parameters.Add(new OracleParameter("i_apartadoinm", OracleDbType.Varchar2, 100)).Value = inmueblesDTO.APARTADO_INM;
-                    objCommand.Parameters.Add(new OracleParameter("i_activo", OracleDbType.Int32)).Value = 1;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdInmueble", OracleDbType.Decimal)).Value = inmueblesDTO.ID_INMUEBLE;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdTipoInm", OracleDbType.Decimal)).Value = inmueblesDTO.IDF_TIPO_INM;
+                    objCommand.Parameters.Add(new OracleParameter("I_DireccionInm", OracleDbType.Varchar2, 200)).Value = inmueblesDTO.DIRECCION_INM;
+                    objCommand.Parameters.Add(new OracleParameter("I_ApartadoInm", OracleDbType.Varchar2, 100)).Value = inmueblesDTO.APARTADO_INM;
                     objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = inmueblesDTO.SESSION;
                     objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
 

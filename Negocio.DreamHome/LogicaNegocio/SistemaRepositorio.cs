@@ -1,10 +1,8 @@
-﻿using Comun.DreamHome;
-using Datos.DreamHome;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Negocio.DreamHome
+﻿namespace Negocio.DreamHome.LogicaNegocio
 {
+    using Comun.DreamHome;
+    using Datos.DreamHome.LogicaBaseDatos;
+
     public class SistemaRepositorio
     {
         public UsuarioDTO ValidarLogin(LoginDTO loginDTO)

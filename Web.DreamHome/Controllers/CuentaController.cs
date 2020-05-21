@@ -1,6 +1,6 @@
 ﻿using Comun.DreamHome;
 using System.Web.Mvc;
-using Negocio.DreamHome;
+using Negocio.DreamHome.LogicaNegocio;
 
 namespace Web.DreamHome.Controllers
 {

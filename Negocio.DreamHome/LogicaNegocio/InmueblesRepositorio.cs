@@ -1,11 +1,8 @@
-﻿namespace Negocio.DreamHome
+﻿namespace Negocio.DreamHome.LogicaNegocio
 {
     using Comun.DreamHome;
-    using Datos.DreamHome;
-    using Oracle.ManagedDataAccess.Client;
-    using System;
+    using Datos.DreamHome.LogicaBaseDatos;
     using System.Collections.Generic;
-    using System.Data;
 
     public class InmueblesRepositorio
     {

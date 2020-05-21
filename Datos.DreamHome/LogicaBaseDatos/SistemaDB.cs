@@ -1,7 +1,6 @@
-﻿namespace Datos.DreamHome
+﻿namespace Datos.DreamHome.LogicaBaseDatos
 {
     using Comun.DreamHome;
-    using Datos.DreamHome.ConexionOracle;
     using Oracle.ManagedDataAccess.Client;
     using System;
     using System.Data;

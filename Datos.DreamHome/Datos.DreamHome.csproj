@@ -57,8 +57,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SistemaDB.cs" />
-    <Compile Include="InmueblesDB.cs" />
+    <Compile Include="ContextoBaseDatos\ContextoDreamHome.cs" />
+    <Compile Include="ContextoBaseDatos\TIPOS_PROPIEDADES.cs" />
+    <Compile Include="LogicaBaseDatos\SistemaDB.cs" />
+    <Compile Include="LogicaBaseDatos\InmueblesDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
