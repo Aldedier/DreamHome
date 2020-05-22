@@ -58,7 +58,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContextoBaseDatos\ContextoDreamHome.cs" />
+    <Compile Include="ContextoBaseDatos\CIUDADES.cs" />
+    <Compile Include="ContextoBaseDatos\USUARIOS.cs" />
+    <Compile Include="ContextoBaseDatos\GENEROS.cs" />
     <Compile Include="ContextoBaseDatos\TIPOS_PROPIEDADES.cs" />
+    <Compile Include="LogicaBaseDatos\OficinasDB.cs" />
     <Compile Include="LogicaBaseDatos\EmpleadosDB.cs" />
     <Compile Include="LogicaBaseDatos\SistemaDB.cs" />
     <Compile Include="LogicaBaseDatos\InmueblesDB.cs" />

@@ -8,9 +8,9 @@
     using System.Linq;
     using System.Web.Configuration;
 
-    public class InmueblesDB
+    public class OficinasDB
     {
-        public string CrearInmueble(InmueblesDTO inmueblesDTO)
+        public string CrearOficina(OficinasDTO OficinasDTO)
         {
             string resultado = string.Empty;
 
@@ -20,16 +20,18 @@
                 try
                 {
                     objCommand.Parameters.Clear();
-                    objCommand.Parameters.Add(new OracleParameter("I_IdTipoInm", OracleDbType.Decimal)).Value = inmueblesDTO.IDF_TIPO_INM;
-                    objCommand.Parameters.Add(new OracleParameter("I_DireccionInm", OracleDbType.Varchar2, 200)).Value = inmueblesDTO.DIRECCION_INM;
-                    objCommand.Parameters.Add(new OracleParameter("I_ApartadoInm", OracleDbType.Varchar2, 100)).Value = inmueblesDTO.APARTADO_INM;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = inmueblesDTO.SESSION;
+                    objCommand.Parameters.Add(new OracleParameter("I_Oficina", OracleDbType.Varchar2, 200)).Value = OficinasDTO.OFICINA;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfCiudad", OracleDbType.Decimal)).Value = OficinasDTO.IDF_CIUDAD_OFC;
+                    objCommand.Parameters.Add(new OracleParameter("I_DireccionOfc", OracleDbType.Varchar2, 200)).Value = OficinasDTO.DIRECCION_OFC;
+                    objCommand.Parameters.Add(new OracleParameter("I_ApartadoOfc", OracleDbType.Varchar2, 200)).Value = OficinasDTO.APARTADO_OFC;
+                    objCommand.Parameters.Add(new OracleParameter("I_ActivoOfc", OracleDbType.Decimal)).Value = 1;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = OficinasDTO.SESSION;
                     objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
 
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.PKG_INMUEBLES.PR_AgregarInmueble";
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_OFICINAS.PR_AgregarOficina";
                     objCommand.ExecuteNonQuery();
 
                     resultado = objCommand.Parameters["O_Salida"].Value.ToString();
@@ -51,7 +53,7 @@
             return (resultado);
         }
 
-        public string EditarInmueble(InmueblesDTO inmueblesDTO)
+        public string EditarOficina(OficinasDTO OficinasDTO)
         {
             string resultado = string.Empty;
 
@@ -61,17 +63,19 @@
                 try
                 {
                     objCommand.Parameters.Clear();
-                    objCommand.Parameters.Add(new OracleParameter("I_IdInmueble", OracleDbType.Decimal)).Value = inmueblesDTO.ID_INMUEBLE;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdTipoInm", OracleDbType.Decimal)).Value = inmueblesDTO.IDF_TIPO_INM;
-                    objCommand.Parameters.Add(new OracleParameter("I_DireccionInm", OracleDbType.Varchar2, 200)).Value = inmueblesDTO.DIRECCION_INM;
-                    objCommand.Parameters.Add(new OracleParameter("I_ApartadoInm", OracleDbType.Varchar2, 100)).Value = inmueblesDTO.APARTADO_INM;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = inmueblesDTO.SESSION;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdOficina", OracleDbType.Decimal)).Value = OficinasDTO.ID_OFICINA;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfCiudad", OracleDbType.Decimal)).Value = OficinasDTO.IDF_CIUDAD_OFC;
+                    objCommand.Parameters.Add(new OracleParameter("I_Oficina", OracleDbType.Varchar2, 200)).Value = OficinasDTO.OFICINA;
+                    objCommand.Parameters.Add(new OracleParameter("I_DireccionOfc", OracleDbType.Varchar2, 200)).Value = OficinasDTO.DIRECCION_OFC;
+                    objCommand.Parameters.Add(new OracleParameter("I_ApartadoOfc", OracleDbType.Varchar2, 200)).Value = OficinasDTO.APARTADO_OFC;
+                    objCommand.Parameters.Add(new OracleParameter("I_ActivoOfc", OracleDbType.Decimal)).Value = OficinasDTO.ACTIVO_OFC;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = OficinasDTO.SESSION;
                     objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
 
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.PKG_INMUEBLES.PR_ModificarInmueble";
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_OFICINAS.PR_ModificarOficina";
 
                     objCommand.ExecuteNonQuery();
                     resultado = objCommand.Parameters["O_Salida"].Value.ToString();
@@ -93,7 +97,7 @@
             return (resultado);
         }
 
-        public string EliminarInmueble(InmueblesDTO inmueblesDTO)
+        public string EliminarOficina(OficinasDTO OficinasDTO)
         {
             string resultado = string.Empty;
 
@@ -103,14 +107,14 @@
                 try
                 {
                     objCommand.Parameters.Clear();
-                    objCommand.Parameters.Add(new OracleParameter("I_IdInmueble", OracleDbType.Decimal)).Value = inmueblesDTO.ID_INMUEBLE;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = inmueblesDTO.SESSION;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdOficina", OracleDbType.Decimal)).Value = OficinasDTO.ID_OFICINA;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = OficinasDTO.SESSION;
                     objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
 
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.PKG_INMUEBLES.PR_BorrarInmueble";
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_OFICINAS.PR_BorrarOficina";
 
                     objCommand.ExecuteNonQuery();
                     resultado = objCommand.Parameters["O_Salida"].Value.ToString();
@@ -132,9 +136,9 @@
             return (resultado);
         }
 
-        public List<InmueblesDTO> ListaInmuebles(int _session)
+        public List<OficinasDTO> ListaOficinas(int _session)
         {
-            List<InmueblesDTO> retorno = new List<InmueblesDTO>();
+            List<OficinasDTO> retorno = new List<OficinasDTO>();
 
             using (OracleConnection connection = new OracleConnection(WebConfigurationManager.ConnectionStrings["ContextoDH"].ConnectionString))
             using (OracleCommand objCommand = connection.CreateCommand())
@@ -148,23 +152,24 @@
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.PKG_INMUEBLES.PR_consultarinmuebles";
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_OFICINAS.PR_ConsultarOficina";
 
                     DataTable resultado = new DataTable();
                     resultado.Load(objCommand.ExecuteReader());
 
-                    InmueblesDTO registro;
+                    OficinasDTO registro;
                     foreach (DataRow row in resultado.Rows)
                     {
-                        registro = new InmueblesDTO
+                        registro = new OficinasDTO
                         {
-                            ID_INMUEBLE = int.Parse(row["ID_INMUEBLE"].ToString()),
-                            IDF_TIPO_INM = int.Parse(row["IDF_TIPO_INM"].ToString()),
-                            IDF_TIPO_INM_STR = row["NOMBRE_TIPO"].ToString(),
-                            DIRECCION_INM = row["DIRECCION_INM"].ToString(),
-                            APARTADO_INM = row["APARTADO_INM"].ToString(),
-                            FECHA_INM = DateTime.Parse(row["FECHA_INM"].ToString()),
-                            ACTIVO_INM = int.Parse(row["ACTIVO_INM"].ToString())
+                            ID_OFICINA = int.Parse(row["ID_OFICINA"].ToString()),
+                            CIUDAD = row["CIUDAD"].ToString(),
+                            APARTADO_OFC = row["APARTADO_OFC"].ToString(),
+                            ACTIVO_OFC = int.Parse(row["ACTIVO_OFC"].ToString()),
+                            DIRECCION_OFC = row["DIRECCION_OFC"].ToString(),
+                            ESTADO_OFC = row["ESTADO_OFC"].ToString(),
+                            IDF_CIUDAD_OFC = int.Parse(row["IDF_CIUDAD_OFC"].ToString()),
+                            OFICINA = row["OFICINA"].ToString()
                         };
 
                         retorno.Add(registro);
@@ -183,7 +188,7 @@
                         objCommand.Dispose();
                 }
             }
-            return retorno.Where(x => x.ACTIVO_INM == 1).ToList();
+            return retorno.Where(x => x.ACTIVO_OFC == 1).ToList();
         }
     }
 }

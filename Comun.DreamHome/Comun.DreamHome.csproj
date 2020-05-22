@@ -42,8 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CiudadDTO.cs" />
+    <Compile Include="OficinasDTO.cs" />
     <Compile Include="EmpleadosDTO.cs" />
     <Compile Include="InmueblesDTO.cs" />
+    <Compile Include="GeneroDTO.cs" />
     <Compile Include="TiposPropiedadesDTO.cs" />
     <Compile Include="UsuarioDTO.cs" />
     <Compile Include="LoginDTO.cs" />

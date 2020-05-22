@@ -135,7 +135,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
+    <Compile Include="Controllers\OficinasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\InmuebleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -4471,6 +4473,12 @@
     <Content Include="Views\Inmueble\Crear.cshtml" />
     <Content Include="Views\Inmueble\Editar.cshtml" />
     <Content Include="Views\Shared\_LoginBase.cshtml" />
+    <Content Include="Views\Empleados\Crear.cshtml" />
+    <Content Include="Views\Empleados\Editar.cshtml" />
+    <Content Include="Views\Empleados\Inicial.cshtml" />
+    <Content Include="Views\Oficinas\Crear.cshtml" />
+    <Content Include="Views\Oficinas\Editar.cshtml" />
+    <Content Include="Views\Oficinas\Inicial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

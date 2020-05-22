@@ -10,10 +10,9 @@
         }
 
         public virtual IDbSet<TIPOS_PROPIEDADES> TIPOS_PROPIEDADES { get; set; }
-
-        //public virtual IDbSet<CADNETOIDROLES> CADNETOIDROLES { get; set; }
-        //public virtual IDbSet<CADNETROLES> CADNETROLES { get; set; }
-        //public virtual IDbSet<DISEC_SISTEMA> DISEC_SISTEMA { get; set; }
+        public virtual IDbSet<GENEROS> GENEROS { get; set; }
+        public virtual IDbSet<USUARIOS> USUARIOS { get; set; }
+        public virtual IDbSet<CIUDADES> CIUDADES { get; set; }
         //public virtual IDbSet<LOG_ERROR> LOG_ERROR { get; set; }
 
     }

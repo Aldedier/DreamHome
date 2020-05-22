@@ -24,7 +24,7 @@ namespace Web.DreamHome.Controllers
                 Session["Nombre_Usuario"] = registro.Nombre_Usuario;
                 Session["Rol_id"] = registro.Rol_id;
                 Session["Sesion_id"] = registro.Sesion_id;
-                return RedirectToAction("Inicial", "Inmueble");
+                return RedirectToAction("Index", "Home");
             }
 
             //registro.Mensaje = "Credenciales incorrectas, intente nuevamente !!!";

@@ -10,7 +10,9 @@ namespace Comun.DreamHome
     {
         public int ID_EMPLEADO { get; set; }
         public int IDF_USUARIO_RH { get; set; }
+        public string USUARIO { get; set; }
         public string IDF_GENERO_RH { get; set; }
+        public string GENERO { get; set; }
         public string NOMBRE_RH { get; set; }
         public string DIRECCION_RH { get; set; }
         public string APARTADO_RH { get; set; }

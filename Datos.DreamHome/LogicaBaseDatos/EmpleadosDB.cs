@@ -5,6 +5,7 @@
     using System;
     using System.Collections.Generic;
     using System.Data;
+    using System.Linq;
     using System.Web.Configuration;
 
     public class EmpleadosDB
@@ -23,7 +24,8 @@
                     objCommand.Parameters.Add(new OracleParameter("I_IdfGeneroRh", OracleDbType.Varchar2, 200)).Value = empleadosDTO.IDF_GENERO_RH;
                     objCommand.Parameters.Add(new OracleParameter("I_NombreRh", OracleDbType.Varchar2, 200)).Value = empleadosDTO.NOMBRE_RH;
                     objCommand.Parameters.Add(new OracleParameter("I_DireccionRh", OracleDbType.Varchar2, 200)).Value = empleadosDTO.DIRECCION_RH;
-                    objCommand.Parameters.Add(new OracleParameter("I_ApartadoRh", OracleDbType.Decimal)).Value = empleadosDTO.APARTADO_RH;
+                    objCommand.Parameters.Add(new OracleParameter("I_ApartadoRh", OracleDbType.Varchar2, 200)).Value = empleadosDTO.APARTADO_RH;
+                    objCommand.Parameters.Add(new OracleParameter("I_ActivoRh", OracleDbType.Decimal)).Value = 1;
                     objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = empleadosDTO.SESSION;
                     objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
 
@@ -67,7 +69,8 @@
                     objCommand.Parameters.Add(new OracleParameter("I_IdfGeneroRh", OracleDbType.Varchar2, 200)).Value = empleadosDTO.IDF_GENERO_RH;
                     objCommand.Parameters.Add(new OracleParameter("I_NombreRh", OracleDbType.Varchar2, 200)).Value = empleadosDTO.NOMBRE_RH;
                     objCommand.Parameters.Add(new OracleParameter("I_DireccionRh", OracleDbType.Varchar2, 200)).Value = empleadosDTO.DIRECCION_RH;
-                    objCommand.Parameters.Add(new OracleParameter("I_ApartadoRh", OracleDbType.Decimal)).Value = empleadosDTO.APARTADO_RH;
+                    objCommand.Parameters.Add(new OracleParameter("I_ApartadoRh", OracleDbType.Varchar2, 200)).Value = empleadosDTO.APARTADO_RH;
+                    objCommand.Parameters.Add(new OracleParameter("I_ActivoRh", OracleDbType.Decimal)).Value = 1;
                     objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = empleadosDTO.SESSION;
                     objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
 
@@ -162,6 +165,8 @@
                         registro = new EmpleadosDTO
                         {
                             ID_EMPLEADO = int.Parse(row["ID_EMPLEADO"].ToString()),
+                            GENERO = row["GENERO"].ToString(),
+                            USUARIO = row["USUARIO"].ToString(),
                             IDF_USUARIO_RH = int.Parse(row["IDF_USUARIO_RH"].ToString()),
                             IDF_GENERO_RH = row["IDF_GENERO_RH"].ToString(),
                             NOMBRE_RH = row["NOMBRE_RH"].ToString(),
@@ -187,7 +192,7 @@
                         objCommand.Dispose();
                 }
             }
-            return retorno;
+            return retorno.Where(x => x.ACTIVO_RH == 1).ToList();
         }
     }
 }
