@@ -8,6 +8,7 @@
 
     public class OficinasController : BaseController
     {
+        //Comentario prueba git
         public ActionResult Inicial(string _mensaje = null)
         {
             ViewBag.Mensaje = _mensaje;
