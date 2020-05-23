@@ -43,6 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CiudadDTO.cs" />
+    <Compile Include="ClientesDTO.cs" />
+    <Compile Include="RequerimientosClientesDTO.cs" />
+    <Compile Include="EstadosRequerimientosDTO.cs" />
     <Compile Include="OficinasDTO.cs" />
     <Compile Include="EmpleadosDTO.cs" />
     <Compile Include="InmueblesDTO.cs" />

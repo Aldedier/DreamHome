@@ -8,9 +8,9 @@
     using System.Linq;
     using System.Web.Configuration;
 
-    public class OficinasDB
+    public class RequerimientosClientesDB
     {
-        public string CrearOficina(OficinasDTO OficinasDTO)
+        public string CrearRequerimientosCliente(RequerimientosClientesDTO requerimientosClientesDTO)
         {
             string resultado = string.Empty;
 
@@ -20,18 +20,20 @@
                 try
                 {
                     objCommand.Parameters.Clear();
-                    objCommand.Parameters.Add(new OracleParameter("I_Oficina", OracleDbType.Varchar2, 200)).Value = OficinasDTO.OFICINA;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfCiudad", OracleDbType.Decimal)).Value = OficinasDTO.IDF_CIUDAD_OFC;
-                    objCommand.Parameters.Add(new OracleParameter("I_DireccionOfc", OracleDbType.Varchar2, 200)).Value = OficinasDTO.DIRECCION_OFC;
-                    objCommand.Parameters.Add(new OracleParameter("I_ApartadoOfc", OracleDbType.Varchar2, 200)).Value = OficinasDTO.APARTADO_OFC;
-                    objCommand.Parameters.Add(new OracleParameter("I_ActivoOfc", OracleDbType.Decimal)).Value = 1;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = OficinasDTO.SESSION;
-                    objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
+                    objCommand.Parameters.Add(new OracleParameter("requerimiento", OracleDbType.Varchar2, 200)).Value = requerimientosClientesDTO.REQUERIMIENTO;
+                    objCommand.Parameters.Add(new OracleParameter("idf_cliente_rqrm", OracleDbType.Decimal)).Value = requerimientosClientesDTO.IDF_CLIENTE_RQRM;
+                    objCommand.Parameters.Add(new OracleParameter("idf_oficina_rqrm", OracleDbType.Decimal)).Value = requerimientosClientesDTO.IDF_OFICINA_RQRM;
+                    objCommand.Parameters.Add(new OracleParameter("idf_empleado_rqrm", OracleDbType.Decimal)).Value = requerimientosClientesDTO.IDF_EMPLEADO_RQRM;
+                    objCommand.Parameters.Add(new OracleParameter("idf_tipo_rqrm", OracleDbType.Decimal)).Value = requerimientosClientesDTO.IDF_TIPO_RQRM;
+                    objCommand.Parameters.Add(new OracleParameter("idf_estado_rqrm", OracleDbType.Decimal)).Value = requerimientosClientesDTO.IDF_ESTADO_RQRM;
+                    objCommand.Parameters.Add(new OracleParameter("fecha_rqrm", OracleDbType.Date)).Value = DateTime.Now;
+                    objCommand.Parameters.Add(new OracleParameter("i_idfsesion", OracleDbType.Decimal)).Value = requerimientosClientesDTO.SESSION;
+                    objCommand.Parameters.Add(new OracleParameter("o_salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
 
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.PKG_OFICINAS.PR_AgregarOficina";
+                    objCommand.CommandText = "BD_DREAM_HOME.pkg_requerimientos_clientes.PR_AgregarReqrmntClint";
                     objCommand.ExecuteNonQuery();
 
                     resultado = objCommand.Parameters["O_Salida"].Value.ToString();
@@ -53,7 +55,7 @@
             return (resultado);
         }
 
-        public string EditarOficina(OficinasDTO OficinasDTO)
+        public string EditarRequerimientosCliente(RequerimientosClientesDTO requerimientosClientesDTO)
         {
             string resultado = string.Empty;
 
@@ -63,19 +65,21 @@
                 try
                 {
                     objCommand.Parameters.Clear();
-                    objCommand.Parameters.Add(new OracleParameter("I_IdOficina", OracleDbType.Decimal)).Value = OficinasDTO.ID_OFICINA;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfCiudad", OracleDbType.Decimal)).Value = OficinasDTO.IDF_CIUDAD_OFC;
-                    objCommand.Parameters.Add(new OracleParameter("I_Oficina", OracleDbType.Varchar2, 200)).Value = OficinasDTO.OFICINA;
-                    objCommand.Parameters.Add(new OracleParameter("I_DireccionOfc", OracleDbType.Varchar2, 200)).Value = OficinasDTO.DIRECCION_OFC;
-                    objCommand.Parameters.Add(new OracleParameter("I_ApartadoOfc", OracleDbType.Varchar2, 200)).Value = OficinasDTO.APARTADO_OFC;
-                    objCommand.Parameters.Add(new OracleParameter("I_ActivoOfc", OracleDbType.Decimal)).Value = 1;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = OficinasDTO.SESSION;
-                    objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
+                    objCommand.Parameters.Add(new OracleParameter("id_requerimiento", OracleDbType.Decimal)).Value = requerimientosClientesDTO.ID_REQUERIMIENTO;
+                    objCommand.Parameters.Add(new OracleParameter("requerimiento", OracleDbType.Varchar2, 200)).Value = requerimientosClientesDTO.REQUERIMIENTO;
+                    objCommand.Parameters.Add(new OracleParameter("idf_cliente_rqrm", OracleDbType.Decimal)).Value = requerimientosClientesDTO.IDF_CLIENTE_RQRM;
+                    objCommand.Parameters.Add(new OracleParameter("idf_oficina_rqrm", OracleDbType.Decimal)).Value = requerimientosClientesDTO.IDF_OFICINA_RQRM;
+                    objCommand.Parameters.Add(new OracleParameter("idf_empleado_rqrm", OracleDbType.Decimal)).Value = requerimientosClientesDTO.IDF_EMPLEADO_RQRM;
+                    objCommand.Parameters.Add(new OracleParameter("idf_tipo_rqrm", OracleDbType.Decimal)).Value = requerimientosClientesDTO.IDF_TIPO_RQRM;
+                    objCommand.Parameters.Add(new OracleParameter("idf_estado_rqrm", OracleDbType.Decimal)).Value = requerimientosClientesDTO.IDF_ESTADO_RQRM;
+                    objCommand.Parameters.Add(new OracleParameter("fecha_rqrm", OracleDbType.Date)).Value = DateTime.Now;
+                    objCommand.Parameters.Add(new OracleParameter("i_idfsesion", OracleDbType.Decimal)).Value = requerimientosClientesDTO.SESSION;
+                    objCommand.Parameters.Add(new OracleParameter("o_salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
 
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.PKG_OFICINAS.PR_ModificarOficina";
+                    objCommand.CommandText = "BD_DREAM_HOME.pkg_requerimientos_clientes.pr_ModificarReqrmntClint";
 
                     objCommand.ExecuteNonQuery();
                     resultado = objCommand.Parameters["O_Salida"].Value.ToString();
@@ -97,7 +101,7 @@
             return (resultado);
         }
 
-        public string EliminarOficina(OficinasDTO OficinasDTO)
+        public string EliminarRequerimientosCliente(RequerimientosClientesDTO requerimientosClientesDTO)
         {
             string resultado = string.Empty;
 
@@ -107,14 +111,14 @@
                 try
                 {
                     objCommand.Parameters.Clear();
-                    objCommand.Parameters.Add(new OracleParameter("I_IdOficina", OracleDbType.Decimal)).Value = OficinasDTO.ID_OFICINA;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = OficinasDTO.SESSION;
+                    objCommand.Parameters.Add(new OracleParameter("id_requerimiento", OracleDbType.Decimal)).Value = requerimientosClientesDTO.ID_REQUERIMIENTO;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = requerimientosClientesDTO.SESSION;
                     objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
 
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.PKG_OFICINAS.PR_BorrarOficina";
+                    objCommand.CommandText = "BD_DREAM_HOME.pkg_requerimientos_clientes.PR_BorrarReqrmntClint";
 
                     objCommand.ExecuteNonQuery();
                     resultado = objCommand.Parameters["O_Salida"].Value.ToString();
@@ -136,9 +140,9 @@
             return (resultado);
         }
 
-        public List<OficinasDTO> ListaOficinas(int _session)
+        public List<RequerimientosClientesDTO> ListaRequerimientosClientes(int _session)
         {
-            List<OficinasDTO> retorno = new List<OficinasDTO>();
+            List<RequerimientosClientesDTO> retorno = new List<RequerimientosClientesDTO>();
 
             using (OracleConnection connection = new OracleConnection(WebConfigurationManager.ConnectionStrings["ContextoDH"].ConnectionString))
             using (OracleCommand objCommand = connection.CreateCommand())
@@ -152,24 +156,24 @@
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.PKG_OFICINAS.PR_ConsultarOficina";
+                    objCommand.CommandText = "BD_DREAM_HOME.pkg_requerimientos_clientes.PR_ConsultarReqrmntClint";
 
                     DataTable resultado = new DataTable();
                     resultado.Load(objCommand.ExecuteReader());
 
-                    OficinasDTO registro;
+                    RequerimientosClientesDTO registro;
                     foreach (DataRow row in resultado.Rows)
                     {
-                        registro = new OficinasDTO
+                        registro = new RequerimientosClientesDTO
                         {
-                            ID_OFICINA = int.Parse(row["ID_OFICINA"].ToString()),
-                            CIUDAD = row["CIUDAD"].ToString(),
-                            APARTADO_OFC = row["APARTADO_OFC"].ToString(),
-                            ACTIVO_OFC = int.Parse(row["ACTIVO_OFC"].ToString()),
-                            DIRECCION_OFC = row["DIRECCION_OFC"].ToString(),
-                            ESTADO_OFC = row["ESTADO_OFC"].ToString(),
-                            IDF_CIUDAD_OFC = int.Parse(row["IDF_CIUDAD_OFC"].ToString()),
-                            OFICINA = row["OFICINA"].ToString()
+                            ID_REQUERIMIENTO = int.Parse(row["ID_REQUERIMIENTO"].ToString()),
+                            REQUERIMIENTO = row["REQUERIMIENTO"].ToString(),
+                            NOMBRE_CLINT = row["NOMBRE_CLINT"].ToString(),
+                            OFICINA = row["OFICINA"].ToString(),
+                            NOMBRE_RH = row["NOMBRE_RH"].ToString(),
+                            NOMBRE_TIPO = row["NOMBRE_TIPO"].ToString(),
+                            ESTADO_REQUERIMIENTO = row["ESTADO_REQUERIMIENTO"].ToString(),
+                            FECHA_RQRM = DateTime.Parse(row["FECHA_RQRM"].ToString())
                         };
 
                         retorno.Add(registro);
@@ -188,7 +192,7 @@
                         objCommand.Dispose();
                 }
             }
-            return retorno.Where(x => x.ACTIVO_OFC == 1).ToList();
+            return retorno/*.Where(x => x.ACTIVO_OFC == 1).ToList()*/;
         }
     }
 }

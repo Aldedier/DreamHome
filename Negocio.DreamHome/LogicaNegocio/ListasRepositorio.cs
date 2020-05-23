@@ -55,5 +55,53 @@
             return lista;
         }
 
+
+        public List<EmpleadosDTO> ConsultarEmpleados()
+        {
+            List<EmpleadosDTO> lista = new List<EmpleadosDTO>();
+
+            using (ContextoDreamHome db = new ContextoDreamHome())
+            {
+                lista = db.EMPLEADOS.Select(x => new EmpleadosDTO { ID_EMPLEADO = x.ID_EMPLEADO, NOMBRE_RH = x.NOMBRE_RH }).ToList();
+            }
+
+            return lista;
+        }
+
+        public List<ClientesDTO> ConsultarClientes()
+        {
+            List<ClientesDTO> lista = new List<ClientesDTO>();
+
+            using (ContextoDreamHome db = new ContextoDreamHome())
+            {
+                lista = db.CLIENTES.Select(x => new ClientesDTO { ID_CLIENTE = x.ID_CLIENTE, NOMBRE_CLINT = x.NOMBRE_CLINT }).ToList();
+            }
+
+            return lista;
+        }
+
+        public List<OficinasDTO> ConsultarOficinas()
+        {
+            List<OficinasDTO> lista = new List<OficinasDTO>();
+
+            using (ContextoDreamHome db = new ContextoDreamHome())
+            {
+                lista = db.OFICINAS.Select(x => new OficinasDTO { ID_OFICINA = x.ID_OFICINA, OFICINA = x.OFICINA }).ToList();
+            }
+
+            return lista;
+        }
+
+        public List<EstadosRequerimientosDTO> ConsultarEstadosRequerimiento()
+        {
+            List<EstadosRequerimientosDTO> lista = new List<EstadosRequerimientosDTO>();
+
+            using (ContextoDreamHome db = new ContextoDreamHome())
+            {
+                lista = db.ESTADOS_REQUERIMIENTOS.Select(x => new EstadosRequerimientosDTO { ID_ESTADO_REQUERIMIENTO = x.ID_ESTADO_REQUERIMIENTO, ESTADO_REQUERIMIENTO = x.ESTADO_REQUERIMIENTO }).ToList();
+            }
+
+            return lista;
+        }
     }
 }
