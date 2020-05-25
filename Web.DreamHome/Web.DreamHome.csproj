@@ -2602,6 +2602,10 @@
     <Content Include="img\icons.png" />
     <Content Include="img\pdf.png" />
     <Content Include="img\portada.jpg" />
+    <Content Include="img\portada2.jpg" />
+    <Content Include="img\portada3.jpg" />
+    <Content Include="img\portada4.jpg" />
+    <Content Include="img\portada5.jpg" />
     <Content Include="img\User.png" />
     <Content Include="img\UT.png" />
     <Content Include="Scripts\bootstrap-datetimepicker\bootstrap-datetimepicker-local.js" />
@@ -4439,6 +4443,9 @@
     <Content Include="Scripts\upload\plugins\sortable.js" />
     <Content Include="Scripts\upload\plugins\sortable.min.js" />
     <None Include="Scripts\_references.js" />
+    <Content Include="Video\Video1.mp4" />
+    <Content Include="Video\Video2.mp4" />
+    <Content Include="Video\Video3.mp4" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
