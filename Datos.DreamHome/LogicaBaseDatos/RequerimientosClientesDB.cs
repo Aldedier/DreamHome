@@ -192,7 +192,7 @@
                         objCommand.Dispose();
                 }
             }
-            return retorno/*.Where(x => x.ACTIVO_OFC == 1).ToList()*/;
+            return retorno.Where(x => x.ESTADO_REQUERIMIENTO != "Inactivo").ToList();
         }
     }
 }
