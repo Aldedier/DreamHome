@@ -57,15 +57,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContextoBaseDatos\CARACTERISTICAS_INMUEBLES.cs" />
     <Compile Include="ContextoBaseDatos\ContextoDreamHome.cs" />
     <Compile Include="ContextoBaseDatos\CIUDADES.cs" />
     <Compile Include="ContextoBaseDatos\CLIENTES.cs" />
     <Compile Include="ContextoBaseDatos\EMPLEADOS.cs" />
+    <Compile Include="ContextoBaseDatos\ESTADOS_INMUEBLES.cs" />
+    <Compile Include="ContextoBaseDatos\VST_INMUEBLES.cs" />
     <Compile Include="ContextoBaseDatos\OFICINAS.cs" />
     <Compile Include="ContextoBaseDatos\ESTADOS_REQUERIMIENTOS.cs" />
     <Compile Include="ContextoBaseDatos\USUARIOS.cs" />
     <Compile Include="ContextoBaseDatos\GENEROS.cs" />
     <Compile Include="ContextoBaseDatos\TIPOS_PROPIEDADES.cs" />
+    <Compile Include="LogicaBaseDatos\DetallesInmueblesDB.cs" />
+    <Compile Include="LogicaBaseDatos\InmueblesRegistradosDB.cs" />
     <Compile Include="LogicaBaseDatos\RequerimientosClientesDB.cs" />
     <Compile Include="LogicaBaseDatos\OficinasDB.cs" />
     <Compile Include="LogicaBaseDatos\EmpleadosDB.cs" />

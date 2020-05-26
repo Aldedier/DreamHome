@@ -103,5 +103,41 @@
 
             return lista;
         }
+
+        public List<InmueblesDTO> ConsultarInmuebles()
+        {
+            List<InmueblesDTO> lista = new List<InmueblesDTO>();
+
+            using (ContextoDreamHome db = new ContextoDreamHome())
+            {
+                lista = db.VST_INMUEBLES.Select(x => new InmueblesDTO { ID_INMUEBLE = x.ID_INMUEBLE, DIRECCION_INM = x.DIRECCION_INM + " - " + x.NOMBRE_TIPO}).ToList();
+            }
+
+            return lista;
+        }
+
+        public List<EstadosInmueblesDTO> ConsultarEstadosInmuebles()
+        {
+            List<EstadosInmueblesDTO> lista = new List<EstadosInmueblesDTO>();
+
+            using (ContextoDreamHome db = new ContextoDreamHome())
+            {
+                lista = db.ESTADOS_INMUEBLES.Select(x => new EstadosInmueblesDTO { ID_ESTADO_INMUEBLE = x.ID_ESTADO_INMUEBLE, ESTADO_INMUEBLE = x.ESTADO_INMUEBLE }).ToList();
+            }
+
+            return lista;
+        }
+
+        public List<CaracteristicasInmueblesDTO> ConsultarCaracteristicasInmuebles()
+        {
+            List<CaracteristicasInmueblesDTO> lista = new List<CaracteristicasInmueblesDTO>();
+
+            using (ContextoDreamHome db = new ContextoDreamHome())
+            {
+                lista = db.CARACTERISTICAS_INMUEBLES.Select(x => new CaracteristicasInmueblesDTO { ID_CARACTERISTICA_PROP = x.ID_CARACTERISTICA_PROP, CARACTERISTICA = x.CARACTERISTICA }).ToList();
+            }
+
+            return lista;
+        }
     }
 }
