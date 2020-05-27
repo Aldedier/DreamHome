@@ -11,7 +11,18 @@
         public ActionResult Inicial(string _mensaje = null)
         {
             ViewBag.Mensaje = _mensaje;
-            return View(new InmueblesRepositorio().ConsultaInmuebles((int)GetSession()));
+
+            List<InmueblesDTO> listaInmueblesDTO = new InmueblesRepositorio().ConsultaInmuebles((int)GetSession());
+
+            List<InmueblesRegistradosDTO> listaInmueblesRegistradosDTO = new InmueblesRegistradosRepositorio().ConsultaInmueblesRegistrados(new InmueblesRegistradosDTO { SESSION = GetSession() });
+
+            foreach (var item in listaInmueblesDTO)
+            {
+                item.DetallesInmueblesDTOs = new DetallesInmueblesRepositorio().ConsultaDetallesInmuebles(new DetallesInmueblesDTO { IDF_INMUEBLE = item.ID_INMUEBLE, SESSION = GetSession()});
+                item.InmueblesRegistradosDTOs = listaInmueblesRegistradosDTO.Where(x => x.IDF_INMUEBLE_REG == item.ID_INMUEBLE).ToList();
+            }
+
+            return View(listaInmueblesDTO);
         }
 
         public ActionResult Crear()

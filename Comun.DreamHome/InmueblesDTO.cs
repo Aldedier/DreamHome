@@ -16,5 +16,8 @@ namespace Comun.DreamHome
         public int ACTIVO_INM { get; set; }
         public DateTime FECHA_INM { get; set; }
         public int? SESSION { get; set; } = null;
+        public List<DetallesInmueblesDTO> DetallesInmueblesDTOs { get; set; } = new List<DetallesInmueblesDTO>();
+        public List<InmueblesRegistradosDTO> InmueblesRegistradosDTOs { get; set; } = new List<InmueblesRegistradosDTO>();
+
     }
 }

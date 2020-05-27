@@ -77,31 +77,55 @@
                                 <th>
                                     <p>Activo</p>
                                 </th>
+                                <th>
+                                    <p>Detalle inmueble</p>
+                                </th>
+                                <th>
+                                    <p>Detalle registro</p>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button class="btn btn-primary" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                <span class="glyphicon glyphicon-align-center"></span>
-                                            </button>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                                <li><a href="@Url.Action("Editar", "Inmueble", new { _id = item.ID_INMUEBLE })"><i class="fa fa-refresh"></i> Actualizar</a></li>
-                                                <li><a href="@Url.Action("Eliminar", "Inmueble", new { _id = item.ID_INMUEBLE })"><i class="fa fa-trash"></i> Eliminar</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                    <td>@item.ID_INMUEBLE</td>
-                                    <td>@item.IDF_TIPO_INM_STR</td>
-                                    <td>@item.DIRECCION_INM</td>
-                                    <td>@item.APARTADO_INM</td>
-                                    <td>@item.FECHA_INM</td>
-                                    <td>@item.ACTIVO_INM</td>
-                                </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-primary" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <span class="glyphicon glyphicon-align-center"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="@Url.Action("Crear", "InmueblesRegistrados", new { _idInmueble = item.ID_INMUEBLE })"><i class="fa fa-pencil-square-o"></i> Registrar</a></li>
+                                            <li><a href="@Url.Action("Crear", "DetallesInmueble", new { _idInmueble = item.ID_INMUEBLE })"><i class="fa fa-pencil-square-o"></i> Agregar detalles</a></li>
+                                            <li><a href="@Url.Action("Editar", "Inmueble", new { _id = item.ID_INMUEBLE })"><i class="fa fa-refresh"></i> Actualizar</a></li>
+                                            <li><a href="@Url.Action("Eliminar", "Inmueble", new { _id = item.ID_INMUEBLE })"><i class="fa fa-trash"></i> Eliminar</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td>@item.ID_INMUEBLE</td>
+                                <td>@item.IDF_TIPO_INM_STR</td>
+                                <td>@item.DIRECCION_INM</td>
+                                <td>@item.APARTADO_INM</td>
+                                <td>@item.FECHA_INM</td>
+                                <td>@item.ACTIVO_INM</td>
+                                <td>
+                                    <ul>
+                                        @foreach (var item2 in item.DetallesInmueblesDTOs)
+                                        {
+                                            <li>@item2.CARACTERISTICA - @item2.VALOR  &nbsp &nbsp<a style="cursor:pointer;color:blue" title="Actualizar Detalle" class="fa fa-refresh" href="@Url.Action("Editar","DetallesInmueble", new { _idDetalleInmueble = item2.ID_DETALLE_INMBL })"></a><b>&nbsp -  &nbsp</b><a style="cursor:pointer;color:darkred" title="Eliminar Detalle" class="fa fa-close" href="@Url.Action("Eliminar","DetallesInmueble", new { _idDetalleInmueble = item2.ID_DETALLE_INMBL })"></a></li>
+                                        }
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        @foreach (var item2 in item.InmueblesRegistradosDTOs)
+                                        {
+                                            <li>@item2.OFICINA - @item2.NOMBRE_RH - @item2.ESTADO_INMUEBLE  &nbsp &nbsp<a style="cursor:pointer;color:blue" title="Actualizar Detalle" class="fa fa-refresh" href="@Url.Action("Editar","InmueblesRegistrados", new { _id = item2.ID_INMUEBLE_REGISTRADO })"></a><b>&nbsp -  &nbsp</b><a style="cursor:pointer;color:darkred" title="Eliminar Detalle" class="fa fa-close" href="@Url.Action("Eliminar","InmueblesRegistrados", new { _id = item2.ID_INMUEBLE_REGISTRADO })"></a></li>
+                                        }
+                                    </ul>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>

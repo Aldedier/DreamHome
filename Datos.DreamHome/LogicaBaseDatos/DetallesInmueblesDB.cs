@@ -60,9 +60,9 @@
                 try
                 {
                     objCommand.Parameters.Clear();
-                    objCommand.Parameters.Add(new OracleParameter("I_IdDetalleInmueble", OracleDbType.Decimal)).Value = detallesInmueblesDTO.ID_DETALLE_INMBL;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfInmueble", OracleDbType.Decimal)).Value = detallesInmueblesDTO.IDF_INMUEBLE;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfCaracteristica", OracleDbType.Decimal)).Value = detallesInmueblesDTO.IDF_CARACTERISTICA;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdDetalleInmueble", OracleDbType.Int32)).Value = detallesInmueblesDTO.ID_DETALLE_INMBL;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfInmueble", OracleDbType.Int32)).Value = detallesInmueblesDTO.IDF_INMUEBLE;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfCaracteristica", OracleDbType.Int32)).Value = detallesInmueblesDTO.IDF_CARACTERISTICA;
                     objCommand.Parameters.Add(new OracleParameter("I_Valor", OracleDbType.Decimal)).Value = detallesInmueblesDTO.VALOR;
                     objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = detallesInmueblesDTO.SESSION;
                     objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
@@ -148,7 +148,7 @@
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.PKG_DetallesInmuebleS.PR_consultarDetallesInmuebles";
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_DETALLES_INMUEBLES.PR_ConsultarDetalleInmueble";
 
                     DataTable resultado = new DataTable();
                     resultado.Load(objCommand.ExecuteReader());
@@ -183,5 +183,57 @@
             }
             return retorno;
         }
+
+        public DetallesInmueblesDTO DetallesInmuebles(DetallesInmueblesDTO detallesInmueblesDTO)
+        {
+            DetallesInmueblesDTO registro = new DetallesInmueblesDTO();
+
+            using (OracleConnection connection = new OracleConnection(WebConfigurationManager.ConnectionStrings["ContextoDH"].ConnectionString))
+            using (OracleCommand objCommand = connection.CreateCommand())
+            {
+                try
+                {
+                    objCommand.Parameters.Clear();
+                    objCommand.Parameters.Add(new OracleParameter("I_IdDetllInmueble", OracleDbType.Decimal)).Value = detallesInmueblesDTO.ID_DETALLE_INMBL;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = detallesInmueblesDTO.SESSION;
+                    objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.RefCursor)).Direction = ParameterDirection.Output;
+
+                    connection.Open();
+
+                    objCommand.CommandType = CommandType.StoredProcedure;
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_DETALLES_INMUEBLES.PR_ConsultarSoloDetalleInmbl";
+
+                    DataTable resultado = new DataTable();
+                    resultado.Load(objCommand.ExecuteReader());
+
+                  
+                    foreach (DataRow row in resultado.Rows)
+                    {
+                        registro = new DetallesInmueblesDTO
+                        {
+                            ID_DETALLE_INMBL = int.Parse(row["ID_DETALLE_INMBL"].ToString()),
+                            IDF_INMUEBLE = int.Parse(row["IDF_INMUEBLE"].ToString()),
+                            IDF_CARACTERISTICA = int.Parse(row["IDF_CARACTERISTICA"].ToString()),
+                            CARACTERISTICA = row["CARACTERISTICA"].ToString(),
+                            VALOR = decimal.Parse(row["VALOR"].ToString())
+                        };
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new ArgumentException($"{ex.Message} {ex.InnerException}");
+                }
+                finally
+                {
+                    if (connection.State == ConnectionState.Open)
+                        connection.Close();
+
+                    if (objCommand != null)
+                        objCommand.Dispose();
+                }
+            }
+            return registro;
+        }
+
     }
 }

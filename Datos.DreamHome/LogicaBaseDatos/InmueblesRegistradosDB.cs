@@ -163,8 +163,6 @@
                         {
                             ID_INMUEBLE_REGISTRADO = int.Parse(row["ID_INMUEBLE_REGISTRADO"].ToString()),
                             IDF_INMUEBLE_REG = int.Parse(row["IDF_INMUEBLE_REG"].ToString()),
-                            NOMBRE_TIPO = row["NOMBRE_TIPO"].ToString(),
-                            DIRECCION_INM = row["DIRECCION_INM"].ToString(),
                             IDF_OFICINA_REG = int.Parse(row["IDF_OFICINA_REG"].ToString()),
                             OFICINA = row["OFICINA"].ToString(),
                             IDF_EMPLEADO_REG = int.Parse(row["IDF_EMPLEADO_REG"].ToString()),

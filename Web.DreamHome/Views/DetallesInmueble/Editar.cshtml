@@ -1,4 +1,4 @@
-﻿@model Comun.DreamHome.InmueblesRegistradosDTO
+﻿@model Comun.DreamHome.DetallesInmueblesDTO
 
 @{
     ViewBag.Title = "Editar";
@@ -18,7 +18,7 @@
 
 <section class="content-header">
     <h1>
-        Editar Inmuebles Registrados
+        Editar detalle inmueble
     </h1>
     <ol class="breadcrumb">
         <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> Inicio</a></li>
@@ -34,7 +34,7 @@
 
     @using (Html.BeginForm())
     {
-        <!-- Datos básicos Inmuebles Registradoss-->
+        <!-- Datos básicos Inmuebles-->
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-primary">
@@ -42,7 +42,7 @@
                     <div class="box-header with-border">
                         <div class="text-right">
                             <div class="col-md-6 text-left">
-                                <h3 class="box-title"><i class="fa fa-file-text-o"></i> Datos básicos Inmuebles Registrados</h3>
+                                <h3 class="box-title"><i class="fa fa-file-text-o"></i> Editar detalle Inmueble</h3>
                             </div>
                         </div>
                     </div>
@@ -51,29 +51,21 @@
                     <div class="box-body">
                         <div class="form-group-sm">
                             <div class="row">
-                                <input type="hidden" name="IDF_INMUEBLE_REG" id="IDF_INMUEBLE_REG" value="@Model.IDF_INMUEBLE_REG" />
-                                <input type="hidden" name="ID_INMUEBLE_REGISTRADO" id="ID_INMUEBLE_REGISTRADO" value="@Model.ID_INMUEBLE_REGISTRADO" />
-                                <div class="col-md-4">
+                                <input type="hidden" name="ID_DETALLE_INMBL" id="ID_DETALLE_INMBL" value="@Model.ID_DETALLE_INMBL" />
+                                <input type="hidden" name="IDF_INMUEBLE" id="IDF_INMUEBLE" value="@Model.IDF_INMUEBLE" />
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        @Html.Label("Oficina", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        @Html.Label("Caracteristica", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.DropDownList("IDF_OFICINA_REG", null, String.Format("Seleccione la Oficina"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
+                                            @Html.DropDownList("IDF_CARACTERISTICA", null, String.Format("Seleccione el tipo de Caracteristica"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        @Html.Label("Empleado", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        @Html.Label("Valor", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.DropDownList("IDF_EMPLEADO_REG", null, String.Format("Seleccione el Empleado"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        @Html.Label("Estado", htmlAttributes: new { @class = "control-label col-md-12" })
-                                        <div class="col-md-12">
-                                            @Html.DropDownList("IDF_ESTADO_REG", null, String.Format("Seleccione el Estado"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
+                                            @Html.EditorFor(model => model.VALOR, new { htmlAttributes = new { @class = "form-control", type = "number", @placeholder = "Digite un valor", @id = "VALOR", value = Model.VALOR } })
                                         </div>
                                     </div>
                                 </div>

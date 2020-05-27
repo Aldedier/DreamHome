@@ -135,6 +135,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
+    <Compile Include="Controllers\DetallesInmuebleController.cs" />
     <Compile Include="Controllers\InmueblesRegistradosController.cs" />
     <Compile Include="Controllers\RequerimientosClientesController.cs" />
     <Compile Include="Controllers\OficinasController.cs" />
@@ -4493,7 +4494,8 @@
     <Content Include="Views\RequerimientosClientes\Inicial.cshtml" />
     <Content Include="Views\InmueblesRegistrados\Crear.cshtml" />
     <Content Include="Views\InmueblesRegistrados\Editar.cshtml" />
-    <Content Include="Views\InmueblesRegistrados\Inicial.cshtml" />
+    <Content Include="Views\DetallesInmueble\Crear.cshtml" />
+    <Content Include="Views\DetallesInmueble\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
