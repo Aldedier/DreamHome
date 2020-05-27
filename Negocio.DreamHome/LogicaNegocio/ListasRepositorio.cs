@@ -139,5 +139,17 @@
 
             return lista;
         }
+
+        public List<CargoDTO> ConsultarCargos()
+        {
+            List<CargoDTO> lista = new List<CargoDTO>();
+
+            using (ContextoDreamHome db = new ContextoDreamHome())
+            {
+                lista = db.CARGOS.Select(x => new CargoDTO { ID_CARGO = x.ID_CARGO, CARGO = x.CARGO }).ToList();
+            }
+
+            return lista;
+        }
     }
 }

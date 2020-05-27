@@ -4500,7 +4500,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\SweerAlert2\bin\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

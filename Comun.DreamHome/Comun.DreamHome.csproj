@@ -43,10 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CaracteristicasInmueblesDTO.cs" />
+    <Compile Include="CargoDTO.cs" />
     <Compile Include="CiudadDTO.cs" />
     <Compile Include="ClientesDTO.cs" />
     <Compile Include="DetallesInmueblesDTO.cs" />
     <Compile Include="EstadosInmueblesDTO.cs" />
+    <Compile Include="HistorialLaboralDTO.cs" />
     <Compile Include="InmueblesRegistradosDTO.cs" />
     <Compile Include="RequerimientosClientesDTO.cs" />
     <Compile Include="EstadosRequerimientosDTO.cs" />

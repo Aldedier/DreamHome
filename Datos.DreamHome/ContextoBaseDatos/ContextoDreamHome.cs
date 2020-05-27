@@ -13,6 +13,7 @@
         public virtual IDbSet<GENEROS> GENEROS { get; set; }
         public virtual IDbSet<USUARIOS> USUARIOS { get; set; }
         public virtual IDbSet<CIUDADES> CIUDADES { get; set; }
+        public virtual IDbSet<CARGOS> CARGOS { get; set; }
         public virtual IDbSet<OFICINAS> OFICINAS { get; set; }
         public virtual IDbSet<ESTADOS_REQUERIMIENTOS> ESTADOS_REQUERIMIENTOS { get; set; }
         public virtual IDbSet<ESTADOS_INMUEBLES> ESTADOS_INMUEBLES { get; set; }

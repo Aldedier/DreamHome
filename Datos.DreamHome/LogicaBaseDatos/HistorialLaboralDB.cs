@@ -8,9 +8,9 @@
     using System.Linq;
     using System.Web.Configuration;
 
-    public class OficinasDB
+    public class HistorialLaboralDB
     {
-        public string CrearOficina(OficinasDTO oficinasDTO)
+        public string CrearHistorialLaboral(HistorialLaboralDTO historialLaboralDTO)
         {
             string resultado = string.Empty;
 
@@ -20,18 +20,17 @@
                 try
                 {
                     objCommand.Parameters.Clear();
-                    objCommand.Parameters.Add(new OracleParameter("I_Oficina", OracleDbType.Varchar2, 200)).Value = oficinasDTO.OFICINA;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfCiudad", OracleDbType.Decimal)).Value = oficinasDTO.IDF_CIUDAD_OFC;
-                    objCommand.Parameters.Add(new OracleParameter("I_DireccionOfc", OracleDbType.Varchar2, 200)).Value = oficinasDTO.DIRECCION_OFC;
-                    objCommand.Parameters.Add(new OracleParameter("I_ApartadoOfc", OracleDbType.Varchar2, 200)).Value = oficinasDTO.APARTADO_OFC;
-                    objCommand.Parameters.Add(new OracleParameter("I_ActivoOfc", OracleDbType.Decimal)).Value = 1;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = oficinasDTO.SESSION;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfEmpleadoHst", OracleDbType.Decimal)).Value = historialLaboralDTO.IDF_EMPLEADO_HST;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfCargoHst", OracleDbType.Decimal)).Value = historialLaboralDTO.IDF_CARGO_HST;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfOficinaHst", OracleDbType.Decimal)).Value = historialLaboralDTO.IDF_OFCINA_HST;
+                    objCommand.Parameters.Add(new OracleParameter("I_VigenteHst", OracleDbType.Decimal)).Value = 1;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = historialLaboralDTO.SESSION;
                     objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
 
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.PKG_OFICINAS.PR_AgregarOficina";
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_HISTORIAL_LABORAL.PR_AgregarHistorialLaboral";
                     objCommand.ExecuteNonQuery();
 
                     resultado = objCommand.Parameters["O_Salida"].Value.ToString();
@@ -53,7 +52,7 @@
             return (resultado);
         }
 
-        public string EditarOficina(OficinasDTO oficinasDTO)
+        public string EditarHistorialLaboral(HistorialLaboralDTO historialLaboralDTO)
         {
             string resultado = string.Empty;
 
@@ -63,19 +62,18 @@
                 try
                 {
                     objCommand.Parameters.Clear();
-                    objCommand.Parameters.Add(new OracleParameter("I_IdOficina", OracleDbType.Decimal)).Value = oficinasDTO.ID_OFICINA;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfCiudad", OracleDbType.Decimal)).Value = oficinasDTO.IDF_CIUDAD_OFC;
-                    objCommand.Parameters.Add(new OracleParameter("I_Oficina", OracleDbType.Varchar2, 200)).Value = oficinasDTO.OFICINA;
-                    objCommand.Parameters.Add(new OracleParameter("I_DireccionOfc", OracleDbType.Varchar2, 200)).Value = oficinasDTO.DIRECCION_OFC;
-                    objCommand.Parameters.Add(new OracleParameter("I_ApartadoOfc", OracleDbType.Varchar2, 200)).Value = oficinasDTO.APARTADO_OFC;
-                    objCommand.Parameters.Add(new OracleParameter("I_ActivoOfc", OracleDbType.Decimal)).Value = 1;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = oficinasDTO.SESSION;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdHistorialLabrl", OracleDbType.Decimal)).Value = historialLaboralDTO.ID_HISTORIAL_LABRL;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfEmpleadoHst", OracleDbType.Decimal)).Value = historialLaboralDTO.IDF_EMPLEADO_HST;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfCargoHst", OracleDbType.Decimal)).Value = historialLaboralDTO.IDF_CARGO_HST;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfOficinaHst", OracleDbType.Decimal)).Value = historialLaboralDTO.IDF_OFCINA_HST;
+                    objCommand.Parameters.Add(new OracleParameter("I_VigenteHst", OracleDbType.Decimal)).Value = 1;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = historialLaboralDTO.SESSION;
                     objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
 
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.PKG_OFICINAS.PR_ModificarOficina";
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_HISTORIAL_LABORAL.PR_ModificarHistorialLaboral";
 
                     objCommand.ExecuteNonQuery();
                     resultado = objCommand.Parameters["O_Salida"].Value.ToString();
@@ -97,7 +95,7 @@
             return (resultado);
         }
 
-        public string EliminarOficina(OficinasDTO oficinasDTO)
+        public string EliminarHistorialLaboral(HistorialLaboralDTO historialLaboralDTO)
         {
             string resultado = string.Empty;
 
@@ -107,14 +105,14 @@
                 try
                 {
                     objCommand.Parameters.Clear();
-                    objCommand.Parameters.Add(new OracleParameter("I_IdOficina", OracleDbType.Decimal)).Value = oficinasDTO.ID_OFICINA;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = oficinasDTO.SESSION;
+                    objCommand.Parameters.Add(new OracleParameter("i_idhistoriallabrl", OracleDbType.Decimal)).Value = historialLaboralDTO.ID_HISTORIAL_LABRL;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = historialLaboralDTO.SESSION;
                     objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
 
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.PKG_OFICINAS.PR_BorrarOficina";
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_HISTORIAL_LABORAL.PR_BorrarHistorialLaboral";
 
                     objCommand.ExecuteNonQuery();
                     resultado = objCommand.Parameters["O_Salida"].Value.ToString();
@@ -136,9 +134,9 @@
             return (resultado);
         }
 
-        public List<OficinasDTO> ListaOficinas(int _session)
+        public List<HistorialLaboralDTO> ListaHistorialLaborals(int _session)
         {
-            List<OficinasDTO> retorno = new List<OficinasDTO>();
+            List<HistorialLaboralDTO> retorno = new List<HistorialLaboralDTO>();
 
             using (OracleConnection connection = new OracleConnection(WebConfigurationManager.ConnectionStrings["ContextoDH"].ConnectionString))
             using (OracleCommand objCommand = connection.CreateCommand())
@@ -152,24 +150,25 @@
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.PKG_OFICINAS.PR_ConsultarOficina";
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_HISTORIAL_LABORAL.PR_ConsultarHistorialLaboral";
 
                     DataTable resultado = new DataTable();
                     resultado.Load(objCommand.ExecuteReader());
 
-                    OficinasDTO registro;
+                    HistorialLaboralDTO registro;
                     foreach (DataRow row in resultado.Rows)
                     {
-                        registro = new OficinasDTO
+                        registro = new HistorialLaboralDTO
                         {
-                            ID_OFICINA = int.Parse(row["ID_OFICINA"].ToString()),
-                            CIUDAD = row["CIUDAD"].ToString(),
-                            APARTADO_OFC = row["APARTADO_OFC"].ToString(),
-                            ACTIVO_OFC = int.Parse(row["ACTIVO_OFC"].ToString()),
-                            DIRECCION_OFC = row["DIRECCION_OFC"].ToString(),
-                            ESTADO_OFC = row["ESTADO_OFC"].ToString(),
-                            IDF_CIUDAD_OFC = int.Parse(row["IDF_CIUDAD_OFC"].ToString()),
-                            OFICINA = row["OFICINA"].ToString()
+                            ID_HISTORIAL_LABRL = int.Parse(row["ID_HISTORIAL_LABRL"].ToString()),
+                            IDF_OFCINA_HST = int.Parse(row["IDF_OFCINA_HST"].ToString()),
+                            OFICINA = row["OFICINA"].ToString(),
+                            IDF_CARGO_HST = int.Parse(row["IDF_CARGO_HST"].ToString()),
+                            CARGO = row["CARGO"].ToString(),
+                            IDF_EMPLEADO_HST = int.Parse(row["IDF_EMPLEADO_HST"].ToString()),
+                            NOMBRE_RH = row["NOMBRE_RH"].ToString(),
+                            FECHA_HST = DateTime.Parse(row["FECHA_HST"].ToString()),
+                            VIGENTE_HST = int.Parse(row["VIGENTE_HST"].ToString())
                         };
 
                         retorno.Add(registro);
@@ -188,7 +187,7 @@
                         objCommand.Dispose();
                 }
             }
-            return retorno.Where(x => x.ACTIVO_OFC == 1).ToList();
+            return retorno.Where(x => x.VIGENTE_HST == 1).ToList();
         }
     }
 }
