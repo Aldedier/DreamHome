@@ -79,6 +79,9 @@
                                 <th>
                                     <p>Fecha creación</p>
                                 </th>
+                                <th>
+                                    <p>Historial Laboral</p>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -92,6 +95,7 @@
                                             <span class="glyphicon glyphicon-align-center"></span>
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="@Url.Action("Crear", "HistorialLaboral", new { _idEmpleado = item.ID_EMPLEADO })"><i class="fa fa-pencil-square-o"></i> Agregar historia laboral</a></li>
                                             <li><a href="@Url.Action("Editar", "Empleados", new { _id = item.ID_EMPLEADO })"><i class="fa fa-refresh"></i> Actualizar</a></li>
                                             <li><a href="@Url.Action("Eliminar", "Empleados", new { _id = item.ID_EMPLEADO })"><i class="fa fa-trash"></i> Eliminar</a></li>
                                         </ul>
@@ -104,6 +108,14 @@
                                 <td>@item.DIRECCION_RH</td>
                                 <td>@item.APARTADO_RH</td>
                                 <td>@item.FECHA_RH</td>
+                                <td>
+                                    <ul>
+                                        @foreach (var item2 in item.HistorialLaboralDTOs)
+                                        {
+                                            <li>@item2.CARGO - @item2.OFICINA  &nbsp &nbsp<a style="cursor:pointer;color:blue" title="Actualizar" class="fa fa-refresh" href="@Url.Action("Editar","HistorialLaboral", new { _id = item2.ID_HISTORIAL_LABRL })"></a><b>&nbsp -  &nbsp</b><a style="cursor:pointer;color:darkred" title="Eliminar" class="fa fa-close" href="@Url.Action("Eliminar","HistorialLaboral", new { _id = item2.ID_HISTORIAL_LABRL })"></a></li>
+                                        }
+                                    </ul>
+                                </td>
                             </tr>
                             }
                         </tbody>

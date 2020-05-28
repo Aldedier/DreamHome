@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="LogicaNegocio\InmueblesRegistradosRepositorio.cs" />
     <Compile Include="LogicaNegocio\DetallesInmueblesRepositorio.cs" />
+    <Compile Include="LogicaNegocio\HistorialLaboralRepositorio.cs" />
     <Compile Include="LogicaNegocio\RequerimientosClientesRepositorio.cs" />
     <Compile Include="LogicaNegocio\OficinasRepositorio.cs" />
     <Compile Include="LogicaNegocio\EmpleadosRepositorio.cs" />

@@ -134,7 +134,7 @@
             return (resultado);
         }
 
-        public List<HistorialLaboralDTO> ListaHistorialLaborals(int _session)
+        public List<HistorialLaboralDTO> ListaHistorialLaboral(int _session)
         {
             List<HistorialLaboralDTO> retorno = new List<HistorialLaboralDTO>();
 

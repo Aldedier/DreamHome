@@ -11,7 +11,17 @@
         public ActionResult Inicial(string _mensaje = null)
         {
             ViewBag.Mensaje = _mensaje;
-            return View(new EmpleadosRepositorio().ConsultaEmpleados((int)GetSession()));
+
+            List<EmpleadosDTO> listaEmpleados = new EmpleadosRepositorio().ConsultaEmpleados((int)GetSession());
+
+            List<HistorialLaboralDTO> listaHistorialLaboral = new HistorialLaboralRepositorio().ConsultaHistorialLaboral((int)GetSession());
+
+            foreach (var item in listaEmpleados)
+            {
+                item.HistorialLaboralDTOs = listaHistorialLaboral.Where(x => x.IDF_EMPLEADO_HST == item.ID_EMPLEADO).ToList();
+            }
+
+            return View(listaEmpleados);
         }
 
         public ActionResult Crear()

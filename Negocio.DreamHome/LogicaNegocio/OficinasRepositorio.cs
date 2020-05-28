@@ -6,9 +6,9 @@
 
     public class OficinasRepositorio
     {
-        public string ValidarOficina(OficinasDTO empleadosDTO)
+        public string ValidarOficina(OficinasDTO oficinasDTO)
         {
-            string resultado = new OficinasDB().CrearOficina(empleadosDTO);
+            string resultado = new OficinasDB().CrearOficina(oficinasDTO);
 
             if (resultado == null)
                 return null;
@@ -16,9 +16,9 @@
                 return resultado;
         }
 
-        public string ActualizarOficina(OficinasDTO empleadosDTO)
+        public string ActualizarOficina(OficinasDTO oficinasDTO)
         {
-            string resultado = new OficinasDB().EditarOficina(empleadosDTO);
+            string resultado = new OficinasDB().EditarOficina(oficinasDTO);
 
             if (resultado == null)
                 return null;
@@ -26,9 +26,9 @@
                 return resultado;
         }
 
-        public string EliminarOficina(OficinasDTO empleadosDTO)
+        public string EliminarOficina(OficinasDTO oficinasDTO)
         {
-            string resultado = new OficinasDB().EliminarOficina(empleadosDTO);
+            string resultado = new OficinasDB().EliminarOficina(oficinasDTO);
 
             if (resultado == null)
                 return null;
