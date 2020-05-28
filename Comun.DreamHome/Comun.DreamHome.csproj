@@ -48,10 +48,13 @@
     <Compile Include="ClientesDTO.cs" />
     <Compile Include="ContactosOficinasDTO.cs" />
     <Compile Include="ContactosEmpleadosDTO.cs" />
+    <Compile Include="ContactosPeriodicoDTO.cs" />
+    <Compile Include="ContratosDTO.cs" />
     <Compile Include="DetallesInmueblesDTO.cs" />
     <Compile Include="EstadosInmueblesDTO.cs" />
     <Compile Include="HistorialLaboralDTO.cs" />
     <Compile Include="InmueblesRegistradosDTO.cs" />
+    <Compile Include="PagosDTO.cs" />
     <Compile Include="RequerimientosClientesDTO.cs" />
     <Compile Include="EstadosRequerimientosDTO.cs" />
     <Compile Include="OficinasDTO.cs" />
