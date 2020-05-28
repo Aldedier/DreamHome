@@ -71,6 +71,7 @@
     <Compile Include="ContextoBaseDatos\USUARIOS.cs" />
     <Compile Include="ContextoBaseDatos\GENEROS.cs" />
     <Compile Include="ContextoBaseDatos\TIPOS_PROPIEDADES.cs" />
+    <Compile Include="LogicaBaseDatos\ContactosOficinasDB.cs" />
     <Compile Include="LogicaBaseDatos\DetallesInmueblesDB.cs" />
     <Compile Include="LogicaBaseDatos\ContactosEmpleadosDB.cs" />
     <Compile Include="LogicaBaseDatos\InmueblesRegistradosDB.cs" />

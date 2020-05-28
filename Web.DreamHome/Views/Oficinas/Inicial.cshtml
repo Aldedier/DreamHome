@@ -76,6 +76,9 @@
                                 <th>
                                     <p>Activo</p>
                                 </th>
+                                <th>
+                                    <p>Datos de Contacto</p>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -89,6 +92,7 @@
                                             <span class="glyphicon glyphicon-align-center"></span>
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="@Url.Action("Crear", "ContactosOficinas", new { _idOficina = item.ID_OFICINA })"><i class="fa fa-pencil-square-o"></i> Agregar datos de contacto</a></li>
                                             <li><a href="@Url.Action("Editar", "Oficinas", new { _id = item.ID_OFICINA })"><i class="fa fa-refresh"></i> Actualizar</a></li>
                                             <li><a href="@Url.Action("Eliminar", "Oficinas", new { _id = item.ID_OFICINA })"><i class="fa fa-trash"></i> Eliminar</a></li>
                                         </ul>
@@ -100,6 +104,14 @@
                                 <td>@item.DIRECCION_OFC</td>
                                 <td>@item.APARTADO_OFC</td>
                                 <td>@item.ACTIVO_OFC</td>
+                                <td>
+                                    <ul>
+                                        @foreach (var item2 in item.ContactosOficinasDTOs)
+                                        {
+                                            <li>@item2.TIPO_CONTACTO: @item2.DATO_CNTCT_OFC  &nbsp &nbsp<a style="cursor:pointer;color:blue" title="Actualizar" class="fa fa-refresh" href="@Url.Action("Editar","ContactosOficinas", new { _id = item2.ID_CONTACTO_OFICINA })"></a><b>&nbsp -  &nbsp</b><a style="cursor:pointer;color:darkred" title="Eliminar" class="fa fa-close" href="@Url.Action("Eliminar","ContactosOficinas", new { _id = item2.ID_CONTACTO_OFICINA })"></a></li>
+                                        }
+                                    </ul>
+                                </td>
                             </tr>
                             }
                         </tbody>

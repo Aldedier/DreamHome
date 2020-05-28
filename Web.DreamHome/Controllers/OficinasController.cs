@@ -11,7 +11,16 @@
         public ActionResult Inicial(string _mensaje = null)
         {
             ViewBag.Mensaje = _mensaje;
-            return View(new OficinasRepositorio().ConsultaOficinas((int)GetSession()));
+
+            List<OficinasDTO> oficinasDTOs = new OficinasRepositorio().ConsultaOficinas((int)GetSession());
+            List<ContactosOficinasDTO> contactosOficinasDTOs = new ContactosOficinasRepositorio().ConsultaContactosOficinas((int)GetSession());
+
+            foreach (var item in oficinasDTOs)
+            {
+                item.ContactosOficinasDTOs = contactosOficinasDTOs.Where(x => x.IDF_OFICINA_CNTC == item.ID_OFICINA).ToList();
+            }
+
+            return View(oficinasDTOs);
         }
 
         public ActionResult Crear()

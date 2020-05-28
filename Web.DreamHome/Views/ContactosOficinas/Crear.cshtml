@@ -1,7 +1,7 @@
-﻿@model Comun.DreamHome.ContactosEmpleadosDTO
+﻿@model Comun.DreamHome.ContactosOficinasDTO
 
 @{
-    ViewBag.Title = "Editar";
+    ViewBag.Title = "Crear";
 }
 
 @section styles{
@@ -10,15 +10,11 @@
 
 @section scripts{
     @Scripts.Render("~/bundles/FormularioJs")
-
-    <script>
-        AplicarDateTimePlugin();
-    </script>
 }
 
 <section class="content-header">
     <h1>
-        Editar Contactos Empleados
+        Crear Contactos Oficinas
     </h1>
     <ol class="breadcrumb">
         <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> Inicio</a></li>
@@ -34,7 +30,7 @@
 
     @using (Html.BeginForm())
     {
-        <!-- Datos básicos Inmuebles Registradoss-->
+        <!-- Datos básicos-->
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-primary">
@@ -42,7 +38,7 @@
                     <div class="box-header with-border">
                         <div class="text-right">
                             <div class="col-md-6 text-left">
-                                <h3 class="box-title"><i class="fa fa-file-text-o"></i> Datos básicos Contactos Empleados</h3>
+                                <h3 class="box-title"><i class="fa fa-file-text-o"></i> Datos básicos Contactos Oficinas</h3>
                             </div>
                         </div>
                     </div>
@@ -51,13 +47,12 @@
                     <div class="box-body">
                         <div class="form-group-sm">
                             <div class="row">
-                                <input type="hidden" name="ID_CONTACTO_EMPLEADO" id="ID_CONTACTO_EMPLEADO" value="@Model.ID_CONTACTO_EMPLEADO" />
-                                <input type="hidden" name="IDF_EMPLEADO_CNTCT" id="IDF_EMPLEADO_CNTCT" value="@Model.IDF_EMPLEADO_CNTCT" />
+                                <input type="hidden" name="IDF_OFICINA_CNTC" id="IDF_OFICINA_CNTC" value="@ViewBag.IDF_OFICINA_CNTC" />
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         @Html.Label("Tipo contacto", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.DropDownList("IDF_TIPO_CONTACTO_CNTCT", null, String.Format("Seleccione el tipo contacto"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
+                                            @Html.DropDownList("IDF_TIPO_CNTC_OFC", null, String.Format("Seleccione el tipo contacto"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +60,7 @@
                                     <div class="form-group">
                                         @Html.Label("Datos", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.EditorFor(model => model.DATO_CNTCT_EMP, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite un dato" } })
+                                            @Html.EditorFor(model => model.DATO_CNTCT_OFC, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite un dato" } })
                                         </div>
                                     </div>
                                 </div>
@@ -75,7 +70,7 @@
                     <!-- /.box-header -->
                     <div class="box-footer">
                         <div class="col-md-6 text-left">
-                            <a class="btn btn-primary btn-sm" href="@Url.Action("Inicial", "Empleados")">
+                            <a class="btn btn-primary btn-sm" href="@Url.Action("Inicial", "Oficinas")">
                                 <span class="fa fa-reply"></span> Regresar
                             </a>
                         </div>

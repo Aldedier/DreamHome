@@ -17,5 +17,6 @@ namespace Comun.DreamHome
         public int ACTIVO_OFC { get; set; }
         public string ESTADO_OFC { get; set; }
         public int? SESSION { get; set; } = null;
+        public List<ContactosOficinasDTO> ContactosOficinasDTOs { get; set; } = new List<ContactosOficinasDTO>();
     }
 }
