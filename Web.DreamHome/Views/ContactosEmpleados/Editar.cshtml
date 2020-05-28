@@ -1,0 +1,92 @@
+﻿@model Comun.DreamHome.ContactosEmpleadosDTO
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+@section styles{
+    @Styles.Render("~/Content/FormularioCss")
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/FormularioJs")
+
+    <script>
+        AplicarDateTimePlugin();
+    </script>
+}
+
+<section class="content-header">
+    <h1>
+        Editar Contactos Empleados
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> Inicio</a></li>
+        <li class="active">Listar</li>
+    </ol>
+</section>
+
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-12" id="notificacion"></div>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        <!-- Datos básicos Inmuebles Registradoss-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-header with-border">
+                        <div class="text-right">
+                            <div class="col-md-6 text-left">
+                                <h3 class="box-title"><i class="fa fa-file-text-o"></i> Datos básicos Contactos Empleados</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /.box-body -->
+                    <div class="box-body">
+                        <div class="form-group-sm">
+                            <div class="row">
+                                <input type="hidden" name="ID_CONTACTO_EMPLEADO" id="ID_CONTACTO_EMPLEADO" value="@Model.ID_CONTACTO_EMPLEADO" />
+                                <input type="hidden" name="IDF_EMPLEADO_CNTCT" id="IDF_EMPLEADO_CNTCT" value="@Model.IDF_EMPLEADO_CNTCT" />
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Tipo contacto", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        <div class="col-md-12">
+                                            @Html.DropDownList("IDF_TIPO_CONTACTO_CNTCT", null, String.Format("Seleccione el tipo contacto"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Datos", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        <div class="col-md-12">
+                                            @Html.EditorFor(model => model.DATO_CNTCT_EMP, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite un dato" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-footer">
+                        <div class="col-md-6 text-left">
+                            <a class="btn btn-primary btn-sm" href="@Url.Action("Inicial", "Empleados")">
+                                <span class="fa fa-reply"></span> Regresar
+                            </a>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                <span class="fa fa-floppy-o"></span> Guardar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</section>

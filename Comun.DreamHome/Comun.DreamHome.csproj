@@ -46,6 +46,7 @@
     <Compile Include="CargoDTO.cs" />
     <Compile Include="CiudadDTO.cs" />
     <Compile Include="ClientesDTO.cs" />
+    <Compile Include="ContactosEmpleadosDTO.cs" />
     <Compile Include="DetallesInmueblesDTO.cs" />
     <Compile Include="EstadosInmueblesDTO.cs" />
     <Compile Include="HistorialLaboralDTO.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="EmpleadosDTO.cs" />
     <Compile Include="InmueblesDTO.cs" />
     <Compile Include="GeneroDTO.cs" />
+    <Compile Include="TiposContactosDTO.cs" />
     <Compile Include="TiposPropiedadesDTO.cs" />
     <Compile Include="UsuarioDTO.cs" />
     <Compile Include="LoginDTO.cs" />

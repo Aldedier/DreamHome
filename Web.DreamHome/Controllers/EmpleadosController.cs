@@ -13,12 +13,13 @@
             ViewBag.Mensaje = _mensaje;
 
             List<EmpleadosDTO> listaEmpleados = new EmpleadosRepositorio().ConsultaEmpleados((int)GetSession());
-
             List<HistorialLaboralDTO> listaHistorialLaboral = new HistorialLaboralRepositorio().ConsultaHistorialLaboral((int)GetSession());
+            List<ContactosEmpleadosDTO> listaContactos = new ContactosEmpleadosRepositorio().ConsultaContactosEmpleados((int)GetSession());
 
             foreach (var item in listaEmpleados)
             {
                 item.HistorialLaboralDTOs = listaHistorialLaboral.Where(x => x.IDF_EMPLEADO_HST == item.ID_EMPLEADO).ToList();
+                item.ContactosEmpleadosDTOs = listaContactos.Where(x => x.IDF_EMPLEADO_CNTCT == item.ID_EMPLEADO).ToList();
             }
 
             return View(listaEmpleados);

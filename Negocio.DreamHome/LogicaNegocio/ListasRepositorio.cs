@@ -151,5 +151,17 @@
 
             return lista;
         }
+
+        public List<TiposContactosDTO> ConsultarTiposContactos()
+        {
+            List<TiposContactosDTO> lista = new List<TiposContactosDTO>();
+
+            using (ContextoDreamHome db = new ContextoDreamHome())
+            {
+                lista = db.TIPOS_CONTACTOS.Select(x => new TiposContactosDTO { ID_TIPO_CONTACTO = x.ID_TIPO_CONTACTO, TIPO_CONTACTO = x.TIPO_CONTACTO }).ToList();
+            }
+
+            return lista;
+        }
     }
 }
