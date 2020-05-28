@@ -20,5 +20,6 @@ namespace Comun.DreamHome
         public DateTime FECHA_RH { get; set; }
         public int? SESSION { get; set; } = null;
         public List<HistorialLaboralDTO> HistorialLaboralDTOs { get; set; } = new List<HistorialLaboralDTO>();
+        public List<ContactosEmpleadosDTO> ContactosEmpleadosDTOs { get; set; } = new List<ContactosEmpleadosDTO>();
     }
 }

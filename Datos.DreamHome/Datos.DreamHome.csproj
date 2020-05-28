@@ -64,6 +64,7 @@
     <Compile Include="ContextoBaseDatos\CLIENTES.cs" />
     <Compile Include="ContextoBaseDatos\EMPLEADOS.cs" />
     <Compile Include="ContextoBaseDatos\ESTADOS_INMUEBLES.cs" />
+    <Compile Include="ContextoBaseDatos\TIPOS_CONTACTOS.cs" />
     <Compile Include="ContextoBaseDatos\VST_INMUEBLES.cs" />
     <Compile Include="ContextoBaseDatos\OFICINAS.cs" />
     <Compile Include="ContextoBaseDatos\ESTADOS_REQUERIMIENTOS.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="LogicaBaseDatos\ContactosPeriodicosDB.cs" />
     <Compile Include="LogicaBaseDatos\ContratosDB.cs" />
     <Compile Include="LogicaBaseDatos\DetallesInmueblesDB.cs" />
+    <Compile Include="LogicaBaseDatos\ContactosEmpleadosDB.cs" />
     <Compile Include="LogicaBaseDatos\InmueblesRegistradosDB.cs" />
     <Compile Include="LogicaBaseDatos\HistorialLaboralDB.cs" />
     <Compile Include="LogicaBaseDatos\PagosDB.cs" />
