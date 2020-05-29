@@ -45,7 +45,9 @@
     <Compile Include="CaracteristicasInmueblesDTO.cs" />
     <Compile Include="CargoDTO.cs" />
     <Compile Include="CiudadDTO.cs" />
+    <Compile Include="VisitasDTO.cs" />
     <Compile Include="ContactosPropietariosDTO.cs" />
+    <Compile Include="InmueblesPropietariosDTO.cs" />
     <Compile Include="PropietariosDTO.cs" />
     <Compile Include="ClientesDTO.cs" />
     <Compile Include="ContactosOficinasDTO.cs" />

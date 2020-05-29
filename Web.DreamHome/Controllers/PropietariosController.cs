@@ -14,12 +14,13 @@
 
             List<PropietariosDTO> listaPropietarios = new PropietariosRepositorio().ConsultaPropietarios((int)GetSession());
 
-            //List<HistorialLaboralDTO> listaHistorialLaboral = new HistorialLaboralRepositorio().ConsultaHistorialLaboral((int)GetSession());
+            List<InmueblesPropietariosDTO> listaInmueblesPropietarios = new InmueblesPropietariosRepositorio().ConsultaInmueblesPropietarios((int)GetSession());
             List<ContactosPropietariosDTO> listaContactos = new ContactosPropietariosRepositorio().ConsultaContactosPropietarios((int)GetSession());
 
             foreach (var item in listaPropietarios)
             {
                 item.ContactosPropietariosDTOs = listaContactos.Where(x => x.IDF_PROPIETARIO_CNTCT == item.ID_PROPIETARIO).ToList();
+                item.InmueblesPropietariosDTOs = listaInmueblesPropietarios.Where(x => x.IDF_PROPIETARIO_PROP == item.ID_PROPIETARIO).ToList();
             }
 
             return View(listaPropietarios);

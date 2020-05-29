@@ -78,8 +78,10 @@
     <Compile Include="LogicaBaseDatos\ContratosDB.cs" />
     <Compile Include="LogicaBaseDatos\DetallesInmueblesDB.cs" />
     <Compile Include="LogicaBaseDatos\ContactosEmpleadosDB.cs" />
+    <Compile Include="LogicaBaseDatos\InmueblesPropietariosDB.cs" />
     <Compile Include="LogicaBaseDatos\InmueblesRegistradosDB.cs" />
     <Compile Include="LogicaBaseDatos\HistorialLaboralDB.cs" />
+    <Compile Include="LogicaBaseDatos\VisitasDB.cs" />
     <Compile Include="LogicaBaseDatos\PropietariosDB.cs" />
     <Compile Include="LogicaBaseDatos\PagosDB.cs" />
     <Compile Include="LogicaBaseDatos\RequerimientosClientesDB.cs" />

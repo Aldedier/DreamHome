@@ -16,5 +16,9 @@
         public string ESTADO_INMUEBLE { get; set; }
         public DateTime FECHA_REGISTRO { get; set; }
         public int? SESSION { get; set; } = null;
+        public string DESCRIPCION
+        {
+            get => this.NOMBRE_TIPO + " - " + this.DIRECCION_INM + " - " + this.OFICINA;
+        }
     }
 }
