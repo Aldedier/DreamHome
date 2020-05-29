@@ -15,5 +15,6 @@
         public DateTime FECHA_PROP { get; set; }
         public int? SESSION { get; set; } = null;
         public List<ContactosPropietariosDTO> ContactosPropietariosDTOs { get; set; } = new List<ContactosPropietariosDTO>();
+        public List<InmueblesPropietariosDTO> InmueblesPropietariosDTOs { get; set; } = new List<InmueblesPropietariosDTO>();
     }
 }

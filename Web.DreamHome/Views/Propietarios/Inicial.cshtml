@@ -76,9 +76,9 @@
                                 <th>
                                     <p>Fecha creación</p>
                                 </th>
-                                @*<th>
-                                    <p>Historial Laboral</p>
-                                </th>*@
+                                <th>
+                                    <p>Inmuebles Asociados</p>
+                                </th>
                                 <th>
                                     <p>Datos de contacto</p>
                                 </th>
@@ -95,7 +95,7 @@
                                             <span class="glyphicon glyphicon-align-center"></span>
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                            <li><a href="@Url.Action("Crear", "HistorialLaboral", new { _idPropietario = item.ID_PROPIETARIO })"><i class="fa fa-pencil-square-o"></i> Relacionar Inmueble</a></li>
+                                            <li><a href="@Url.Action("Crear", "InmueblesPropietarios", new { _idPropietario = item.ID_PROPIETARIO })"><i class="fa fa-pencil-square-o"></i> Asociar Inmueble</a></li>
                                             <li><a href="@Url.Action("Crear", "ContactosPropietarios", new { _idPropietario = item.ID_PROPIETARIO })"><i class="fa fa-pencil-square-o"></i> Agregar datos de contacto</a></li>
                                             <li><a href="@Url.Action("Editar", "Propietarios", new { _id = item.ID_PROPIETARIO })"><i class="fa fa-refresh"></i> Actualizar</a></li>
                                             <li><a href="@Url.Action("Eliminar", "Propietarios", new { _id = item.ID_PROPIETARIO })"><i class="fa fa-trash"></i> Eliminar</a></li>
@@ -108,14 +108,14 @@
                                 <td>@item.DIRECCION_PROP</td>
                                 <td>@item.APARTADO_PROP</td>
                                 <td>@item.FECHA_PROP</td>
-                                @*<td>
+                                <td>
                                     <ul>
-                                        @foreach (var item2 in item.HistorialLaboralDTOs)
+                                        @foreach (var item2 in item.InmueblesPropietariosDTOs)
                                         {
-                                            <li>@item2.CARGO - @item2.OFICINA  &nbsp &nbsp<a style="cursor:pointer;color:blue" title="Actualizar" class="fa fa-refresh" href="@Url.Action("Editar","HistorialLaboral", new { _id = item2.ID_HISTORIAL_LABRL })"></a><b>&nbsp -  &nbsp</b><a style="cursor:pointer;color:darkred" title="Eliminar" class="fa fa-close" href="@Url.Action("Eliminar","HistorialLaboral", new { _id = item2.ID_HISTORIAL_LABRL })"></a></li>
+                                            <li>@item2.INMUEBLE - @item2.FECHA_PROP  &nbsp &nbsp<a style="cursor:pointer;color:blue" title="Actualizar" class="fa fa-refresh" href="@Url.Action("Editar","InmueblesPropietarios", new { _id = item2.ID_INMUEBLE_PROPIETARIO })"></a><b>&nbsp -  &nbsp</b><a style="cursor:pointer;color:darkred" title="Eliminar" class="fa fa-close" href="@Url.Action("Eliminar","InmueblesPropietarios", new { _id = item2.ID_INMUEBLE_PROPIETARIO })"></a></li>
                                         }
                                     </ul>
-                                </td>*@
+                                </td>
                                 <td>
                                     <ul>
                                         @foreach (var item2 in item.ContactosPropietariosDTOs)

@@ -8,9 +8,9 @@
     using System.Linq;
     using System.Web.Configuration;
 
-    public class InmueblesRegistradosDB
+    public class InmueblesPropietariosDB
     {
-        public string CrearInmueblesRegistrado(InmueblesRegistradosDTO inmueblesRegistradosDTO)
+        public string CrearInmueblesPropietario(InmueblesPropietariosDTO inmueblesPropietariosDTO)
         {
             string resultado = string.Empty;
 
@@ -20,16 +20,16 @@
                 try
                 {
                     objCommand.Parameters.Clear();
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfInmueble", OracleDbType.Decimal)).Value = inmueblesRegistradosDTO.IDF_INMUEBLE_REG;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfOficina", OracleDbType.Decimal)).Value = inmueblesRegistradosDTO.IDF_OFICINA_REG;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfEmpleado", OracleDbType.Decimal)).Value = inmueblesRegistradosDTO.IDF_EMPLEADO_REG;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = inmueblesRegistradosDTO.SESSION;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfInmueble", OracleDbType.Decimal)).Value = inmueblesPropietariosDTO.IDF_INMUEBLE_PROP;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfPropietario", OracleDbType.Decimal)).Value = inmueblesPropietariosDTO.IDF_PROPIETARIO_PROP;
+                    objCommand.Parameters.Add(new OracleParameter("I_Fecha", OracleDbType.Date)).Value = inmueblesPropietariosDTO.FECHA_PROP;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = inmueblesPropietariosDTO.SESSION;
                     objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
 
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.PKG_INMUEBLES_REGISTRADOS.PR_AgregarInmuebleRegstrd";
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_INMUEBLES_PROPIETARIOS.PR_AgregarInmueblePropietario";
                     objCommand.ExecuteNonQuery();
 
                     resultado = objCommand.Parameters["O_Salida"].Value.ToString();
@@ -51,7 +51,7 @@
             return (resultado);
         }
 
-        public string EditarInmueblesRegistrado(InmueblesRegistradosDTO inmueblesRegistradosDTO)
+        public string EditarInmueblesPropietario(InmueblesPropietariosDTO inmueblesPropietariosDTO)
         {
             string resultado = string.Empty;
 
@@ -61,17 +61,17 @@
                 try
                 {
                     objCommand.Parameters.Clear();
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfInmuebleReg", OracleDbType.Decimal)).Value = inmueblesRegistradosDTO.ID_INMUEBLE_REGISTRADO;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfOficina", OracleDbType.Decimal)).Value = inmueblesRegistradosDTO.IDF_OFICINA_REG;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfEmpleado", OracleDbType.Decimal)).Value = inmueblesRegistradosDTO.IDF_EMPLEADO_REG;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfEstado", OracleDbType.Decimal)).Value = inmueblesRegistradosDTO.IDF_ESTADO_REG;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = inmueblesRegistradosDTO.SESSION;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdInmueblePropietario", OracleDbType.Decimal)).Value = inmueblesPropietariosDTO.ID_INMUEBLE_PROPIETARIO;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfInmueble", OracleDbType.Decimal)).Value = inmueblesPropietariosDTO.IDF_INMUEBLE_PROP;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfPropietario", OracleDbType.Decimal)).Value = inmueblesPropietariosDTO.IDF_PROPIETARIO_PROP;
+                    objCommand.Parameters.Add(new OracleParameter("I_Fecha", OracleDbType.Date)).Value = inmueblesPropietariosDTO.FECHA_PROP;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = inmueblesPropietariosDTO.SESSION;
                     objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
 
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.PKG_INMUEBLES_REGISTRADOS.PR_ModificarInmuebleRegstrd";
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_INMUEBLES_PROPIETARIOS.PR_ModificarInmueblePropietario";
 
                     objCommand.ExecuteNonQuery();
                     resultado = objCommand.Parameters["O_Salida"].Value.ToString();
@@ -93,7 +93,7 @@
             return (resultado);
         }
 
-        public string EliminarInmueblesRegistrado(InmueblesRegistradosDTO inmueblesRegistradosDTO)
+        public string EliminarInmueblesPropietario(InmueblesPropietariosDTO inmueblesPropietariosDTO)
         {
             string resultado = string.Empty;
 
@@ -103,14 +103,14 @@
                 try
                 {
                     objCommand.Parameters.Clear();
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfInmuebleReg", OracleDbType.Decimal)).Value = inmueblesRegistradosDTO.ID_INMUEBLE_REGISTRADO;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = inmueblesRegistradosDTO.SESSION;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdInmueblePropietario", OracleDbType.Decimal)).Value = inmueblesPropietariosDTO.ID_INMUEBLE_PROPIETARIO;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = inmueblesPropietariosDTO.SESSION;
                     objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
 
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.PKG_INMUEBLES_REGISTRADOS.PR_BorrarInmuebleRegstrd";
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_INMUEBLES_PROPIETARIOS.PR_BorrarInmueblePropietario";
 
                     objCommand.ExecuteNonQuery();
                     resultado = objCommand.Parameters["O_Salida"].Value.ToString();
@@ -132,9 +132,9 @@
             return (resultado);
         }
 
-        public List<InmueblesRegistradosDTO> ListaInmueblesRegistrados(InmueblesRegistradosDTO inmueblesRegistradosDTO)
+        public List<InmueblesPropietariosDTO> ListaInmueblesPropietarios(int _session)
         {
-            List<InmueblesRegistradosDTO> retorno = new List<InmueblesRegistradosDTO>();
+            List<InmueblesPropietariosDTO> retorno = new List<InmueblesPropietariosDTO>();
 
             using (OracleConnection connection = new OracleConnection(WebConfigurationManager.ConnectionStrings["ContextoDH"].ConnectionString))
             using (OracleCommand objCommand = connection.CreateCommand())
@@ -142,36 +142,27 @@
                 try
                 {
                     objCommand.Parameters.Clear();
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfOficina", OracleDbType.Decimal)).Value = inmueblesRegistradosDTO.IDF_OFICINA_REG;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfEmpleado", OracleDbType.Decimal)).Value = inmueblesRegistradosDTO.IDF_EMPLEADO_REG;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfEstado", OracleDbType.Decimal)).Value = inmueblesRegistradosDTO.IDF_ESTADO_REG;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = inmueblesRegistradosDTO.SESSION;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = _session;
                     objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.RefCursor)).Direction = ParameterDirection.Output;
 
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.PKG_INMUEBLES_REGISTRADOS.PR_ConsultarInmuebleRegstrd";
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_INMUEBLES_PROPIETARIOS.PR_ConsultarInmueblesPropietarios";
 
                     DataTable resultado = new DataTable();
                     resultado.Load(objCommand.ExecuteReader());
 
-                    InmueblesRegistradosDTO registro;
+                    InmueblesPropietariosDTO registro;
                     foreach (DataRow row in resultado.Rows)
                     {
-                        registro = new InmueblesRegistradosDTO
+                        registro = new InmueblesPropietariosDTO
                         {
-                            ID_INMUEBLE_REGISTRADO = int.Parse(row["ID_INMUEBLE_REGISTRADO"].ToString()),
-                            IDF_INMUEBLE_REG = int.Parse(row["IDF_INMUEBLE_REG"].ToString()),
-                            IDF_OFICINA_REG = int.Parse(row["IDF_OFICINA_REG"].ToString()),
-                            OFICINA = row["OFICINA"].ToString(),
-                            NOMBRE_TIPO = row["NOMBRE_TIPO"].ToString(),
-                            DIRECCION_INM = row["DIRECCION_INM"].ToString(),
-                            IDF_EMPLEADO_REG = int.Parse(row["IDF_EMPLEADO_REG"].ToString()),
-                            NOMBRE_RH = row["NOMBRE_RH"].ToString(),
-                            IDF_ESTADO_REG = int.Parse(row["IDF_ESTADO_REG"].ToString()),
-                            ESTADO_INMUEBLE = row["ESTADO_INMUEBLE"].ToString(),
-                            FECHA_REGISTRO = DateTime.Parse(row["FECHA_REGISTRO"].ToString())
+                            ID_INMUEBLE_PROPIETARIO = int.Parse(row["ID_INMUEBLE_PROPIETARIO"].ToString()),
+                            IDF_INMUEBLE_PROP = int.Parse(row["IDF_INMUEBLE_PROP"].ToString()),
+                            IDF_PROPIETARIO_PROP = int.Parse(row["IDF_PROPIETARIO_PROP"].ToString()),
+                            INMUEBLE = row["INMUEBLE"].ToString(),
+                            FECHA_PROP = DateTime.Parse(row["FECHA_PROP"].ToString())
                         };
 
                         retorno.Add(registro);
@@ -190,7 +181,7 @@
                         objCommand.Dispose();
                 }
             }
-            return retorno.Where(x => x.ESTADO_INMUEBLE != "Inactivo").ToList();
+            return retorno.ToList();
         }
     }
 }
