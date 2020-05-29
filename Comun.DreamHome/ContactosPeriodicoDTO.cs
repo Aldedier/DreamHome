@@ -13,5 +13,6 @@ namespace Comun.DreamHome
         public int IDF_TIPO_CONTACTO { get; set; }
         public string DATO_CONTACTO_PERIOD { get; set; }
 
+        public int? SESSION { get; set; } = null;
     }
 }

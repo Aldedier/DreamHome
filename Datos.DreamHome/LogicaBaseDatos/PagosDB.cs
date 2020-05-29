@@ -135,7 +135,6 @@ namespace Datos.DreamHome.LogicaBaseDatos
 
             return (resultado);
         }
-
         public List<PagosDTO> ListaPagos(int _session)
         {
             List<PagosDTO> retorno = new List<PagosDTO>();

@@ -11,9 +11,10 @@ namespace Comun.DreamHome
         public int ID_ANUNCIO { get; set; }
         public int IDF_INMUEBLE_ANN { get; set; }
         public int IDF_PERIODICO_ANN { get; set; }
-        public int INICIO_PUBLICACION { get; set; }
-        public int FIN_PUBLICACION { get; set; }
+        public DateTime INICIO_PUBLICACION { get; set; }
+        public DateTime FIN_PUBLICACION { get; set; }
         public int COSTO_DIA { get; set; }
+        public int? SESSION { get; set; } = null;
 
     }
 }
