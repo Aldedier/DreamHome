@@ -134,10 +134,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ContactosPropietariosController.cs" />
     <Compile Include="Controllers\ContactosOficinasController.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\ContactosEmpleadosController.cs" />
     <Compile Include="Controllers\DetallesInmuebleController.cs" />
+    <Compile Include="Controllers\PropietariosController.cs" />
     <Compile Include="Controllers\HistorialLaboralController.cs" />
     <Compile Include="Controllers\InmueblesRegistradosController.cs" />
     <Compile Include="Controllers\RequerimientosClientesController.cs" />
@@ -4505,6 +4507,11 @@
     <Content Include="Views\ContactosEmpleados\Editar.cshtml" />
     <Content Include="Views\ContactosOficinas\Crear.cshtml" />
     <Content Include="Views\ContactosOficinas\Editar.cshtml" />
+    <Content Include="Views\Propietarios\Crear.cshtml" />
+    <Content Include="Views\Propietarios\Editar.cshtml" />
+    <Content Include="Views\Propietarios\Inicial.cshtml" />
+    <Content Include="Views\ContactosPropietarios\Crear.cshtml" />
+    <Content Include="Views\ContactosPropietarios\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

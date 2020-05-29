@@ -37,7 +37,7 @@
 
             using (ContextoDreamHome db = new ContextoDreamHome())
             {
-                lista = db.USUARIOS.Select(x => new UsuarioDTO { Usuario_id = x.ID_USUARIO, Nombre_Usuario = x.NOMBRE_USR }).ToList();
+                lista = db.USUARIOS.Select(x => new UsuarioDTO { Usuario_id = x.ID_USUARIO, Nombre_Usuario = x.NOMBRE_USR, Usuario = x.USUARIO }).ToList();
             }
 
             return lista;
