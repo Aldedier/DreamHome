@@ -140,6 +140,7 @@
     <Compile Include="Controllers\ContactosEmpleadosController.cs" />
     <Compile Include="Controllers\DetallesInmuebleController.cs" />
     <Compile Include="Controllers\InmueblesPropietariosController.cs" />
+    <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\VisitasController.cs" />
     <Compile Include="Controllers\PropietariosController.cs" />
     <Compile Include="Controllers\HistorialLaboralController.cs" />
@@ -4498,7 +4499,6 @@
     <Content Include="Views\Oficinas\Inicial.cshtml" />
     <Content Include="Views\RequerimientosClientes\Crear.cshtml" />
     <Content Include="Views\RequerimientosClientes\Editar.cshtml" />
-    <Content Include="Views\RequerimientosClientes\Inicial.cshtml" />
     <Content Include="Views\InmueblesRegistrados\Crear.cshtml" />
     <Content Include="Views\InmueblesRegistrados\Editar.cshtml" />
     <Content Include="Views\DetallesInmueble\Crear.cshtml" />
@@ -4519,6 +4519,9 @@
     <Content Include="Views\Visitas\Crear.cshtml" />
     <Content Include="Views\Visitas\Editar.cshtml" />
     <Content Include="Views\Visitas\Inicial.cshtml" />
+    <Content Include="Views\Clientes\Crear.cshtml" />
+    <Content Include="Views\Clientes\Editar.cshtml" />
+    <Content Include="Views\Clientes\Inicial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

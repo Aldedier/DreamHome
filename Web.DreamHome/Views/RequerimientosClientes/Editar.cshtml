@@ -52,7 +52,8 @@
                         <div class="form-group-sm">
                             <div class="row">
                                 <input type="hidden" name="ID_REQUERIMIENTO" id="ID_REQUERIMIENTO" value="@Model.ID_REQUERIMIENTO" />
-                                <div class="col-md-4">
+                                <input type="hidden" name="IDF_CLIENTE_RQRM" id="IDF_CLIENTE_RQRM" value="@Model.IDF_CLIENTE_RQRM" />
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         @Html.Label("Requerimiento", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
@@ -60,15 +61,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        @Html.Label("Cliente", htmlAttributes: new { @class = "control-label col-md-12" })
-                                        <div class="col-md-12">
-                                            @Html.DropDownList("IDF_CLIENTE_RQRM", null, String.Format("Seleccione el Cliente"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         @Html.Label("Oficina", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">

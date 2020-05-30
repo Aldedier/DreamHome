@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Comun.DreamHome.RequerimientosClientesDTO>
+﻿@model IEnumerable<Comun.DreamHome.ClientesDTO>
 
 @{
     ViewBag.Title = "Inicio";
@@ -20,7 +20,7 @@
 
 <section class="content-header">
     <h1>
-        Requerimientos Cliente DreamHome
+        Clientes DreamHome
     </h1>
     <ol class="breadcrumb">
         <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> Inicio</a></li>
@@ -36,10 +36,10 @@
                 <div class="box-header">
                     <div class="text-right">
                         <div class="col-md-6 text-left">
-                            <h3 class="box-title">Lista Requerimientos Clientes</h3>
+                            <h3 class="box-title">Lista Clientes</h3>
                         </div>
                         <div class="col-md-6 text-right">
-                            <button type="button" class="btn btn-primary btn-sm" onclick="location.href='@Url.Action("Crear", "RequerimientosClientes")';">
+                            <button type="button" class="btn btn-primary btn-sm" onclick="location.href='@Url.Action("Crear", "Clientes")';">
                                 <span class="glyphicon glyphicon-plus"></span> Nuevo
                             </button>
                         </div>
@@ -59,28 +59,25 @@
                                 <th></th>
                                 <th></th>
                                 <th>
-                                    <p>Id Requ. Cliente</p>
+                                    <p>Id Cliente</p>
                                 </th>
                                 <th>
-                                    <p>Requerimiento</p>
+                                    <p>Cliente</p>
                                 </th>
                                 <th>
-                                    <p>Nombre Cliente</p>
+                                    <p>Dirección</p>
                                 </th>
                                 <th>
-                                    <p>Oficina</p>
+                                    <p>Usuario</p>
                                 </th>
                                 <th>
-                                    <p>Nombre empleado</p>
+                                    <p>Fecha</p>
                                 </th>
                                 <th>
-                                    <p>Tipo Reque...</p>
+                                    <p>Estado</p>
                                 </th>
                                 <th>
-                                    <p>Estado Reque...</p>
-                                </th>
-                                <th>
-                                    <p>Fecha creación</p>
+                                    <p>Requerimientos</p>
                                 </th>
                             </tr>
                         </thead>
@@ -95,19 +92,26 @@
                                             <span class="glyphicon glyphicon-align-center"></span>
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                            <li><a href="@Url.Action("Editar", "RequerimientosClientes", new { _id = item.ID_REQUERIMIENTO })"><i class="fa fa-refresh"></i> Actualizar</a></li>
-                                            <li><a href="@Url.Action("Eliminar", "RequerimientosClientes", new { _id = item.ID_REQUERIMIENTO })"><i class="fa fa-trash"></i> Eliminar</a></li>
+                                            <li><a href="@Url.Action("Crear", "RequerimientosClientes", new { _idCliente = item.ID_CLIENTE })"><i class="fa fa-pencil-square-o"></i> Agregar Requerimiento</a></li>
+                                            <li><a href="@Url.Action("Editar", "Clientes", new { _id = item.ID_CLIENTE })"><i class="fa fa-refresh"></i> Actualizar</a></li>
+                                            <li><a href="@Url.Action("Eliminar", "Clientes", new { _id = item.ID_CLIENTE })"><i class="fa fa-trash"></i> Eliminar</a></li>
                                         </ul>
                                     </div>
                                 </td>
-                                <td>@item.ID_REQUERIMIENTO</td>
-                                <td>@item.REQUERIMIENTO</td>
+                                <td>@item.ID_CLIENTE</td>
                                 <td>@item.NOMBRE_CLINT</td>
-                                <td>@item.OFICINA</td>
-                                <td>@item.NOMBRE_RH</td>
-                                <td>@item.NOMBRE_TIPO</td>
-                                <td>@item.ESTADO_REQUERIMIENTO</td>
-                                <td>@item.FECHA_RQRM</td>
+                                <td>@item.DIRECCION_CLINT</td>
+                                <td>@item.USUARIO</td>
+                                <td>@item.FECHA_CLINT</td>
+                                <td>@item.ESTADO</td>
+                                <td>
+                                    <ul>
+                                        @foreach (var item2 in item.requerimientosClientesDTOs)
+                                        {
+                                        <li>@item2.ESTADO_REQUERIMIENTO: @item2.NOMBRE_TIPO - @item2.REQUERIMIENTO  - @item2.OFICINA &nbsp &nbsp<a style="cursor:pointer;color:blue" title="Actualizar" class="fa fa-refresh" href="@Url.Action("Editar","RequerimientosClientes", new { _id = item2.ID_REQUERIMIENTO })"></a><b>&nbsp -  &nbsp</b><a style="cursor:pointer;color:darkred" title="Eliminar" class="fa fa-close" href="@Url.Action("Eliminar","RequerimientosClientes", new { _id = item2.ID_REQUERIMIENTO })"></a></li>
+                                        }
+                                    </ul>
+                                </td>
                             </tr>
                             }
                         </tbody>

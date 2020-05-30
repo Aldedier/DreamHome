@@ -8,9 +8,9 @@
     using System.Linq;
     using System.Web.Configuration;
 
-    public class RequerimientosClientesDB
+    public class ClientesDB
     {
-        public string CrearRequerimientosCliente(RequerimientosClientesDTO requerimientosClientesDTO)
+        public string CrearCliente(ClientesDTO clientesDTO)
         {
             string resultado = string.Empty;
 
@@ -20,105 +20,59 @@
                 try
                 {
                     objCommand.Parameters.Clear();
-                    objCommand.Parameters.Add(new OracleParameter("requerimiento", OracleDbType.Varchar2, 200)).Value = requerimientosClientesDTO.REQUERIMIENTO;
-                    objCommand.Parameters.Add(new OracleParameter("idf_cliente_rqrm", OracleDbType.Decimal)).Value = requerimientosClientesDTO.IDF_CLIENTE_RQRM;
-                    objCommand.Parameters.Add(new OracleParameter("idf_oficina_rqrm", OracleDbType.Decimal)).Value = requerimientosClientesDTO.IDF_OFICINA_RQRM;
-                    objCommand.Parameters.Add(new OracleParameter("idf_empleado_rqrm", OracleDbType.Decimal)).Value = requerimientosClientesDTO.IDF_EMPLEADO_RQRM;
-                    objCommand.Parameters.Add(new OracleParameter("idf_tipo_rqrm", OracleDbType.Decimal)).Value = requerimientosClientesDTO.IDF_TIPO_RQRM;
-                    objCommand.Parameters.Add(new OracleParameter("idf_estado_rqrm", OracleDbType.Decimal)).Value = requerimientosClientesDTO.IDF_ESTADO_RQRM;
-                    objCommand.Parameters.Add(new OracleParameter("fecha_rqrm", OracleDbType.Date)).Value = DateTime.Now;
-                    objCommand.Parameters.Add(new OracleParameter("i_idfsesion", OracleDbType.Decimal)).Value = requerimientosClientesDTO.SESSION;
-                    objCommand.Parameters.Add(new OracleParameter("o_salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
-
-                    connection.Open();
-
-                    objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.pkg_requerimientos_clientes.PR_AgregarReqrmntClint";
-                    objCommand.ExecuteNonQuery();
-
-                    resultado = objCommand.Parameters["O_Salida"].Value.ToString();
-                }
-                catch (Exception ex)
-                {
-                    throw new ArgumentException($"{ex.Message} {ex.InnerException}");
-                }
-                finally
-                {
-                    if (connection.State == ConnectionState.Open)
-                        connection.Close();
-
-                    if (objCommand != null)
-                        objCommand.Dispose();
-                }
-            }
-
-            return (resultado);
-        }
-
-        public string EditarRequerimientosCliente(RequerimientosClientesDTO requerimientosClientesDTO)
-        {
-            string resultado = string.Empty;
-
-            using (OracleConnection connection = new OracleConnection(WebConfigurationManager.ConnectionStrings["ContextoDH"].ConnectionString))
-            using (OracleCommand objCommand = connection.CreateCommand())
-            {
-                try
-                {
-                    objCommand.Parameters.Clear();
-                    objCommand.Parameters.Add(new OracleParameter("id_requerimiento", OracleDbType.Decimal)).Value = requerimientosClientesDTO.ID_REQUERIMIENTO;
-                    objCommand.Parameters.Add(new OracleParameter("requerimiento", OracleDbType.Varchar2, 200)).Value = requerimientosClientesDTO.REQUERIMIENTO;
-                    objCommand.Parameters.Add(new OracleParameter("idf_cliente_rqrm", OracleDbType.Decimal)).Value = requerimientosClientesDTO.IDF_CLIENTE_RQRM;
-                    objCommand.Parameters.Add(new OracleParameter("idf_oficina_rqrm", OracleDbType.Decimal)).Value = requerimientosClientesDTO.IDF_OFICINA_RQRM;
-                    objCommand.Parameters.Add(new OracleParameter("idf_empleado_rqrm", OracleDbType.Decimal)).Value = requerimientosClientesDTO.IDF_EMPLEADO_RQRM;
-                    objCommand.Parameters.Add(new OracleParameter("idf_tipo_rqrm", OracleDbType.Decimal)).Value = requerimientosClientesDTO.IDF_TIPO_RQRM;
-                    objCommand.Parameters.Add(new OracleParameter("idf_estado_rqrm", OracleDbType.Decimal)).Value = requerimientosClientesDTO.IDF_ESTADO_RQRM;
-                    objCommand.Parameters.Add(new OracleParameter("fecha_rqrm", OracleDbType.Date)).Value = DateTime.Now;
-                    objCommand.Parameters.Add(new OracleParameter("i_idfsesion", OracleDbType.Decimal)).Value = requerimientosClientesDTO.SESSION;
-                    objCommand.Parameters.Add(new OracleParameter("o_salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
-
-                    connection.Open();
-
-                    objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.pkg_requerimientos_clientes.pr_ModificarReqrmntClint";
-
-                    objCommand.ExecuteNonQuery();
-                    resultado = objCommand.Parameters["O_Salida"].Value.ToString();
-                }
-                catch (Exception ex)
-                {
-                    throw new ArgumentException($"{ex.Message} {ex.InnerException}");
-                }
-                finally
-                {
-                    if (connection.State == ConnectionState.Open)
-                        connection.Close();
-
-                    if (objCommand != null)
-                        objCommand.Dispose();
-                }
-            }
-
-            return (resultado);
-        }
-
-        public string EliminarRequerimientosCliente(RequerimientosClientesDTO requerimientosClientesDTO)
-        {
-            string resultado = string.Empty;
-
-            using (OracleConnection connection = new OracleConnection(WebConfigurationManager.ConnectionStrings["ContextoDH"].ConnectionString))
-            using (OracleCommand objCommand = connection.CreateCommand())
-            {
-                try
-                {
-                    objCommand.Parameters.Clear();
-                    objCommand.Parameters.Add(new OracleParameter("id_requerimiento", OracleDbType.Decimal)).Value = requerimientosClientesDTO.ID_REQUERIMIENTO;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = requerimientosClientesDTO.SESSION;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfUsuarioClint", OracleDbType.Decimal)).Value = clientesDTO.IDF_USUARIO_CLINT;
+                    objCommand.Parameters.Add(new OracleParameter("I_NombreClint", OracleDbType.Varchar2, 200)).Value = clientesDTO.NOMBRE_CLINT;
+                    objCommand.Parameters.Add(new OracleParameter("I_DireccionClint", OracleDbType.Varchar2, 200)).Value = clientesDTO.DIRECCION_CLINT;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = clientesDTO.SESSION;
                     objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
 
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.pkg_requerimientos_clientes.PR_BorrarReqrmntClint";
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_CLIENTES.PR_AgregarCliente";
+                    objCommand.ExecuteNonQuery();
+
+                    resultado = objCommand.Parameters["O_Salida"].Value.ToString();
+                }
+                catch (Exception ex)
+                {
+                    throw new ArgumentException($"{ex.Message} {ex.InnerException}");
+                }
+                finally
+                {
+                    if (connection.State == ConnectionState.Open)
+                        connection.Close();
+
+                    if (objCommand != null)
+                        objCommand.Dispose();
+                }
+            }
+
+            return (resultado);
+        }
+
+        public string EditarCliente(ClientesDTO clientesDTO)
+        {
+            string resultado = string.Empty;
+
+            using (OracleConnection connection = new OracleConnection(WebConfigurationManager.ConnectionStrings["ContextoDH"].ConnectionString))
+            using (OracleCommand objCommand = connection.CreateCommand())
+            {
+                try
+                {
+                    objCommand.Parameters.Clear();
+                    objCommand.Parameters.Add(new OracleParameter("I_IdCliente", OracleDbType.Decimal)).Value = clientesDTO.ID_CLIENTE;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfUsuarioClint", OracleDbType.Decimal)).Value = clientesDTO.IDF_USUARIO_CLINT;
+                    objCommand.Parameters.Add(new OracleParameter("I_NombreClint", OracleDbType.Varchar2, 200)).Value = clientesDTO.NOMBRE_CLINT;
+                    objCommand.Parameters.Add(new OracleParameter("I_ActivoClint", OracleDbType.Decimal)).Value = 1;
+                    objCommand.Parameters.Add(new OracleParameter("I_DireccionClint", OracleDbType.Varchar2, 200)).Value = clientesDTO.DIRECCION_CLINT;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = clientesDTO.SESSION;
+                    objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
+
+                    connection.Open();
+
+                    objCommand.CommandType = CommandType.StoredProcedure;
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_CLIENTES.PR_ModificarCliente";
 
                     objCommand.ExecuteNonQuery();
                     resultado = objCommand.Parameters["O_Salida"].Value.ToString();
@@ -140,9 +94,48 @@
             return (resultado);
         }
 
-        public List<RequerimientosClientesDTO> ListaRequerimientosClientes(int _session)
+        public string EliminarCliente(ClientesDTO clientesDTO)
         {
-            List<RequerimientosClientesDTO> retorno = new List<RequerimientosClientesDTO>();
+            string resultado = string.Empty;
+
+            using (OracleConnection connection = new OracleConnection(WebConfigurationManager.ConnectionStrings["ContextoDH"].ConnectionString))
+            using (OracleCommand objCommand = connection.CreateCommand())
+            {
+                try
+                {
+                    objCommand.Parameters.Clear();
+                    objCommand.Parameters.Add(new OracleParameter("I_IdCliente", OracleDbType.Decimal)).Value = clientesDTO.ID_CLIENTE;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = clientesDTO.SESSION;
+                    objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
+
+                    connection.Open();
+
+                    objCommand.CommandType = CommandType.StoredProcedure;
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_CLIENTES.PR_BorrarCliente";
+
+                    objCommand.ExecuteNonQuery();
+                    resultado = objCommand.Parameters["O_Salida"].Value.ToString();
+                }
+                catch (Exception ex)
+                {
+                    throw new ArgumentException($"{ex.Message} {ex.InnerException}");
+                }
+                finally
+                {
+                    if (connection.State == ConnectionState.Open)
+                        connection.Close();
+
+                    if (objCommand != null)
+                        objCommand.Dispose();
+                }
+            }
+
+            return (resultado);
+        }
+
+        public List<ClientesDTO> ListaClientes(int _session)
+        {
+            List<ClientesDTO> retorno = new List<ClientesDTO>();
 
             using (OracleConnection connection = new OracleConnection(WebConfigurationManager.ConnectionStrings["ContextoDH"].ConnectionString))
             using (OracleCommand objCommand = connection.CreateCommand())
@@ -156,25 +149,23 @@
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.pkg_requerimientos_clientes.PR_ConsultarReqrmntClint";
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_CLIENTES.PR_ConsultarCliente";
 
                     DataTable resultado = new DataTable();
                     resultado.Load(objCommand.ExecuteReader());
 
-                    RequerimientosClientesDTO registro;
+                    ClientesDTO registro;
                     foreach (DataRow row in resultado.Rows)
                     {
-                        registro = new RequerimientosClientesDTO
+                        registro = new ClientesDTO
                         {
-                            ID_REQUERIMIENTO = int.Parse(row["ID_REQUERIMIENTO"].ToString()),
-                            REQUERIMIENTO = row["REQUERIMIENTO"].ToString(),
-                            IDF_CLIENTE_RQRM = int.Parse(row["IDF_CLIENTE_RQRM"].ToString()),
+                            ID_CLIENTE = int.Parse(row["ID_CLIENTE"].ToString()),
+                            DIRECCION_CLINT = row["DIRECCION_CLINT"].ToString(),
                             NOMBRE_CLINT = row["NOMBRE_CLINT"].ToString(),
-                            OFICINA = row["OFICINA"].ToString(),
-                            NOMBRE_RH = row["NOMBRE_RH"].ToString(),
-                            NOMBRE_TIPO = row["NOMBRE_TIPO"].ToString(),
-                            ESTADO_REQUERIMIENTO = row["ESTADO_REQUERIMIENTO"].ToString(),
-                            FECHA_RQRM = DateTime.Parse(row["FECHA_RQRM"].ToString())
+                            IDF_USUARIO_CLINT = int.Parse(row["IDF_USUARIO_CLINT"].ToString()),
+                            USUARIO = row["USUARIO"].ToString(),
+                            ESTADO = row["ESTADO"].ToString(),
+                            FECHA_CLINT = DateTime.Parse(row["FECHA_CLINT"].ToString())
                         };
 
                         retorno.Add(registro);
@@ -193,7 +184,7 @@
                         objCommand.Dispose();
                 }
             }
-            return retorno.Where(x => x.ESTADO_REQUERIMIENTO != "Inactivo").ToList();
+            return retorno.Where(x => x.ESTADO == "SI").ToList();
         }
     }
 }

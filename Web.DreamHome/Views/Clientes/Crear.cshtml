@@ -1,4 +1,4 @@
-﻿@model Comun.DreamHome.RequerimientosClientesDTO
+﻿@model Comun.DreamHome.ClientesDTO
 
 @{
     ViewBag.Title = "Crear";
@@ -14,7 +14,7 @@
 
 <section class="content-header">
     <h1>
-        Crear Requerimiento del Cliente
+        Crear cliente
     </h1>
     <ol class="breadcrumb">
         <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> Inicio</a></li>
@@ -38,7 +38,7 @@
                     <div class="box-header with-border">
                         <div class="text-right">
                             <div class="col-md-6 text-left">
-                                <h3 class="box-title"><i class="fa fa-file-text-o"></i> Datos básicos Requerimientos Clientes</h3>
+                                <h3 class="box-title"><i class="fa fa-file-text-o"></i> Datos básicos Clientes</h3>
                             </div>
                         </div>
                     </div>
@@ -47,46 +47,27 @@
                     <div class="box-body">
                         <div class="form-group-sm">
                             <div class="row">
-                                <input type="hidden" name="IDF_CLIENTE_RQRM" id="IDF_CLIENTE_RQRM" value="@ViewBag.IDF_CLIENTE_RQRM" />
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        @Html.Label("Requerimiento", htmlAttributes: new { @class = "control-label col-md-12" })
-                                        <div class="col-md-12">
-                                            @Html.EditorFor(model => model.REQUERIMIENTO, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite el reque... del Cliente" } })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        @Html.Label("Oficina", htmlAttributes: new { @class = "control-label col-md-12" })
-                                        <div class="col-md-12">
-                                            @Html.DropDownList("IDF_OFICINA_RQRM", null, String.Format("Seleccione la Oficina"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        @Html.Label("Empleado", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        @Html.Label("Nombre cliente", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.DropDownList("IDF_EMPLEADO_RQRM", null, String.Format("Seleccione el Empleado"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
+                                            @Html.EditorFor(model => model.NOMBRE_CLINT, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite el nombre de la cliente" } })
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        @Html.Label("Tipo requerimento", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        @Html.Label("Usuario", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.DropDownList("IDF_TIPO_RQRM", null, String.Format("Seleccione el Tipo"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
+                                            @Html.DropDownList("IDF_USUARIO_CLINT", null, String.Format("Seleccione una Usuario"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        @Html.Label("Estado", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        @Html.Label("Dirección", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.DropDownList("IDF_ESTADO_RQRM", null, String.Format("Seleccione el Estado"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
+                                            @Html.EditorFor(model => model.DIRECCION_CLINT, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite una dirección" } })
                                         </div>
                                     </div>
                                 </div>
@@ -96,7 +77,7 @@
                     <!-- /.box-header -->
                     <div class="box-footer">
                         <div class="col-md-6 text-left">
-                            <a class="btn btn-primary btn-sm" href="@Url.Action("Inicial", "RequerimientosClientes")">
+                            <a class="btn btn-primary btn-sm" href="@Url.Action("Inicial", "Clientes")">
                                 <span class="fa fa-reply"></span> Regresar
                             </a>
                         </div>
