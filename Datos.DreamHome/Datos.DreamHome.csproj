@@ -82,6 +82,7 @@
     <Compile Include="LogicaBaseDatos\InmueblesRegistradosDB.cs" />
     <Compile Include="LogicaBaseDatos\HistorialLaboralDB.cs" />
     <Compile Include="LogicaBaseDatos\ClientesDB.cs" />
+    <Compile Include="LogicaBaseDatos\PagosRepositorio.cs" />
     <Compile Include="LogicaBaseDatos\VisitasDB.cs" />
     <Compile Include="LogicaBaseDatos\PropietariosDB.cs" />
     <Compile Include="LogicaBaseDatos\PagosDB.cs" />
