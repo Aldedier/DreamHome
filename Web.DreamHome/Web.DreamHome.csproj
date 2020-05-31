@@ -134,13 +134,17 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AnunciosController.cs" />
+    <Compile Include="Controllers\ContactosPeriodicosController.cs" />
     <Compile Include="Controllers\ContactosPropietariosController.cs" />
     <Compile Include="Controllers\ContactosOficinasController.cs" />
+    <Compile Include="Controllers\ContratosController.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\ContactosEmpleadosController.cs" />
     <Compile Include="Controllers\DetallesInmuebleController.cs" />
     <Compile Include="Controllers\InmueblesPropietariosController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
+    <Compile Include="Controllers\PagosController.cs" />
     <Compile Include="Controllers\VisitasController.cs" />
     <Compile Include="Controllers\PropietariosController.cs" />
     <Compile Include="Controllers\HistorialLaboralController.cs" />

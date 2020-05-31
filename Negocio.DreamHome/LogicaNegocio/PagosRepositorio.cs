@@ -8,11 +8,21 @@ using System.Threading.Tasks;
 
 namespace Negocio.DreamHome.LogicaNegocio
 {
- public   class ContratosRepositorio
+   public class PagosRepositorio
     {
-        public string ValidarContrato(ContratosDTO ContratosDTO)
+
+        public string ValidarPago(PagosDTO pagoDTO)
         {
-            string resultado = new ContratosDB().CrearContrato(ContratosDTO);
+            string resultado = new PagosDB().CrearPago(pagoDTO);
+
+            if (resultado == null)
+                return null;
+            else
+                return resultado;
+        }
+        public string ActualizarPago(PagosDTO pagoDTO)
+        {
+            string resultado = new PagosDB().EditarPago(pagoDTO);
 
             if (resultado == null)
                 return null;
@@ -20,9 +30,9 @@ namespace Negocio.DreamHome.LogicaNegocio
                 return resultado;
         }
 
-        public string ActualizarContrato(ContratosDTO ContratosDTO)
+        public string EliminarPago(PagosDTO pagoDTO)
         {
-            string resultado = new ContratosDB().EditarContrato(ContratosDTO);
+            string resultado = new PagosDB().EliminarPago(pagoDTO);
 
             if (resultado == null)
                 return null;
@@ -30,19 +40,9 @@ namespace Negocio.DreamHome.LogicaNegocio
                 return resultado;
         }
 
-        public string EliminarContrato(ContratosDTO ContratosDTO)
+        public List<PagosDTO> ConsultaPagos(int _session)
         {
-            string resultado = new ContratosDB().EliminarContrato(ContratosDTO);
-
-            if (resultado == null)
-                return null;
-            else
-                return resultado;
-        }
-
-        public List<ContratosDTO> ConsultaContratos(int _session)
-        {
-            return new ContratosDB().ListaContratos(_session);
+            return new PagosDB().ListaPagos(_session);
         }
     }
 }

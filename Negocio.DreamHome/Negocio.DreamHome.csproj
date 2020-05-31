@@ -63,6 +63,7 @@
     <Compile Include="LogicaNegocio\ContratosRepositorio.cs" />
     <Compile Include="LogicaNegocio\InmueblesPropietariosRepositorio.cs" />
     <Compile Include="LogicaNegocio\ClientesRepositorio.cs" />
+    <Compile Include="LogicaNegocio\PagosRepositorio.cs" />
     <Compile Include="LogicaNegocio\VisitasRepositorio.cs" />
     <Compile Include="LogicaNegocio\PropietariosRepositorio.cs" />
     <Compile Include="LogicaNegocio\InmueblesRegistradosRepositorio.cs" />
