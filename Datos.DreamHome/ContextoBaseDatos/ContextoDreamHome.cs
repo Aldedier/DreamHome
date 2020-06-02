@@ -22,5 +22,10 @@
         public virtual IDbSet<VST_INMUEBLES> VST_INMUEBLES { get; set; }
         public virtual IDbSet<CARACTERISTICAS_INMUEBLES> CARACTERISTICAS_INMUEBLES { get; set; }
         public virtual IDbSet<TIPOS_CONTACTOS> TIPOS_CONTACTOS { get; set; }
+
+        public virtual IDbSet<TIPOS_PAGOS> TIPOS_PAGOS { get; set; }
+
+        public virtual IDbSet<ESTADOS_CONTRATOS> ESTADOS_CONTRATOS{ get; set; }
+
     }
 }

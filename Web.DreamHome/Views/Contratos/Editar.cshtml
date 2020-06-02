@@ -1,0 +1,148 @@
+﻿@model Comun.DreamHome.ContratosDTO
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+@section styles{
+    @Styles.Render("~/Content/FormularioCss")
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/FormularioJs")
+
+    <script>
+        AplicarDateTimePlugin();
+    </script>
+}
+
+<section class="content-header">
+    <h1>
+        Editar contrato
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> Inicio</a></li>
+        <li class="active">Listar</li>
+    </ol>
+</section>
+
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-12" id="notificacion"></div>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        <!-- Datos básicos Inmuebles-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-header with-border">
+                        <div class="text-right">
+                            <div class="col-md-6 text-left">
+                                <h3 class="box-title"><i class="fa fa-file-text-o"></i> Datos  Contratos</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /.box-body -->
+                    <div class="box-body">
+                        <div class="form-group-sm">
+                            <div class="row">
+                                <input type="hidden" name="ID_CONTRATO" id="ID_CONTRATO" value="@Model.ID_CONTRATO" />
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Nombre Cliente", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        <div class="col-md-12">
+                                            @Html.DropDownList("IDF_CLIENTE", null, String.Format("Seleccione el cliente"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Inmueble", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        <div class="col-md-12">
+                                            @Html.DropDownList("IDF_INMUEBLE", null, String.Format("Seleccione el inmueble"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Forma de pago", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        <div class="col-md-12">
+                                            @Html.DropDownList("IDF_FORMAPAGO", null, String.Format("Seleccione la forma de pago"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Estado contrato", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        <div class="col-md-12">
+                                            @Html.DropDownList("IDF_ESTADOCONTRATO", null, String.Format("Seleccione el estado contrato"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Valor canon(mensual)", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        <div class="col-md-12">
+                                            @Html.EditorFor(model => model.CANON_MENSUAL, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite el valor canon" } })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Fecha Inicio", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        <div class="col-md-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                @Html.EditorFor(model => model.FECHA_INICIO, new { htmlAttributes = new { @class = "form-control FechaHora", @aria_describedby = "basic-addon1", type = "text", @placeholder = "Seleccione una fecha" } })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Fecha Fin", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        <div class="col-md-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                @Html.EditorFor(model => model.FECHA_FIN, new { htmlAttributes = new { @class = "form-control FechaHora", @aria_describedby = "basic-addon1", type = "text", @placeholder = "Seleccione una fecha" } })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Consignar", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        <div class="col-md-12">
+                                            @Html.EditorFor(model => model.CONSIGNAR, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite un apartado" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-footer">
+                        <div class="col-md-6 text-left">
+                            <a class="btn btn-primary btn-sm" href="@Url.Action("Inicial", "Contratos")">
+                                <span class="fa fa-reply"></span> Regresar
+                            </a>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                <span class="fa fa-floppy-o"></span> Guardar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</section>

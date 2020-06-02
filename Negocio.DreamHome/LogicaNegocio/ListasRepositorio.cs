@@ -19,6 +19,18 @@
             return lista;
         }
 
+        public List<TiposPagosDTO> ConsultarTiposPagos()
+        {
+            List<TiposPagosDTO> lista = new List<TiposPagosDTO>();
+
+            using (ContextoDreamHome db = new ContextoDreamHome())
+            {
+                lista = db.TIPOS_PAGOS.Select(x => new TiposPagosDTO { ID_FORMA_PAGO  = x.ID_FORMA_PAGO, FORMA_PAGO = x.FORMA_PAGO }).ToList();
+            }
+
+            return lista;
+        }
+
         public List<GeneroDTO> ConsultarGeneros()
         {
             List<GeneroDTO> lista = new List<GeneroDTO>();
@@ -104,6 +116,18 @@
             return lista;
         }
 
+
+        public List<EstadosContratosDTO> ConsultarEstadosContratos()
+        {
+            List<EstadosContratosDTO> lista = new List<EstadosContratosDTO>();
+
+            using (ContextoDreamHome db = new ContextoDreamHome())
+            {
+                lista = db.ESTADOS_CONTRATOS.Select(x => new EstadosContratosDTO { ID_ESTADO_CONTRATO = x.ID_ESTADO_CONTRATO, ESTADO_CONTRATO = x.ESTADO_CONTRATO }).ToList();
+            }
+
+            return lista;
+        }
         public List<InmueblesDTO> ConsultarInmuebles()
         {
             List<InmueblesDTO> lista = new List<InmueblesDTO>();

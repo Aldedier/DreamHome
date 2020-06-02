@@ -4526,6 +4526,12 @@
     <Content Include="Views\Clientes\Crear.cshtml" />
     <Content Include="Views\Clientes\Editar.cshtml" />
     <Content Include="Views\Clientes\Inicial.cshtml" />
+    <Content Include="Views\Contratos\Crear.cshtml" />
+    <Content Include="Views\Contratos\Editar.cshtml" />
+    <Content Include="Views\Contratos\Inicial.cshtml" />
+    <Content Include="Views\Anuncios\Crear.cshtml" />
+    <Content Include="Views\Anuncios\Editar.cshtml" />
+    <Content Include="Views\Anuncios\Inicial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -63,7 +63,9 @@
     <Compile Include="ContextoBaseDatos\CIUDADES.cs" />
     <Compile Include="ContextoBaseDatos\CLIENTES.cs" />
     <Compile Include="ContextoBaseDatos\EMPLEADOS.cs" />
+    <Compile Include="ContextoBaseDatos\ESTADOS_CONTRATOS.cs" />
     <Compile Include="ContextoBaseDatos\ESTADOS_INMUEBLES.cs" />
+    <Compile Include="ContextoBaseDatos\TIPOS_PAGOS.cs" />
     <Compile Include="ContextoBaseDatos\TIPOS_CONTACTOS.cs" />
     <Compile Include="ContextoBaseDatos\VST_INMUEBLES.cs" />
     <Compile Include="ContextoBaseDatos\OFICINAS.cs" />

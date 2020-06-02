@@ -173,16 +173,13 @@ namespace Datos.DreamHome.LogicaBaseDatos
                         {
 
                             ID_CONTRATO = int.Parse(row["ID_CONTRATO"].ToString()),
-                            IDF_CLIENTE_CNTR = int.Parse(row["IDF_CLIENTE_CNTR"].ToString()),
-                            IDF_INMBL_EMPLD_CNTR = int.Parse(row["IDF_INMBL_EMPLD_CNTR"].ToString()),
-                            IDF_FORMA_PAGO_CNTR = int.Parse(row["IDF_FORMA_PAGO_CNTR"].ToString()),
-                            IDF_ESTADO_CONTRATO = int.Parse(row["IDF_ESTADO_CONTRATO"].ToString()),
+                            NOMBRE_CLINT = row["NOMBRE_CLINT"].ToString(),
+                            DIRECCION = row["DIRECCION_INM"].ToString(),
                             CANON_MENSUAL = int.Parse(row["CANON_MENSUAL"].ToString()),
                             FECHA_INICIO = DateTime.Parse(row["FECHA_INICIO"].ToString()),
                             FECHA_FIN = DateTime.Parse(row["FECHA_FIN"].ToString()),
-                            CONSIGNAR = row["CONSIGNAR"].ToString()
-
-                   
+                            CONSIGNAR = row["CONSIGNAR"].ToString(),
+                            ESTADO = row["ESTADO_CONTRATO"].ToString()
                         };
 
                         retorno.Add(registro);
