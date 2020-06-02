@@ -29,10 +29,10 @@ namespace Web.DreamHome.Controllers
 
         public ActionResult Crear()
         {
-            ViewBag.IDF_PERIODICO = new SelectList(new ListasRepositorio().ConsultarPeriodicos(), "ID_PERIODICO", "NOMBRE_PERIODICO");
-            ViewBag.IDF_INMUEBLE = new SelectList(new ListasRepositorio().ConsultarInmuebles(), "ID_INMUEBLE", "DIRECCION_INM");
+            ViewBag.IDF_PERIODICO_ANN = new SelectList(new ListasRepositorio().ConsultarPeriodicos(), "ID_PERIODICO", "NOMBRE_PERIODICO");
+            ViewBag.IDF_INMUEBLE_ANN = new SelectList(new ListasRepositorio().ConsultarInmuebles(), "ID_INMUEBLE", "DIRECCION_INM");
 
-            //ViewBag.Mensaje = null;
+            ViewBag.Mensaje = null;
             return View();
         }
 
@@ -40,19 +40,20 @@ namespace Web.DreamHome.Controllers
         public ActionResult Crear(AnuncioDTO anuncioDTO)
         {
             anuncioDTO.SESSION = GetSession();
-            ViewBag.IDF_PERIODICO = new SelectList(new ListasRepositorio().ConsultarPeriodicos(), "ID_PERIODICO", "NOMBRE_PERIODICO", anuncioDTO.IDF_PERIODICO_ANN);
-            ViewBag.IDF_INMUEBLE = new SelectList(new ListasRepositorio().ConsultarInmuebles(), "ID_INMUEBLE", "DIRECCION_INM", anuncioDTO.IDF_INMUEBLE_ANN);
+            ViewBag.IDF_PERIODICO_ANN = new SelectList(new ListasRepositorio().ConsultarPeriodicos(), "ID_PERIODICO", "NOMBRE_PERIODICO", anuncioDTO.IDF_PERIODICO_ANN);
+            ViewBag.IDF_INMUEBLE_ANN = new SelectList(new ListasRepositorio().ConsultarInmuebles(), "ID_INMUEBLE", "DIRECCION_INM", anuncioDTO.IDF_INMUEBLE_ANN);
+
 
             // ViewBag.IDF_TIPO_INM = new SelectList(new ListasRepositorio().ConsultarTiposPropiedades(), "ID_TIPO", "NOMBRE_TIPO", inmueblesDTO.IDF_TIPO_INM);
-            return RedirectToAction("Inicial", "Anuncio", new { _mensaje = new AnunciosRepositorio().ValidarAnuncio(anuncioDTO) });
+            return RedirectToAction("Inicial", "Anuncios", new { _mensaje = new AnunciosRepositorio().ValidarAnuncio(anuncioDTO) });
         }
 
         public ActionResult Editar(int _id)
         {
             AnuncioDTO datos = new AnunciosRepositorio().ConsultaAnuncios((int)GetSession()).Where(x => x.ID_ANUNCIO == _id).FirstOrDefault();
             //    ViewBag.IDF_TIPO_INM = new SelectList(new ListasRepositorio().ConsultarTiposPropiedades(), "ID_TIPO", "NOMBRE_TIPO", datos.IDF_TIPO_INM);
-            ViewBag.IDF_PERIODICO = new SelectList(new ListasRepositorio().ConsultarPeriodicos(), "ID_PERIODICO", "NOMBRE_PERIODICO", datos.IDF_PERIODICO_ANN);
-            ViewBag.IDF_INMUEBLE = new SelectList(new ListasRepositorio().ConsultarInmuebles(), "ID_INMUEBLE", "DIRECCION_INM", datos.IDF_INMUEBLE_ANN);
+            ViewBag.IDF_PERIODICO_ANN = new SelectList(new ListasRepositorio().ConsultarPeriodicos(), "ID_PERIODICO", "NOMBRE_PERIODICO", datos.IDF_PERIODICO_ANN);
+            ViewBag.IDF_INMUEBLE_ANN = new SelectList(new ListasRepositorio().ConsultarInmuebles(), "ID_INMUEBLE", "DIRECCION_INM", datos.IDF_INMUEBLE_ANN);
 
             return View(datos);
         }
@@ -61,15 +62,15 @@ namespace Web.DreamHome.Controllers
         public ActionResult Editar(AnuncioDTO anuncioDTO)
         {
             //   ViewBag.IDF_TIPO_INM = new SelectList(new ListasRepositorio().ConsultarTiposPropiedades(), "ID_TIPO", "NOMBRE_TIPO", inmueblesDTO.IDF_TIPO_INM);
-            ViewBag.IDF_PERIODICO = new SelectList(new ListasRepositorio().ConsultarPeriodicos(), "ID_PERIODICO", "NOMBRE_PERIODICO", anuncioDTO.IDF_PERIODICO_ANN);
-            ViewBag.IDF_INMUEBLE = new SelectList(new ListasRepositorio().ConsultarInmuebles(), "ID_INMUEBLE", "DIRECCION_INM", anuncioDTO.IDF_INMUEBLE_ANN);
+            ViewBag.IDF_PERIODICO_ANN = new SelectList(new ListasRepositorio().ConsultarPeriodicos(), "ID_PERIODICO", "NOMBRE_PERIODICO", anuncioDTO.IDF_PERIODICO_ANN);
+            ViewBag.IDF_INMUEBLE_ANN = new SelectList(new ListasRepositorio().ConsultarInmuebles(), "ID_INMUEBLE", "DIRECCION_INM", anuncioDTO.IDF_INMUEBLE_ANN);
             anuncioDTO.SESSION = GetSession();
-            return RedirectToAction("Inicial", "Anuncio", new { _mensaje = new AnunciosRepositorio().ActualizarAnuncio(anuncioDTO) });
+            return RedirectToAction("Inicial", "Anuncios", new { _mensaje = new AnunciosRepositorio().ActualizarAnuncio(anuncioDTO) });
         }
 
         public ActionResult Eliminar(int _id)
         {
-            return RedirectToAction("Inicial", "Anuncio", new { _mensaje = new AnunciosRepositorio().EliminarAnuncio(new AnuncioDTO {ID_ANUNCIO = _id, SESSION = GetSession() }) });
+            return RedirectToAction("Inicial", "Anuncios", new { _mensaje = new AnunciosRepositorio().EliminarAnuncio(new AnuncioDTO {ID_ANUNCIO = _id, SESSION = GetSession() }) });
         }
 
     }

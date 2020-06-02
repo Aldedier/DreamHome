@@ -166,6 +166,8 @@ namespace Datos.DreamHome.LogicaBaseDatos
                         registro = new AnuncioDTO
                         {
                             ID_ANUNCIO = int.Parse(row["ID_ANUNCIO"].ToString()),
+                            IDF_INMUEBLE_ANN = int.Parse(row["IDF_INMUEBLE_ANN"].ToString()),
+                            IDF_PERIODICO_ANN = int.Parse(row["IDF_PERIODICO_ANN"].ToString()),
                             DIRECCION_INM =row["DIRECCION_INM"].ToString(),
                             NOMBRE_PERIODICO = row["NOMBRE_PERIODICO"].ToString(),
                             INICIO_PUBLICACION = DateTime.Parse(row["INICIO_PUBLICACION"].ToString()),

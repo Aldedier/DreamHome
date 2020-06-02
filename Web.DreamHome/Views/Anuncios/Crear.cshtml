@@ -51,7 +51,7 @@
                                     <div class="form-group">
                                         @Html.Label("Inmueble", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.DropDownList("IDF_INMUEBLE", null, String.Format("Seleccione el  inmueble"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
+                                            @Html.DropDownList("IDF_INMUEBLE_ANN", null, String.Format("Seleccione el  inmueble"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
                                         </div>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
                                     <div class="form-group">
                                         @Html.Label("Periodico", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.DropDownList("IDF_PERIODICO", null, String.Format("Seleccione el  periodico"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
+                                            @Html.DropDownList("IDF_PERIODICO_ANN", null, String.Format("Seleccione el  periodico"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
                                         </div>
                                     </div>
                                 </div>
@@ -89,7 +89,7 @@
                                     <div class="form-group">
                                         @Html.Label("Costo x Dia", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.EditorFor(model => model.COSTO_DIA, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite el costo por dia" } })
+                                            @Html.EditorFor(model => model.COSTO_DIA, new { htmlAttributes = new { @class = "form-control", type = "number", @placeholder = "Digite el costo por dia" } })
                                         </div>
                                     </div>
                                 </div>
