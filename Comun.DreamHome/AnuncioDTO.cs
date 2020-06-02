@@ -10,7 +10,10 @@ namespace Comun.DreamHome
     {
         public int ID_ANUNCIO { get; set; }
         public int IDF_INMUEBLE_ANN { get; set; }
+
+        public string DIRECCION_INM { get; set; }
         public int IDF_PERIODICO_ANN { get; set; }
+        public string NOMBRE_PERIODICO { get; set; }
         public DateTime INICIO_PUBLICACION { get; set; }
         public DateTime FIN_PUBLICACION { get; set; }
         public int COSTO_DIA { get; set; }

@@ -155,7 +155,7 @@ namespace Datos.DreamHome.LogicaBaseDatos
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.PKG_ANUNCIOS.PR_ConsultarPago";
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_ANUNCIOS.PR_ConsultarAnuncio";
 
                     DataTable resultado = new DataTable();
                     resultado.Load(objCommand.ExecuteReader());
@@ -166,8 +166,8 @@ namespace Datos.DreamHome.LogicaBaseDatos
                         registro = new AnuncioDTO
                         {
                             ID_ANUNCIO = int.Parse(row["ID_ANUNCIO"].ToString()),
-                            IDF_INMUEBLE_ANN = int.Parse(row["IDF_INMUEBLE_ANN"].ToString()),
-                            IDF_PERIODICO_ANN = int.Parse(row["IDF_PERIODICO_ANN"].ToString()),
+                            DIRECCION_INM =row["DIRECCION_INM"].ToString(),
+                            NOMBRE_PERIODICO = row["NOMBRE_PERIODICO"].ToString(),
                             INICIO_PUBLICACION = DateTime.Parse(row["INICIO_PUBLICACION"].ToString()),
                             FIN_PUBLICACION = DateTime.Parse(row["FIN_PUBLICACION"].ToString()),
                             COSTO_DIA = int.Parse(row["COSTO_DIA"].ToString())

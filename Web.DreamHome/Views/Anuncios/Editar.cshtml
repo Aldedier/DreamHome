@@ -1,4 +1,4 @@
-﻿@model Comun.DreamHome.InmueblesDTO
+﻿@model Comun.DreamHome.AnuncioDTO
 
 @{
     ViewBag.Title = "Editar";
@@ -18,7 +18,7 @@
 
 <section class="content-header">
     <h1>
-        Editar inmueble
+        Editar anuncio
     </h1>
     <ol class="breadcrumb">
         <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> Inicio</a></li>
@@ -34,7 +34,7 @@
 
     @using (Html.BeginForm())
     {
-        <!-- Datos básicos Inmuebles-->
+        <!-- Datos básicos anuncio-->
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-primary">
@@ -42,7 +42,7 @@
                     <div class="box-header with-border">
                         <div class="text-right">
                             <div class="col-md-6 text-left">
-                                <h3 class="box-title"><i class="fa fa-file-text-o"></i> Datos básicos Inmueble</h3>
+                                <h3 class="box-title"><i class="fa fa-file-text-o"></i> Datos Anuncio</h3>
                             </div>
                         </div>
                     </div>
@@ -51,49 +51,60 @@
                     <div class="box-body">
                         <div class="form-group-sm">
                             <div class="row">
-                                <input type="hidden" name="ID_INMUEBLE" id="ID_INMUEBLE" value="@Model.ID_INMUEBLE" />
+                                <input type="hidden" name="ID_INMUEBLE" id="ID_INMUEBLE" value="@Model.ID_ANUNCIO" />
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        @Html.Label("Tipo de inmueble", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        @Html.Label("Inmueble", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.DropDownList("IDF_TIPO_INM", null, String.Format("Seleccione el tipo de inmueble"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
+                                            @Html.DropDownList("IDF_INMUEBLE", null, String.Format("Seleccione el  inmueble"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        @Html.Label("Dirección", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        @Html.Label("Periodico", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.EditorFor(model => model.DIRECCION_INM, new { htmlAttributes = new { @class = "form-control", type = "text",  @placeholder = "Digite una dirección" } })
+                                            @Html.DropDownList("IDF_PERIODICO", null, String.Format("Seleccione el  periodico"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        @Html.Label("Apartado", htmlAttributes: new { @class = "control-label col-md-12" })
-                                        <div class="col-md-12">
-                                            @Html.EditorFor(model => model.APARTADO_INM, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite un apartado" } })
-                                        </div>
-                                    </div>
-                                </div>
-                                @*<div class="col-md-3"> <!--Formato Fecha-->
-                                    <div class="form-group">
-                                        @Html.Label("Fecha Inmueble", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        @Html.Label("Fecha Inicio", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-calendar"></i></span>
-                                                @Html.EditorFor(model => model.FECHA_INM, new { htmlAttributes = new { @class = "form-control FechaHora", @aria_describedby = "basic-addon1", type = "text", @placeholder = "Seleccione una fecha" } })
+                                                @Html.EditorFor(model => model.INICIO_PUBLICACION, new { htmlAttributes = new { @class = "form-control FechaHora", @aria_describedby = "basic-addon1", type = "text", @placeholder = "Seleccione una fecha" } })
                                             </div>
                                         </div>
                                     </div>
-                                </div>*@
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Fecha Fin", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        <div class="col-md-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                @Html.EditorFor(model => model.FIN_PUBLICACION, new { htmlAttributes = new { @class = "form-control FechaHora", @aria_describedby = "basic-addon1", type = "text", @placeholder = "Seleccione una fecha" } })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Costo x Dia", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        <div class="col-md-12">
+                                            @Html.EditorFor(model => model.COSTO_DIA, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite el costo por dia" } })
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-footer">
                         <div class="col-md-6 text-left">
-                            <a class="btn btn-primary btn-sm" href="@Url.Action("Inicial", "Inmueble")">
+                            <a class="btn btn-primary btn-sm" href="@Url.Action("Inicial", "Anuncios")">
                                 <span class="fa fa-reply"></span> Regresar
                             </a>
                         </div>

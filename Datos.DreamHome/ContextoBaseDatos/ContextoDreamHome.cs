@@ -26,6 +26,8 @@
         public virtual IDbSet<TIPOS_PAGOS> TIPOS_PAGOS { get; set; }
 
         public virtual IDbSet<ESTADOS_CONTRATOS> ESTADOS_CONTRATOS{ get; set; }
+        public virtual IDbSet<PERIODICOS> PERIODICOS { get; set; }
+
 
     }
 }

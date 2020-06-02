@@ -43,6 +43,18 @@
             return lista;
         }
 
+        public List<PeriodicosDTO> ConsultarPeriodicos()
+        {
+            List<PeriodicosDTO> lista = new List<PeriodicosDTO>();
+
+            using (ContextoDreamHome db = new ContextoDreamHome())
+            {
+                lista = db.PERIODICOS.Select(x => new PeriodicosDTO { ID_PERIODICO = x.ID_PERIODICO, NOMBRE_PERIODICO = x.NOMBRE_PERIODICO }).ToList();
+            }
+
+            return lista;
+        }
+
         public List<UsuarioDTO> ConsultarUsuarios()
         {
             List<UsuarioDTO> lista = new List<UsuarioDTO>();
