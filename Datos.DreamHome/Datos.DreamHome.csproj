@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="ContextoBaseDatos\CARACTERISTICAS_INMUEBLES.cs" />
     <Compile Include="ContextoBaseDatos\CARGOS.cs" />
+    <Compile Include="ContextoBaseDatos\Consignar.cs" />
     <Compile Include="ContextoBaseDatos\PERIODICOS.cs" />
     <Compile Include="ContextoBaseDatos\ContextoDreamHome.cs" />
     <Compile Include="ContextoBaseDatos\CIUDADES.cs" />

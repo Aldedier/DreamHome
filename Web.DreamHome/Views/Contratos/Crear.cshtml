@@ -1,4 +1,5 @@
 ﻿@model Comun.DreamHome.ContratosDTO
+    
 
 @{
     ViewBag.Title = "Crear";
@@ -51,7 +52,7 @@
                                     <div class="form-group">
                                         @Html.Label("Nombre Cliente", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.DropDownList("IDF_CLIENTE", null, String.Format("Seleccione el cliente"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
+                                            @Html.DropDownList("IDF_CLIENTE_CNTR", null, String.Format("Seleccione el cliente"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
                                         </div>
                                     </div>
                                 </div>
@@ -59,7 +60,7 @@
                                     <div class="form-group">
                                         @Html.Label("Inmueble", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.DropDownList("IDF_INMUEBLE", null, String.Format("Seleccione el inmueble"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
+                                            @Html.DropDownList("IDF_INMUEBLE_CNTR", null, String.Format("Seleccione el inmueble"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
                                         </div>
                                     </div>
 
@@ -68,7 +69,7 @@
                                     <div class="form-group">
                                         @Html.Label("Forma de pago", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.DropDownList("IDF_FORMAPAGO", null, String.Format("Seleccione la forma de pago"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
+                                            @Html.DropDownList("IDF_FORMA_PAGO_CNTR", null, String.Format("Seleccione la forma de pago"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
                                         </div>
                                     </div>
 
@@ -77,7 +78,7 @@
                                     <div class="form-group">
                                         @Html.Label("Estado contrato", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.DropDownList("IDF_ESTADOCONTRATO", null, String.Format("Seleccione el estado contrato"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
+                                            @Html.DropDownList("IDF_ESTADO_CONTRATO", null, String.Format("Seleccione el estado contrato"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
                                         </div>
                                     </div>
 
@@ -86,7 +87,7 @@
                                     <div class="form-group">
                                         @Html.Label("Valor canon(mensual)", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.EditorFor(model => model.CANON_MENSUAL, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite el valor canon" } })
+                                            @Html.EditorFor(model => model.CANON_MENSUAL, new { htmlAttributes = new { @class = "form-control", type = "number", @placeholder = "Digite el valor canon" } })
                                         </div>
                                     </div>
                                 </div>
@@ -114,9 +115,9 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        @Html.Label("Consignar", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        @Html.Label("Se Consigna ? ", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.EditorFor(model => model.CONSIGNAR, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite un apartado" } })
+                                            @Html.EditorFor(model => model.CONSIGNAR, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "" } })
                                         </div>
                                     </div>
                                 </div>

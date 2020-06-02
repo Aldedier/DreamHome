@@ -23,7 +23,7 @@ namespace Datos.DreamHome.LogicaBaseDatos
                 {
                     objCommand.Parameters.Clear();
                     objCommand.Parameters.Add(new OracleParameter("I_IdCliente", OracleDbType.Decimal)).Value = ContratoDTO.IDF_CLIENTE_CNTR;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdEmpleado", OracleDbType.Decimal)).Value = ContratoDTO.IDF_INMBL_EMPLD_CNTR;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdInmueble", OracleDbType.Decimal)).Value = ContratoDTO.IDF_INMUEBLE_CNTR;
                     objCommand.Parameters.Add(new OracleParameter("I_FormaPago", OracleDbType.Decimal)).Value = ContratoDTO.IDF_FORMA_PAGO_CNTR;
                     objCommand.Parameters.Add(new OracleParameter("I_EstadoContrato", OracleDbType.Decimal)).Value = ContratoDTO.IDF_ESTADO_CONTRATO;
                     objCommand.Parameters.Add(new OracleParameter("I_CanonMes", OracleDbType.Decimal)).Value = ContratoDTO.CANON_MENSUAL;
@@ -71,7 +71,7 @@ namespace Datos.DreamHome.LogicaBaseDatos
                     objCommand.Parameters.Clear();
                     objCommand.Parameters.Add(new OracleParameter("I_IdContrato", OracleDbType.Decimal)).Value = ContratoDTO.ID_CONTRATO;
                     objCommand.Parameters.Add(new OracleParameter("I_IdCliente", OracleDbType.Decimal)).Value = ContratoDTO.IDF_CLIENTE_CNTR;
-                    objCommand.Parameters.Add(new OracleParameter("I_IdEmpleado", OracleDbType.Decimal)).Value = ContratoDTO.IDF_INMBL_EMPLD_CNTR;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdInmueble", OracleDbType.Decimal)).Value = ContratoDTO.IDF_INMUEBLE_CNTR;
                     objCommand.Parameters.Add(new OracleParameter("I_FormaPago", OracleDbType.Decimal)).Value = ContratoDTO.IDF_FORMA_PAGO_CNTR;
                     objCommand.Parameters.Add(new OracleParameter("I_EstadoContrato", OracleDbType.Decimal)).Value = ContratoDTO.IDF_ESTADO_CONTRATO;
                     objCommand.Parameters.Add(new OracleParameter("I_CanonMes", OracleDbType.Decimal)).Value = ContratoDTO.CANON_MENSUAL;
@@ -173,6 +173,10 @@ namespace Datos.DreamHome.LogicaBaseDatos
                         {
 
                             ID_CONTRATO = int.Parse(row["ID_CONTRATO"].ToString()),
+                            IDF_CLIENTE_CNTR = int.Parse(row["IDF_CLIENTE_CNTR"].ToString()),
+                            IDF_ESTADO_CONTRATO = int.Parse(row["IDF_ESTADO_CONTRATO"].ToString()),
+                            IDF_FORMA_PAGO_CNTR = int.Parse(row["IDF_FORMA_PAGO_CNTR"].ToString()),
+                            IDF_INMUEBLE_CNTR = int.Parse(row["IDF_INMUEBLE_CNTR"].ToString()),
                             NOMBRE_CLINT = row["NOMBRE_CLINT"].ToString(),
                             DIRECCION = row["DIRECCION_INM"].ToString(),
                             CANON_MENSUAL = int.Parse(row["CANON_MENSUAL"].ToString()),

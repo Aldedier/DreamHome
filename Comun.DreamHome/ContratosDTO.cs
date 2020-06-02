@@ -13,7 +13,7 @@ namespace Comun.DreamHome
         public int ID_CONTRATO { get; set; }
         public int IDF_CLIENTE_CNTR { get; set; }
         public string NOMBRE_CLINT { get; set; }
-        public int IDF_INMBL_EMPLD_CNTR { get; set; }
+        public int IDF_INMUEBLE_CNTR { get; set; }
         public int IDF_FORMA_PAGO_CNTR { get; set; }
         public int IDF_ESTADO_CONTRATO { get; set; }
         public int CANON_MENSUAL { get; set; }
