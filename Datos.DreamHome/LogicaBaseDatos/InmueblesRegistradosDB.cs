@@ -192,5 +192,67 @@
             }
             return retorno.Where(x => x.ESTADO_INMUEBLE != "Inactivo").ToList();
         }
+
+
+        public List<InmueblesRegistradosDTO> ReporteInmueblesRegistrados(InmueblesRegistradosDTO inmueblesRegistradosDTO)
+        {
+            List<InmueblesRegistradosDTO> retorno = new List<InmueblesRegistradosDTO>();
+
+            using (OracleConnection connection = new OracleConnection(WebConfigurationManager.ConnectionStrings["ContextoDH"].ConnectionString))
+            using (OracleCommand objCommand = connection.CreateCommand())
+            {
+                try
+                {
+                    objCommand.Parameters.Clear();
+                    objCommand.Parameters.Add(new OracleParameter("I_Propietario", OracleDbType.Varchar2, 200)).Value = inmueblesRegistradosDTO.NOMBRE_PROP;
+                    objCommand.Parameters.Add(new OracleParameter("I_TipoInm", OracleDbType.Varchar2, 200)).Value = inmueblesRegistradosDTO.NOMBRE_TIPO;
+                    objCommand.Parameters.Add(new OracleParameter("I_Oficina", OracleDbType.Varchar2, 200)).Value = inmueblesRegistradosDTO.OFICINA;
+                    objCommand.Parameters.Add(new OracleParameter("I_Empleado", OracleDbType.Varchar2, 200)).Value = inmueblesRegistradosDTO.NOMBRE_RH;
+                    objCommand.Parameters.Add(new OracleParameter("I_Estado", OracleDbType.Varchar2, 200)).Value = inmueblesRegistradosDTO.ESTADO_INMUEBLE;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = inmueblesRegistradosDTO.SESSION;
+                    objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.RefCursor)).Direction = ParameterDirection.Output;
+
+                    connection.Open();
+
+                    objCommand.CommandType = CommandType.StoredProcedure;
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_INMUEBLES_REGISTRADOS.PR_RptInmuebleRegstrd";
+
+                    DataTable resultado = new DataTable();
+                    resultado.Load(objCommand.ExecuteReader());
+
+                    InmueblesRegistradosDTO registro;
+                    foreach (DataRow row in resultado.Rows)
+                    {
+                        registro = new InmueblesRegistradosDTO
+                        {
+                            ID_INMUEBLE = int.Parse(row["ID_INMUEBLE"].ToString()),
+                            ESTADO_INMUEBLE = row["ESTADO_INM"].ToString(),
+                            NOMBRE_TIPO = row["TIPO_INM"].ToString(),
+                            NOMBRE_PROP = row["PROPIETARIO_INM"].ToString(),
+                            DIRECCION_INM = row["DIRECCION_INM"].ToString(),
+                            APARTADO_INM = row["APARTADO_INM"].ToString(),
+                            OFICINA = row["OFICINA_INM"].ToString(),
+                            NOMBRE_RH = row["EMPLEADO_INM"].ToString(),
+                            FECHA_INM = DateTime.Parse(row["FECHA_INM"].ToString()),
+                        };
+
+                        retorno.Add(registro);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new ArgumentException($"{ex.Message} {ex.InnerException}");
+                }
+                finally
+                {
+                    if (connection.State == ConnectionState.Open)
+                        connection.Close();
+
+                    if (objCommand != null)
+                        objCommand.Dispose();
+                }
+            }
+            return retorno;
+        }
     }
 }

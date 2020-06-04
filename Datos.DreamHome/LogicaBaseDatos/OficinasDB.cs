@@ -64,10 +64,10 @@
                 {
                     objCommand.Parameters.Clear();
                     objCommand.Parameters.Add(new OracleParameter("I_IdOficina", OracleDbType.Decimal)).Value = oficinasDTO.ID_OFICINA;
+                    objCommand.Parameters.Add(new OracleParameter("I_Oficina", OracleDbType.Varchar2, 100)).Value = oficinasDTO.OFICINA;
                     objCommand.Parameters.Add(new OracleParameter("I_IdfCiudad", OracleDbType.Decimal)).Value = oficinasDTO.IDF_CIUDAD_OFC;
-                    objCommand.Parameters.Add(new OracleParameter("I_Oficina", OracleDbType.Varchar2, 200)).Value = oficinasDTO.OFICINA;
                     objCommand.Parameters.Add(new OracleParameter("I_DireccionOfc", OracleDbType.Varchar2, 200)).Value = oficinasDTO.DIRECCION_OFC;
-                    objCommand.Parameters.Add(new OracleParameter("I_ApartadoOfc", OracleDbType.Varchar2, 200)).Value = oficinasDTO.APARTADO_OFC;
+                    objCommand.Parameters.Add(new OracleParameter("I_ApartadoOfc", OracleDbType.Varchar2, 100)).Value = oficinasDTO.APARTADO_OFC;
                     objCommand.Parameters.Add(new OracleParameter("I_ActivoOfc", OracleDbType.Decimal)).Value = 1;
                     objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = oficinasDTO.SESSION;
                     objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;

@@ -40,5 +40,10 @@
         {
             return new InmueblesRegistradosDB().ListaInmueblesRegistrados(InmueblesRegistradosDTO);
         }
+
+        public List<InmueblesRegistradosDTO> ReporteInmueblesRegistrados(InmueblesRegistradosDTO InmueblesRegistradosDTO)
+        {
+            return new InmueblesRegistradosDB().ReporteInmueblesRegistrados(InmueblesRegistradosDTO);
+        }
     }
 }
