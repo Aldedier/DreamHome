@@ -4545,6 +4545,7 @@
     <Content Include="Views\Usuarios\Inicial.cshtml" />
     <Content Include="Views\Reportes\ReporteInmuebles.cshtml" />
     <Content Include="Views\Reportes\ReporteAuditoria.cshtml" />
+    <Content Include="Views\Reportes\ReporteOficinas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

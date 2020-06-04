@@ -40,5 +40,10 @@
         {
             return new OficinasDB().ListaOficinas(_session);
         }
+
+        public List<HistorialLaboralDTO> ReporteOficinas(HistorialLaboralDTO historialLaboralDTO)
+        {
+            return new OficinasDB().ReporteOficinasEmpleados(historialLaboralDTO);
+        }
     }
 }

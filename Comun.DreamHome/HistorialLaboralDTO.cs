@@ -15,6 +15,7 @@ namespace Comun.DreamHome
         public string CARGO { get; set; }
         public int IDF_OFCINA_HST { get; set; }
         public string OFICINA { get; set; }
+        public string ESTADO_HST { get; set; }
         public int VIGENTE_HST { get; set; }
         public DateTime FECHA_HST { get; set; }
         public int? SESSION { get; set; } = null;

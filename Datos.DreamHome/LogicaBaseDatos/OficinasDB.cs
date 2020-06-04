@@ -190,5 +190,59 @@
             }
             return retorno.Where(x => x.ACTIVO_OFC == 1).ToList();
         }
+
+        public List<HistorialLaboralDTO> ReporteOficinasEmpleados(HistorialLaboralDTO historialLaboralDTO)
+        {
+            List<HistorialLaboralDTO> retorno = new List<HistorialLaboralDTO>();
+
+            using (OracleConnection connection = new OracleConnection(WebConfigurationManager.ConnectionStrings["ContextoDH"].ConnectionString))
+            using (OracleCommand objCommand = connection.CreateCommand())
+            {
+                try
+                {
+                    objCommand.Parameters.Clear();
+                    objCommand.Parameters.Add(new OracleParameter("I_Oficina", OracleDbType.Varchar2, 200)).Value = historialLaboralDTO.OFICINA;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = historialLaboralDTO.SESSION;
+                    objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.RefCursor)).Direction = ParameterDirection.Output;
+
+                    connection.Open();
+
+                    objCommand.CommandType = CommandType.StoredProcedure;
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_OFICINAS.PR_RptOficinasEmpleados";
+
+                    DataTable resultado = new DataTable();
+                    resultado.Load(objCommand.ExecuteReader());
+
+                    HistorialLaboralDTO registro;
+                    foreach (DataRow row in resultado.Rows)
+                    {
+                        registro = new HistorialLaboralDTO
+                        {
+                            OFICINA = row["OFICINA"].ToString(),
+                            CARGO = row["CARGO"].ToString(),
+                            NOMBRE_RH = row["NOMBRE_RH"].ToString(),
+                            FECHA_HST = DateTime.Parse(row["FECHA_HST"].ToString()),
+                            VIGENTE_HST = int.Parse(row["VIGENTE_HST"].ToString()),
+                            ESTADO_HST = row["ESTADO_HST"].ToString()
+                        };
+
+                        retorno.Add(registro);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new ArgumentException($"{ex.Message} {ex.InnerException}");
+                }
+                finally
+                {
+                    if (connection.State == ConnectionState.Open)
+                        connection.Close();
+
+                    if (objCommand != null)
+                        objCommand.Dispose();
+                }
+            }
+            return retorno;
+        }
     }
 }

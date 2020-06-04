@@ -39,7 +39,20 @@
             return View();
         }
 
+        public ActionResult ReporteOficinas()
+        {
+            ViewBag.REPORTE = new List<InmueblesRegistradosDTO>();
+            return View();
+        }
 
+
+        [HttpPost]
+        public ActionResult ReporteOficinas(HistorialLaboralDTO historialLaboralDTO)
+        {
+            historialLaboralDTO.SESSION = GetSession();
+            ViewBag.REPORTE = new OficinasRepositorio().ReporteOficinas(historialLaboralDTO);
+            return View();
+        }
 
     }
 }
