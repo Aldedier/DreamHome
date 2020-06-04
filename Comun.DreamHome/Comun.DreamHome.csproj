@@ -50,6 +50,8 @@
     <Compile Include="EstadosContratosDTO.cs" />
     <Compile Include="PeriodicosDTO.cs" />
     <Compile Include="TiposPagosDTO.cs" />
+    <Compile Include="TiposUsuariosDTO.cs" />
+    <Compile Include="UsuariosDTO.cs" />
     <Compile Include="VisitasDTO.cs" />
     <Compile Include="ContactosPropietariosDTO.cs" />
     <Compile Include="InmueblesPropietariosDTO.cs" />

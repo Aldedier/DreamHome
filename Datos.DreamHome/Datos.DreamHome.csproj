@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="ContextoBaseDatos\CARACTERISTICAS_INMUEBLES.cs" />
     <Compile Include="ContextoBaseDatos\CARGOS.cs" />
+    <Compile Include="ContextoBaseDatos\TIPOS_USUARIOS.cs" />
     <Compile Include="ContextoBaseDatos\VST_CONTRATOS.cs" />
     <Compile Include="ContextoBaseDatos\PERIODICOS.cs" />
     <Compile Include="ContextoBaseDatos\ContextoDreamHome.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="ContextoBaseDatos\USUARIOS.cs" />
     <Compile Include="ContextoBaseDatos\GENEROS.cs" />
     <Compile Include="ContextoBaseDatos\TIPOS_PROPIEDADES.cs" />
+    <Compile Include="LogicaBaseDatos\UsuariosDB.cs" />
     <Compile Include="LogicaBaseDatos\AnunciosDB.cs" />
     <Compile Include="LogicaBaseDatos\ContactosPropietariosDB.cs" />
     <Compile Include="LogicaBaseDatos\ContactosOficinasDB.cs" />
@@ -95,7 +97,6 @@
     <Compile Include="LogicaBaseDatos\EmpleadosDB.cs" />
     <Compile Include="LogicaBaseDatos\SistemaDB.cs" />
     <Compile Include="LogicaBaseDatos\InmueblesDB.cs" />
-    <Compile Include="LogicaBaseDatos\UsuariosDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

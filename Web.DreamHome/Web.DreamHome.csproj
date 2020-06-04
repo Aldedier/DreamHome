@@ -138,6 +138,7 @@
     <Compile Include="Controllers\ContactosPeriodicosController.cs" />
     <Compile Include="Controllers\ContactosPropietariosController.cs" />
     <Compile Include="Controllers\ContactosOficinasController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\ContratosController.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\ContactosEmpleadosController.cs" />
@@ -4539,6 +4540,9 @@
     <Content Include="Views\ContactosPeriodicos\Crear.cshtml" />
     <Content Include="Views\ContactosPeriodicos\Editar.cshtml" />
     <Content Include="Views\ContactosPeriodicos\Inicial.cshtml" />
+    <Content Include="Views\Usuarios\Crear.cshtml" />
+    <Content Include="Views\Usuarios\Editar.cshtml" />
+    <Content Include="Views\Usuarios\Inicial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

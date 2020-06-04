@@ -28,6 +28,7 @@
         public virtual IDbSet<ESTADOS_CONTRATOS> ESTADOS_CONTRATOS{ get; set; }
         public virtual IDbSet<PERIODICOS> PERIODICOS { get; set; }
         public virtual IDbSet<VST_CONTRATOS> VST_CONTRATOS { get; set; }
+        public virtual IDbSet<TIPOS_USUARIOS> TIPOS_USUARIOS { get; set; }
 
 
 

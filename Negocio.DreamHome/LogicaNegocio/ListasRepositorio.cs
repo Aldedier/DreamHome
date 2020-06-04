@@ -43,6 +43,17 @@
 
             return lista;
         }
+        public List<TiposUsuariosDTO> ConsultarTiposUsuarios()
+        {
+            List<TiposUsuariosDTO> lista = new List<TiposUsuariosDTO>();
+
+            using (ContextoDreamHome db = new ContextoDreamHome())
+            {
+                lista = db.TIPOS_USUARIOS.Select(x => new TiposUsuariosDTO { ID_ROL = x.ID_ROL, ROL_USUARIO = x.ROL_USUARIO }).ToList();
+            }
+
+            return lista;
+        }
 
         public List<GeneroDTO> ConsultarGeneros()
         {

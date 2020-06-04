@@ -1,0 +1,134 @@
+﻿@model IEnumerable<Comun.DreamHome.UsuariosDTO>
+
+@{
+    ViewBag.Title = "Inicio";
+}
+
+@section styles{
+    @Styles.Render("~/Content/FormularioCss")
+    @Styles.Render("~/Content/bootstrapdataTablesCSS")
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/FormularioJs")
+    @Scripts.Render("~/bundles/jquerydataTablesJS")
+
+    <script>
+        poblarTabla("tbDatos");
+    </script>
+}
+
+<section class="content-header">
+    <h1>
+        Usuarios
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> Inicio</a></li>
+        <li class="active">Listar</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <!-- Etapa Verificación -->
+        <div class="col-md-12">
+            <!-- /.box -->
+            <div class="box box-primary">
+                <div class="box-header">
+                    <div class="text-right">
+                        <div class="col-md-6 text-left">
+                            <h3 class="box-title">Lista Usuarios</h3>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <button type="button" class="btn btn-primary btn-sm" onclick="location.href='@Url.Action("Crear", "Usuarios")';">
+                                <span class="glyphicon glyphicon-plus"></span> Nuevo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- /.box-header -->
+                <div class="box-body">
+                    @if (ViewBag.Mensaje != null)
+                    {
+                        <div class="alert alert-info alert-dismissible"><h4 class="text-center"> @ViewBag.Mensaje <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></h4></div>
+                        <br />
+                    }
+                    <table id="tbDatos" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>
+                                    <p>Id Usuario</p>
+                                </th>
+                                <th>
+                                    <p>Usuario</p>
+                                </th>
+                                <th>
+                                    <p>Nombre Usuario</p>
+                                </th>
+                                <th>
+                                    <p>Rol</p>
+                                </th>
+                                <th>
+                                    <p>Fecha Usuario</p>
+                                </th>
+                                
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-primary" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <span class="glyphicon glyphicon-align-center"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            @*<li><a href="@Url.Action("Crear", "ContratossRegistrados", new { _idContratos = item.ID_Contratos })"><i class="fa fa-pencil-square-o"></i> Registrar</a></li>
+                    <li><a href="@Url.Action("Crear", "DetallesContratos", new { _idContratos = item.ID_Contratos })"><i class="fa fa-pencil-square-o"></i> Agregar detalles</a></li>*@
+                                            <li><a href="@Url.Action("Editar", "Usuarios", new { _id = item.ID_USUARIO })"><i class="fa fa-refresh"></i> Actualizar</a></li>
+                                            <li><a href="@Url.Action("Eliminar", "Usuarios", new { _id = item.ID_USUARIO })"><i class="fa fa-trash"></i> Eliminar</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td>@item.ID_USUARIO</td>
+                                <td>@item.USUARIO</td>
+                                <td>@item.NOMBRE_USR</td>
+                                <td>@item.ROL_USUARIO</td>
+                                <td>@item.FECHA_USR</td>
+                               
+                                
+                                @*<td>
+            <ul>
+                @foreach (var item2 in item.DetallesContratossDTOs)
+                {
+                    <li>@item2.CARACTERISTICA - @item2.VALOR  &nbsp &nbsp<a style="cursor:pointer;color:blue" title="Actualizar Detalle" class="fa fa-refresh" href="@Url.Action("Editar","DetallesContratos", new { _idDetalleContratos = item2.ID_DETALLE_INMBL })"></a><b>&nbsp -  &nbsp</b><a style="cursor:pointer;color:darkred" title="Eliminar Detalle" class="fa fa-close" href="@Url.Action("Eliminar","DetallesContratos", new { _idDetalleContratos = item2.ID_DETALLE_INMBL })"></a></li>
+                }
+            </ul>
+        </td>*@
+                                @*<td>
+                                    <ul>
+                                        @foreach (var item2 in item.ContratossRegistradosDTOs)
+                                        {
+                                            <li>@item2.OFICINA - @item2.NOMBRE_RH - @item2.ESTADO_Contratos  &nbsp &nbsp<a style="cursor:pointer;color:blue" title="Actualizar Detalle" class="fa fa-refresh" href="@Url.Action("Editar","ContratossRegistrados", new { _id = item2.ID_Contratos_REGISTRADO })"></a><b>&nbsp -  &nbsp</b><a style="cursor:pointer;color:darkred" title="Eliminar Detalle" class="fa fa-close" href="@Url.Action("Eliminar","ContratossRegistrados", new { _id = item2.ID_Contratos_REGISTRADO })"></a></li>
+                                        }
+                                    </ul>
+                                </td>*@
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+
+</section>
