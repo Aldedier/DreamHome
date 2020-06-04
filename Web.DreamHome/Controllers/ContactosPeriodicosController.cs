@@ -10,13 +10,13 @@ namespace Web.DreamHome.Controllers
 {
     public class ContactosPeriodicosController :BaseController
     {
-        //public ActionResult Crear(int _idPropietario)
-        //{
-        //    ViewBag.IDF_TIPO_CONTACTO_PROP = new SelectList(new ListasRepositorio().ConsultarTiposContactos(), "ID_TIPO_CONTACTO", "TIPO_CONTACTO");
-        //    ViewBag.IDF_PROPIETARIO_CNTCT = _idPropietario;
-        //    ViewBag.Mensaje = null;
-        //    return View();
-        //}
+        public ActionResult Crear(int _idPropietario)
+        {
+            //ViewBag.IDF_TIPO_CONTACTO_PROP = new SelectList(new ListasRepositorio().ConsultarTiposContactos(), "ID_TIPO_CONTACTO", "TIPO_CONTACTO");
+            //ViewBag.IDF_PROPIETARIO_CNTCT = _idPropietario;
+            //ViewBag.Mensaje = null;
+            return View();
+        }
 
         [HttpPost]
         public ActionResult Crear(ContactosPeriodicoDTO contactosPeriodicosDTO)
