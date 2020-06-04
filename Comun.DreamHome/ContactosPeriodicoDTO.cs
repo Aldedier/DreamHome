@@ -11,7 +11,9 @@ namespace Comun.DreamHome
         public int ID_CONTACTO_PERIODICO { get; set; }
         public int IDF_PERIODICO { get; set; }
         public int IDF_TIPO_CONTACTO { get; set; }
-        public string DATO_CONTACTO_PERIOD { get; set; }
+        public string DATO_CONTCT { get; set; }
+        public string NOMBRE_PERIODICO { get; set; }
+        public string TIPO_CONTACTO { get; set; }
 
         public int? SESSION { get; set; } = null;
     }

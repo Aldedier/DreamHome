@@ -1,4 +1,4 @@
-﻿@model Comun.DreamHome.PagosDTO
+﻿@model Comun.DreamHome.ContactosPeriodicoDTO
     
 
 @{
@@ -15,7 +15,7 @@
 
 <section class="content-header">
     <h1>
-       Crear Pagos
+       Crear Contactos Periodicos
     </h1>
     <ol class="breadcrumb">
         <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> Inicio</a></li>
@@ -39,7 +39,7 @@
                     <div class="box-header with-border">
                         <div class="text-right">
                             <div class="col-md-6 text-left">
-                                <h3 class="box-title"><i class="fa fa-file-text-o"></i> Datos Pagos</h3>
+                                <h3 class="box-title"><i class="fa fa-file-text-o"></i> Datos Contactos Periodicos</h3>
                             </div>
                         </div>
                     </div>
@@ -50,48 +50,38 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        @Html.Label("Numero del contrato", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        @Html.Label("Periodico", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.DropDownList("IDF_CONTRATO_PG", null, String.Format("Seleccione el contrato"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
+                                            @Html.DropDownList("IDF_PERIODICO", null, String.Format("Seleccione el periodico"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
                                         </div>
                                     </div>
                                 </div>
-                           
+
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        @Html.Label("Valor Pago", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        @Html.Label("Tipo contacto", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.EditorFor(model => model.VALOR_PAGO, new { htmlAttributes = new { @class = "form-control", type = "number", @placeholder = "Digite el valor " } })
+                                            @Html.DropDownList("IDF_TIPO_CONTACTO", null, String.Format("Seleccione el tipo de contacto"), htmlAttributes: new { @class = "form-control select2", style = "width: 100%;" })
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        @Html.Label("Fecha Pago", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        @Html.Label("Contacto", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-calendar"></i></span>
-                                                @Html.EditorFor(model => model.FECHA_PAGO, new { htmlAttributes = new { @class = "form-control FechaHora", @aria_describedby = "basic-addon1", type = "text", @placeholder = "Seleccione una fecha" } })
-                                            </div>
+                                            @Html.EditorFor(model => model.DATO_CONTCT, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = " " } })
                                         </div>
                                     </div>
                                 </div>
-                               
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        @Html.Label("Observacion  ", htmlAttributes: new { @class = "control-label col-md-12" })
-                                        <div class="col-md-12">
-                                            @Html.EditorFor(model => model.OBSERVACION, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "" } })
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                             </div>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-footer">
                         <div class="col-md-6 text-left">
-                            <a class="btn btn-primary btn-sm" href="@Url.Action("Inicial", "Pagos")">
+                            <a class="btn btn-primary btn-sm" href="@Url.Action("Inicial", "ContactosPeriodicos")">
                                 <span class="fa fa-reply"></span> Regresar
                             </a>
                         </div>

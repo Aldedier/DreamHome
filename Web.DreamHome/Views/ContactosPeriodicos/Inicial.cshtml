@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Comun.DreamHome.PagosDTO>
+﻿@model IEnumerable<Comun.DreamHome.ContactosPeriodicoDTO>
 
 @{
     ViewBag.Title = "Inicio";
@@ -20,7 +20,7 @@
 
 <section class="content-header">
     <h1>
-        Pagos
+        Contactos Periodicos
     </h1>
     <ol class="breadcrumb">
         <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> Inicio</a></li>
@@ -40,7 +40,7 @@
                             <h3 class="box-title">Lista Pagos</h3>
                         </div>
                         <div class="col-md-6 text-right">
-                            <button type="button" class="btn btn-primary btn-sm" onclick="location.href='@Url.Action("Crear", "Pagos")';">
+                            <button type="button" class="btn btn-primary btn-sm" onclick="location.href='@Url.Action("Crear", "ContactosPeriodicos")';">
                                 <span class="glyphicon glyphicon-plus"></span> Nuevo
                             </button>
                         </div>
@@ -60,21 +60,19 @@
                                 <th></th>
                                 <th></th>
                                 <th>
-                                    <p>Id Pago</p>
+                                    <p>Id Contacto Periodico</p>
                                 </th>
                                
                                 <th>
-                                    <p>Id Contrato</p>
+                                    <p>Nombre Periodico </p>
                                 </th>
                                 <th>
-                                    <p>Fecha Pago</p>
+                                    <p>Tipo Contacto </p>
                                 </th>
                                 <th>
-                                    <p>Valor Pago</p>
+                                    <p>Dato Contacto</p>
                                 </th>
-                                <th>
-                                    <p>Observacion</p>
-                                </th>
+                                
                                 
                             </tr>
                         </thead>
@@ -89,34 +87,18 @@
                                             <span class="glyphicon glyphicon-align-center"></span>
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                            @*<li><a href="@Url.Action("Crear", "ContratossRegistrados", new { _idContratos = item.ID_Contratos })"><i class="fa fa-pencil-square-o"></i> Registrar</a></li>
-                    <li><a href="@Url.Action("Crear", "DetallesContratos", new { _idContratos = item.ID_Contratos })"><i class="fa fa-pencil-square-o"></i> Agregar detalles</a></li>*@
-                                            <li><a href="@Url.Action("Editar", "Pagos", new { _id = item.ID_PAGO })"><i class="fa fa-refresh"></i> Actualizar</a></li>
-                                            <li><a href="@Url.Action("Eliminar", "Pagos", new { _id = item.ID_PAGO  })"><i class="fa fa-trash"></i> Eliminar</a></li>
+                                          
+                                            <li><a href="@Url.Action("Editar", "ContactosPeriodicos", new { _id = item.ID_CONTACTO_PERIODICO })"><i class="fa fa-refresh"></i> Actualizar</a></li>
+                                            <li><a href="@Url.Action("Eliminar", "ContactosPeriodicos", new { _id = item.ID_CONTACTO_PERIODICO  })"><i class="fa fa-trash"></i> Eliminar</a></li>
                                         </ul>
                                     </div>
                                 </td>
-                                <td>@item.ID_PAGO</td>
-                                <td>@item.IDF_CONTRATO_PG</td>
-                                <td>@item.FECHA_PAGO</td>
-                                <td>@item.VALOR_PAGO</td>
-                                <td>@item.OBSERVACION</td>
-                                @*<td>
-            <ul>
-                @foreach (var item2 in item.DetallesContratossDTOs)
-                {
-                    <li>@item2.CARACTERISTICA - @item2.VALOR  &nbsp &nbsp<a style="cursor:pointer;color:blue" title="Actualizar Detalle" class="fa fa-refresh" href="@Url.Action("Editar","DetallesContratos", new { _idDetalleContratos = item2.ID_DETALLE_INMBL })"></a><b>&nbsp -  &nbsp</b><a style="cursor:pointer;color:darkred" title="Eliminar Detalle" class="fa fa-close" href="@Url.Action("Eliminar","DetallesContratos", new { _idDetalleContratos = item2.ID_DETALLE_INMBL })"></a></li>
-                }
-            </ul>
-        </td>*@
-                                @*<td>
-                                    <ul>
-                                        @foreach (var item2 in item.ContratossRegistradosDTOs)
-                                        {
-                                            <li>@item2.OFICINA - @item2.NOMBRE_RH - @item2.ESTADO_Contratos  &nbsp &nbsp<a style="cursor:pointer;color:blue" title="Actualizar Detalle" class="fa fa-refresh" href="@Url.Action("Editar","ContratossRegistrados", new { _id = item2.ID_Contratos_REGISTRADO })"></a><b>&nbsp -  &nbsp</b><a style="cursor:pointer;color:darkred" title="Eliminar Detalle" class="fa fa-close" href="@Url.Action("Eliminar","ContratossRegistrados", new { _id = item2.ID_Contratos_REGISTRADO })"></a></li>
-                                        }
-                                    </ul>
-                                </td>*@
+                                <td>@item.ID_CONTACTO_PERIODICO</td>
+                                <td>@item.NOMBRE_PERIODICO</td>
+                                <td>@item.TIPO_CONTACTO</td>
+                                <td>@item.DATO_CONTCT</td>
+                                
+              
                             </tr>
                             }
                         </tbody>

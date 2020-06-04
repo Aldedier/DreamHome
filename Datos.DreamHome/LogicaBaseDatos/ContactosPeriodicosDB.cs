@@ -24,7 +24,7 @@ namespace Datos.DreamHome.LogicaBaseDatos
                     objCommand.Parameters.Clear();
                     objCommand.Parameters.Add(new OracleParameter("I_IdPeriodico", OracleDbType.Decimal)).Value = contactosPeriodicoDTO.IDF_PERIODICO;
                     objCommand.Parameters.Add(new OracleParameter("I_IdTipoContacto", OracleDbType.Decimal)).Value = contactosPeriodicoDTO.IDF_TIPO_CONTACTO;
-                    objCommand.Parameters.Add(new OracleParameter("I_DatoContactoPeriodico", OracleDbType.Varchar2, 100)).Value = contactosPeriodicoDTO.DATO_CONTACTO_PERIOD;
+                    objCommand.Parameters.Add(new OracleParameter("I_DatoContactoPeriodico", OracleDbType.Varchar2, 100)).Value = contactosPeriodicoDTO.DATO_CONTCT;
                     objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = contactosPeriodicoDTO.SESSION;
                     objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
 
@@ -66,7 +66,7 @@ namespace Datos.DreamHome.LogicaBaseDatos
                     objCommand.Parameters.Add(new OracleParameter("I_IdContactoPeriodico", OracleDbType.Decimal)).Value = contactosPeriodicoDTO.ID_CONTACTO_PERIODICO;
                     objCommand.Parameters.Add(new OracleParameter("I_IdPeriodico", OracleDbType.Decimal)).Value = contactosPeriodicoDTO.IDF_PERIODICO;
                     objCommand.Parameters.Add(new OracleParameter("I_IdTipoContacto", OracleDbType.Decimal)).Value = contactosPeriodicoDTO.IDF_TIPO_CONTACTO;
-                    objCommand.Parameters.Add(new OracleParameter("I_DatoContactoPeriodico", OracleDbType.Varchar2, 100)).Value = contactosPeriodicoDTO.DATO_CONTACTO_PERIOD;
+                    objCommand.Parameters.Add(new OracleParameter("I_DatoContactoPeriodico", OracleDbType.Varchar2, 100)).Value = contactosPeriodicoDTO.DATO_CONTCT;
                     objCommand.Parameters.Add(new OracleParameter("I_IdfSesion", OracleDbType.Decimal)).Value = contactosPeriodicoDTO.SESSION;
                     objCommand.Parameters.Add(new OracleParameter("O_Salida", OracleDbType.Varchar2, 200)).Direction = ParameterDirection.Output;
 
@@ -149,7 +149,7 @@ namespace Datos.DreamHome.LogicaBaseDatos
                     connection.Open();
 
                     objCommand.CommandType = CommandType.StoredProcedure;
-                    objCommand.CommandText = "BD_DREAM_HOME.PKG_CONTACTOS_PERIODICOS.PR_ContactoPeriodico";
+                    objCommand.CommandText = "BD_DREAM_HOME.PKG_CONTACTOS_PERIODICOS.PR_ConsultarContactoPeriodico";
 
                     DataTable resultado = new DataTable();
                     resultado.Load(objCommand.ExecuteReader());
@@ -163,7 +163,10 @@ namespace Datos.DreamHome.LogicaBaseDatos
                             ID_CONTACTO_PERIODICO = int.Parse(row["ID_CONTACTO_PERIODICO"].ToString()),
                             IDF_PERIODICO = int.Parse(row["IDF_PERIODICO"].ToString()),
                             IDF_TIPO_CONTACTO = int.Parse(row["IDF_TIPO_CONTACTO"].ToString()),
-                            DATO_CONTACTO_PERIOD = row["DATO_CONTACTO_PERIOD"].ToString()
+                            DATO_CONTCT = row["DATO_CONTCT"].ToString(),
+                            NOMBRE_PERIODICO = row["NOMBRE_PERIODICO"].ToString(),
+                            TIPO_CONTACTO = row["TIPO_CONTACTO"].ToString()
+
 
                         };
 
