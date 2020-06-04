@@ -19,5 +19,6 @@ namespace Comun.DreamHome
         public List<DetallesInmueblesDTO> DetallesInmueblesDTOs { get; set; } = new List<DetallesInmueblesDTO>();
         public List<InmueblesRegistradosDTO> InmueblesRegistradosDTOs { get; set; } = new List<InmueblesRegistradosDTO>();
 
+
     }
 }
