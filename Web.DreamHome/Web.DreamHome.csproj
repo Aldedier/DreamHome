@@ -4533,7 +4533,12 @@
     <Content Include="Views\Anuncios\Crear.cshtml" />
     <Content Include="Views\Anuncios\Editar.cshtml" />
     <Content Include="Views\Anuncios\Inicial.cshtml" />
-    <Content Include="Views\Reportes\ReporteInmuebles.cshtml" />
+    <Content Include="Views\Pagos\Crear.cshtml" />
+    <Content Include="Views\Pagos\Editar.cshtml" />
+    <Content Include="Views\Pagos\Inicial.cshtml" />
+    <Content Include="Views\ContactosPeriodicos\Crear.cshtml" />
+    <Content Include="Views\ContactosPeriodicos\Editar.cshtml" />
+    <Content Include="Views\ContactosPeriodicos\Inicial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

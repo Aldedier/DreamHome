@@ -19,6 +19,19 @@
             return lista;
         }
 
+        public List<ContratosDTO> ConsultarContratos()
+        {
+            List<ContratosDTO> lista = new List<ContratosDTO>();
+
+            using (ContextoDreamHome db = new ContextoDreamHome())
+            {
+                
+                lista = db.VST_CONTRATOS.Select(x => new ContratosDTO { ID_CONTRATO = x.ID_CONTRATO }).ToList();
+            }
+
+            return lista;
+        }
+
         public List<TiposPagosDTO> ConsultarTiposPagos()
         {
             List<TiposPagosDTO> lista = new List<TiposPagosDTO>();
