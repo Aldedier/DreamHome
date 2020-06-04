@@ -1,4 +1,4 @@
-﻿@model Comun.DreamHome.InmueblesRegistradosDTO
+﻿@model Comun.DreamHome.AuditoriaDTO
 
 @{
     ViewBag.Title = "Reporte";
@@ -17,9 +17,10 @@
     </script>
 }
 
+
 <section class="content-header">
     <h1>
-        Reporte inmuebles
+        Reporte Auditoria
     </h1>
     <ol class="breadcrumb">
         <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> Inicio</a></li>
@@ -52,45 +53,35 @@
                     <div class="box-body">
                         <div class="form-group-sm">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
-                                        @Html.Label("Nombre propietario", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        @Html.Label("Usuario", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.EditorFor(model => model.NOMBRE_PROP, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite el nombre del propietario" } })
+                                            @Html.EditorFor(model => model.USUARIO, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite el nombre del usuario" } })
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
-                                        @Html.Label("Tipo inmueble", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        @Html.Label("Rol", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.EditorFor(model => model.NOMBRE_TIPO, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite el tipo inmueble" } })
+                                            @Html.EditorFor(model => model.ROL_USR, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite el rol" } })
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
-                                        @Html.Label("Nombre oficina", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        @Html.Label("Nombre objeto", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.EditorFor(model => model.OFICINA, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite el nombre de la oficina" } })
+                                            @Html.EditorFor(model => model.OBJETO_BD, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite el nombre del objeto DB" } })
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
-                                        @Html.Label("Nombre empleado", htmlAttributes: new { @class = "control-label col-md-12" })
+                                        @Html.Label("Nombre operacion", htmlAttributes: new { @class = "control-label col-md-12" })
                                         <div class="col-md-12">
-                                            @Html.EditorFor(model => model.NOMBRE_RH, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite el nombre del empleado" } })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="form-group">
-                                        @Html.Label("Estado", htmlAttributes: new { @class = "control-label col-md-12" })
-                                        <div class="col-md-12">
-                                            @Html.EditorFor(model => model.ESTADO_INMUEBLE, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Estado inmueble" } })
+                                            @Html.EditorFor(model => model.OPERACION, new { htmlAttributes = new { @class = "form-control", type = "text", @placeholder = "Digite el nombre de la operación" } })
                                         </div>
                                     </div>
                                 </div>
@@ -130,28 +121,37 @@
                             <tr>
                                 <th></th>
                                 <th>
-                                    <p>Id Inmueble</p>
+                                    <p>Id Registro</p>
                                 </th>
                                 <th>
-                                    <p>Tipo inmueble</p>
+                                    <p>Id Sesion</p>
                                 </th>
                                 <th>
-                                    <p>Propietario</p>
+                                    <p>Usuario</p>
                                 </th>
                                 <th>
-                                    <p>Dirección</p>
+                                    <p>Rol</p>
                                 </th>
                                 <th>
-                                    <p>Apartado</p>
+                                    <p>Objeto</p>
                                 </th>
                                 <th>
-                                    <p>Oficina</p>
+                                    <p>Operación</p>
                                 </th>
                                 <th>
-                                    <p>Empleado</p>
+                                    <p>Dato Viejo</p>
                                 </th>
                                 <th>
-                                    <p>Estado inmueble</p>
+                                    <p>Dato Nuevo</p>
+                                </th>
+                                <th>
+                                    <p>Origen</p>
+                                </th>
+                                <th>
+                                    <p>Tipo registro</p>
+                                </th>
+                                <th>
+                                    <p>Fecha</p>
                                 </th>
                             </tr>
                         </thead>
@@ -160,14 +160,17 @@
                             {
                                 <tr>
                                     <td></td>
-                                    <td>@item.ID_INMUEBLE</td>
-                                    <td>@item.NOMBRE_TIPO</td>
-                                    <td>@item.NOMBRE_PROP</td>
-                                    <td>@item.DIRECCION_INM</td>
-                                    <td>@item.APARTADO_INM</td>
-                                    <td>@item.OFICINA</td>
-                                    <td>@item.NOMBRE_RH</td>
-                                    <td>@item.ESTADO_INMUEBLE</td>
+                                    <td>@item.ID_REGISTRO</td>
+                                    <td>@item.ID_SESION</td>
+                                    <td>@item.USUARIO</td>
+                                    <td>@item.ROL_USR</td>
+                                    <td>@item.OBJETO_BD</td>
+                                    <td>@item.OPERACION</td>
+                                    <td>@item.DATO_VIEJO</td>
+                                    <td>@item.DATO_NUEVO</td>
+                                    <td>@item.ORIGEN</td>
+                                    <td>@item.TIPO_REGISTRO</td>
+                                    <td>@item.FECHA_AUD</td>
                                 </tr>
                             }
                         </tbody>

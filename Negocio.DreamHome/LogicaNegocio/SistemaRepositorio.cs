@@ -2,6 +2,7 @@
 {
     using Comun.DreamHome;
     using Datos.DreamHome.LogicaBaseDatos;
+    using System.Collections.Generic;
 
     public class SistemaRepositorio
     {
@@ -11,5 +12,9 @@
             return resultado;
         }
 
+        public List<AuditoriaDTO> ReporteAuditoria(AuditoriaDTO auditoriaDTO)
+        {
+            return new SistemaDB().ReporteAuditoria(auditoriaDTO);
+        }
     }
 }

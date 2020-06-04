@@ -6,9 +6,8 @@
     using System.Web.Mvc;
 
 
-    public class ReportesController : Controller
+    public class ReportesController : BaseController
     {
-        // Reporte Salpicon
         public ActionResult ReporteInmuebles()
         {
             ViewBag.REPORTE = new List<InmueblesRegistradosDTO>();
@@ -19,11 +18,26 @@
         [HttpPost]
         public ActionResult ReporteInmuebles(InmueblesRegistradosDTO inmueblesRegistradosDTO)
         {
+            inmueblesRegistradosDTO.SESSION = GetSession();
             ViewBag.REPORTE = new InmueblesRegistradosRepositorio().ReporteInmueblesRegistrados(inmueblesRegistradosDTO);
             return View();
         }
 
 
+        public ActionResult ReporteAuditoria()
+        {
+            ViewBag.REPORTE = new List<InmueblesRegistradosDTO>();
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult ReporteAuditoria(AuditoriaDTO auditoriaDTO)
+        {
+            auditoriaDTO.SESSION = GetSession();
+            ViewBag.REPORTE = new SistemaRepositorio().ReporteAuditoria(auditoriaDTO);
+            return View();
+        }
 
 
 

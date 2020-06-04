@@ -1,11 +1,7 @@
 ﻿using Comun.DreamHome;
 using Negocio.DreamHome.LogicaNegocio;
-using Comun.DreamHome;
-using Negocio.DreamHome.LogicaNegocio;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Web.DreamHome.Controllers
@@ -17,14 +13,6 @@ namespace Web.DreamHome.Controllers
             ViewBag.Mensaje = _mensaje;
 
             List<ContratosDTO> listaContratosDTO = new ContratosRepositorio().ConsultaContratos((int)GetSession());
-
-            //List<InmueblesRegistradosDTO> listaInmueblesRegistradosDTO = new InmueblesRegistradosRepositorio().ConsultaInmueblesRegistrados(new InmueblesRegistradosDTO { SESSION = GetSession() });
-
-            //foreach (var item in listaInmueblesDTO)
-            //{
-            //    item.DetallesInmueblesDTOs = new DetallesInmueblesRepositorio().ConsultaDetallesInmuebles(new DetallesInmueblesDTO { IDF_INMUEBLE = item.ID_INMUEBLE, SESSION = GetSession() });
-            //    item.InmueblesRegistradosDTOs = listaInmueblesRegistradosDTO.Where(x => x.IDF_INMUEBLE_REG == item.ID_INMUEBLE).ToList();
-            //}
 
             return View(listaContratosDTO);
         }
@@ -43,8 +31,6 @@ namespace Web.DreamHome.Controllers
         public ActionResult Crear(ContratosDTO contratosDTO)
         {
             contratosDTO.SESSION = GetSession();
-            ViewBag.consignar = 
-            //   ViewBag.IDF_TIPO_INM = new SelectList(new ListasRepositorio().ConsultarTiposPropiedades(), "ID_TIPO", "NOMBRE_TIPO", inmueblesDTO.IDF_TIPO_INM);
             ViewBag.IDF_CLIENTE_CNTR = new SelectList(new ListasRepositorio().ConsultarClientes(), "ID_CLIENTE", "NOMBRE_CLINT", contratosDTO.IDF_CLIENTE_CNTR);
             ViewBag.IDF_INMUEBLE_CNTR = new SelectList(new ListasRepositorio().ConsultarInmuebles(), "ID_INMUEBLE", "DIRECCION_INM", contratosDTO.IDF_INMUEBLE_CNTR);
             ViewBag.IDF_FORMA_PAGO_CNTR = new SelectList(new ListasRepositorio().ConsultarTiposPagos(), "ID_FORMA_PAGO", "FORMA_PAGO", contratosDTO.IDF_FORMA_PAGO_CNTR);
@@ -55,7 +41,6 @@ namespace Web.DreamHome.Controllers
         public ActionResult Editar(int _id)
         {
             ContratosDTO datos = new ContratosRepositorio().ConsultaContratos((int)GetSession()).Where(x => x.ID_CONTRATO == _id).FirstOrDefault();
-            //   ViewBag.IDF_TIPO_INM = new SelectList(new ListasRepositorio().ConsultarTiposPropiedades(), "ID_TIPO", "NOMBRE_TIPO", datos.IDF_TIPO_INM);
             ViewBag.IDF_CLIENTE_CNTR = new SelectList(new ListasRepositorio().ConsultarClientes(), "ID_CLIENTE", "NOMBRE_CLINT", datos.IDF_CLIENTE_CNTR);
             ViewBag.IDF_INMUEBLE_CNTR = new SelectList(new ListasRepositorio().ConsultarInmuebles(), "ID_INMUEBLE", "DIRECCION_INM", datos.IDF_INMUEBLE_CNTR);
             ViewBag.IDF_FORMA_PAGO_CNTR = new SelectList(new ListasRepositorio().ConsultarTiposPagos(), "ID_FORMA_PAGO", "FORMA_PAGO", datos.IDF_FORMA_PAGO_CNTR);
@@ -66,7 +51,6 @@ namespace Web.DreamHome.Controllers
         [HttpPost]
         public ActionResult Editar(ContratosDTO contratosDTO)
         {
-            // ViewBag.IDF_TIPO_INM = new SelectList(new ListasRepositorio().ConsultarTiposPropiedades(), "ID_TIPO", "NOMBRE_TIPO", inmueblesDTO.IDF_TIPO_INM);
             ViewBag.IDF_CLIENTE_CNTR = new SelectList(new ListasRepositorio().ConsultarClientes(), "ID_CLIENTE", "NOMBRE_CLINT", contratosDTO.IDF_CLIENTE_CNTR);
             ViewBag.IDF_INMUEBLE_CNTR = new SelectList(new ListasRepositorio().ConsultarInmuebles(), "ID_INMUEBLE", "DIRECCION_INM", contratosDTO.IDF_INMUEBLE_CNTR);
             ViewBag.IDF_FORMA_PAGO_CNTR = new SelectList(new ListasRepositorio().ConsultarTiposPagos(), "ID_FORMA_PAGO", "FORMA_PAGO", contratosDTO.IDF_FORMA_PAGO_CNTR);

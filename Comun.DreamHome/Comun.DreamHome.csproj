@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnuncioDTO.cs" />
+    <Compile Include="AuditoriaDTO.cs" />
     <Compile Include="CaracteristicasInmueblesDTO.cs" />
     <Compile Include="CargoDTO.cs" />
     <Compile Include="CiudadDTO.cs" />

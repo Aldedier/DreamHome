@@ -4543,6 +4543,8 @@
     <Content Include="Views\Usuarios\Crear.cshtml" />
     <Content Include="Views\Usuarios\Editar.cshtml" />
     <Content Include="Views\Usuarios\Inicial.cshtml" />
+    <Content Include="Views\Reportes\ReporteInmuebles.cshtml" />
+    <Content Include="Views\Reportes\ReporteAuditoria.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

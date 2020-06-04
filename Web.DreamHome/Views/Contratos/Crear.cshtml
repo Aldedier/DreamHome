@@ -1,5 +1,5 @@
 ﻿@model Comun.DreamHome.ContratosDTO
-    
+
 
 @{
     ViewBag.Title = "Crear";
@@ -11,6 +11,10 @@
 
 @section scripts{
     @Scripts.Render("~/bundles/FormularioJs")
+
+    <script>
+        AplicarDateTimePlugin();
+    </script>
 }
 
 <section class="content-header">
@@ -122,7 +126,7 @@
                                     </div>
                                 </div>
                             </div>
-                            </div>
+                        </div>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-footer">

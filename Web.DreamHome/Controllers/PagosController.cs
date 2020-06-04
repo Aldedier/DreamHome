@@ -20,8 +20,6 @@ namespace Web.DreamHome.Controllers
         }
         public ActionResult Crear()
         {
-            //ViewBag.IDF_TIPO_CONTACTO_PROP = new SelectList(new ListasRepositorio().ConsultarTiposContactos(), "ID_TIPO_CONTACTO", "TIPO_CONTACTO");
-            //ViewBag.IDF_PROPIETARIO_CNTCT = _idPropietario;
             ViewBag.IDF_CONTRATO_PG = new SelectList(new ListasRepositorio().ConsultarContratos(), "ID_CONTRATO", "ID_CONTRATO");
             ViewBag.Mensaje = null;
             return View();

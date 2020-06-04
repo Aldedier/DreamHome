@@ -1,5 +1,5 @@
 ﻿@model Comun.DreamHome.PagosDTO
-    
+
 
 @{
     ViewBag.Title = "Crear";
@@ -11,11 +11,15 @@
 
 @section scripts{
     @Scripts.Render("~/bundles/FormularioJs")
+
+    <script>
+        AplicarDateTimePlugin();
+    </script>
 }
 
 <section class="content-header">
     <h1>
-       Crear Pagos
+        Crear Pagos
     </h1>
     <ol class="breadcrumb">
         <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> Inicio</a></li>
@@ -56,7 +60,7 @@
                                         </div>
                                     </div>
                                 </div>
-                           
+
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         @Html.Label("Valor Pago", htmlAttributes: new { @class = "control-label col-md-12" })
@@ -76,7 +80,7 @@
                                         </div>
                                     </div>
                                 </div>
-                               
+
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         @Html.Label("Observacion  ", htmlAttributes: new { @class = "control-label col-md-12" })
@@ -86,7 +90,7 @@
                                     </div>
                                 </div>
                             </div>
-                            </div>
+                        </div>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-footer">
