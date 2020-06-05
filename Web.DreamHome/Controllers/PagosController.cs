@@ -37,14 +37,12 @@ namespace Web.DreamHome.Controllers
         {
             PagosDTO datos = new PagosRepositorio().ConsultaPagos((int)GetSession()).Where(x => x.ID_PAGO == _id).FirstOrDefault();
             ViewBag.IDF_CONTRATO_PG = new SelectList(new ListasRepositorio().ConsultarContratos(), "ID_CONTRATO", "ID_CONTRATO", datos.IDF_CONTRATO_PG);
-
             return View(datos);
         }
 
         [HttpPost]
         public ActionResult Editar(PagosDTO PagosDTO)
         {
-            
             ViewBag.IDF_CONTRATO_PG = new SelectList(new ListasRepositorio().ConsultarContratos(), "ID_CONTRATO", "ID_CONTRATO", PagosDTO.IDF_CONTRATO_PG);
             PagosDTO.SESSION = GetSession();
             return RedirectToAction("Inicial", "Pagos", new { _mensaje = new PagosRepositorio().ActualizarPago(PagosDTO) });

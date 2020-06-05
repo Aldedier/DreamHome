@@ -64,7 +64,7 @@ namespace Datos.DreamHome.LogicaBaseDatos
                 try
                 {
                     objCommand.Parameters.Clear();
-                    objCommand.Parameters.Add(new OracleParameter("I_IdPago", OracleDbType.Decimal)).Value = pagosDTO.IDF_CONTRATO_PG;
+                    objCommand.Parameters.Add(new OracleParameter("I_IdPago", OracleDbType.Decimal)).Value = pagosDTO.ID_PAGO;
                     objCommand.Parameters.Add(new OracleParameter("I_IdContrato", OracleDbType.Decimal)).Value = pagosDTO.IDF_CONTRATO_PG;
                     objCommand.Parameters.Add(new OracleParameter("I_FechaPago", OracleDbType.Date)).Value = pagosDTO.FECHA_PAGO;
                     objCommand.Parameters.Add(new OracleParameter("I_ValorPago", OracleDbType.Varchar2, 100)).Value = pagosDTO.VALOR_PAGO;
